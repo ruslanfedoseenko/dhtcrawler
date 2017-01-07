@@ -13,7 +13,7 @@ import (
 )
 var videoExtractorLog = logging.MustGetLogger("VideoInfoExtractor")
 
-type videoInfoExtractWork struct {
+type VideoInfoExtractWork struct {
 	Id   int32
 	Name string
 }
@@ -21,6 +21,7 @@ type videoInfoExtractWork struct {
 type VideoInfoExtractor struct {
 	tmDb              *tmdb.TMDb
 	tmdbConfig        *tmdb.Configuration
+		ganres			map[uint32]string
 	extraTitleContent *regexp.Regexp
 	titleDelimiters   *regexp.Regexp
 }
@@ -38,6 +39,14 @@ func NewVideoInfoExtractor() (ve *VideoInfoExtractor) {
 		extraTitleContent: regexp.MustCompile("(?i)(\\d{4}|\\[([^]]+)]|\\(([^)]+)\\)|\\d(\\d)?x\\d(\\d)?(-\\d(\\d)?)?|web-dl|webdl|complete|temporada|season|episode|ep \\d+|tc|xxx|hdrip|bdrip|dvdrip|bdrip|hdtv|1080p|1080|720|720p|480|480p|576|576p|xvid|divx|mkv|mp4|avi|brrip|ac3|mp3|x264|aac|s\\d(\\d)?(e\\d(\\d)?)?|bluray|rip|avc)"),
 		titleDelimiters:   regexp.MustCompile("(\\.|-|;|,|-|_|\\||\\(|\\)|\\[|]|/|\\\\)"),
 	}
+	var ganres *tmdb.Genre;
+	ganres, err = tmDb.GetMovieGenres(map[string]string{})
+	ganresCount := len(ganres.Genres)
+	extractor.ganres = make(map[uint32]string)
+	for i:=0; i< ganresCount; i++ {
+		ganre := ganres.Genres[i]
+		extractor.ganres[uint32(ganre.ID)] = ganre.Name
+	}
 	go extractor.processQueue()
 	return &extractor
 }
@@ -47,7 +56,7 @@ func (ve *VideoInfoExtractor) processQueue() {
 	App.Db.First(&counters)
 	videoExtractorLog.Debug("Counters", counters)
 	for {
-		var work videoInfoExtractWork
+		var work VideoInfoExtractWork
 		var torrent Models.Torrent
 		App.Db.Raw("SELECT id, Name from torrents where id > ? and group_id in (1,2) LIMIT 1", counters.LastExtractedVideoId).Scan(&torrent)
 		work.Id = torrent.Id
@@ -82,7 +91,7 @@ func (ve *VideoInfoExtractor) processQueue() {
 
 }
 
-func (ve *VideoInfoExtractor) GetAssociatedVideos(work videoInfoExtractWork) (titles []Models.Title) {
+func (ve *VideoInfoExtractor) GetAssociatedVideos(work VideoInfoExtractWork) (titles []Models.Title) {
 	//videoExtractorLog.Println("Cleaning", name)
 	cleanedName := ve.cleanupName(work.Name)
 
@@ -114,6 +123,7 @@ func (ve *VideoInfoExtractor) GetAssociatedVideos(work videoInfoExtractWork) (ti
 			}
 
 		}
+
 		var posterUrl string
 		if len(res.Results[i].PosterPath) > 0 {
 			posterUrl = ve.tmdbConfig.Images.BaseURL + "original" + res.Results[i].PosterPath
@@ -126,10 +136,19 @@ func (ve *VideoInfoExtractor) GetAssociatedVideos(work videoInfoExtractWork) (ti
 			Title:       name,
 			Year:        uint32(year),
 			Description: res.Results[i].Overview,
+			Ganres:		 ve.getGanres(res.Results[i].Genres),
 			TitleType:   Models.TitleType(res.Results[i].MediaType),
 			Id:          crc32.ChecksumIEEE([]byte(name)),
 			PosterUrl:   posterUrl,
 		})
+	}
+	return
+}
+func (ve *VideoInfoExtractor) getGanres(ganre_ids []uint32) (ganreNames []string){
+	len := len(ganre_ids)
+	ganreNames = make([]string, len, len)
+	for i := 0; i < len; i++ {
+		ganreNames[i] = ve.ganres[ganre_ids[i]]
 	}
 	return
 }

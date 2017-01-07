@@ -20,7 +20,7 @@ type BasicTypeClassification struct {
 }
 
 func NewBasicTypeClassificationRule(app *Config.App) (b BasicTypeClassification) {
-	TorrentClassification.RuleID = TorrentClassification.RuleID+1;
+	TorrentClassification.RuleID++;
 	b = BasicTypeClassification{
 		TorrentClassification.Rule{
 			ID: TorrentClassification.RuleID,
