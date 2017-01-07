@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    <link href="/index/codebase/bluewater.css" rel="stylesheet" type="text/css">
+    <link href="/index//codebase/components/sidebar/sidebar.css" rel="stylesheet" type="text/css">
+    <script src="/index/codebase/webix_debug.js" type="text/javascript"></script>
+    <script src="/index/codebase/components/sidebar/sidebar.js" type="text/javascript"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+    webix.ready(function () {
+        var lastSelectedGroup = undefined
+        webix.ui({
+            cols: [
+                {
+                    view: "tree",
+                    url: '/adm/groups/',
+                    select: true,
+                    on: {
+                        onAfterSelect: function (id) {
+                            var obj = this.getItem(id)
+                            lastSelectedGroup = obj
+                            $$('currentGroupTrainingDataList').clearAll();
+                            $$('currentGroupTrainingDataList').parse(obj.TrainingData || []);
+                        }
+                    }
+                },
+                {
+                    rows: [
+                        {
+                            cols: [
+                                {
+                                    view: 'button',
+                                    type: 'icon', icon:'plus',
+                                    click: function () {
+                                        if (!lastSelectedGroup) {
+                                            webix.message("Select group first!");
+                                            return;
+                                        }
+                                        var allTrainDataList = $$('allTrainingDataList');
+                                        var selectedTokenId = allTrainDataList.getSelectedId();
+                                        if (!selectedTokenId) {
+                                            webix.message('Select a token!');
+                                            return
+                                        }
+                                        var selectedItem = webix.copy(allTrainDataList.getItem(selectedTokenId))
+                                        delete selectedItem.id
+                                        webix.ajax().post('/adm/group/addtoken/', JSON.stringify({
+                                                    GroupId: lastSelectedGroup.Id,
+                                                    Token: selectedItem
+                                                }),
+                                                function () {
+                                                    var curTrainDataList = $$('currentGroupTrainingDataList');
+                                                    var id = curTrainDataList.add(selectedItem)
+                                                    curTrainDataList.showItem(id);
+                                                    curTrainDataList.select(id);
+                                                })
+
+
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            width: 450,
+                            id: 'currentGroupTrainingDataList',
+                            view: 'list',
+                            template: "#Data#",
+                        }
+                    ]
+                },
+                {
+                    rows: [
+                        {
+                            cols: [
+                                {
+                                    view: 'button',
+                                    type: 'icon', icon:'plus',
+                                    click: function () {
+
+                                        var value = $$('allTrainingDataAddInput').getValue();
+                                        if (!value){
+                                            webix.message("Should be not empty")
+                                            return;
+                                        }
+                                        var data = {
+                                            Data: value
+                                        };
+                                        webix.ajax().post('/adm/trainingdata/',
+                                                JSON.stringify(data),
+                                                function (text, data, xhr) {
+                                                    var dataList = $$('allTrainingDataList');
+                                                    var id = dataList.add(data.json());
+                                                    dataList.select(id)
+                                                    dataList.showItem(id)
+                                                    dataList = null
+                                                })
+
+
+                                    }
+                                },
+                                {
+                                    id: 'allTrainingDataAddInput',
+                                    view: 'text'
+                                },
+                                {
+                                    id: 'allTrainingDataAddSearch',
+                                    view: 'search',
+                                    keyPressTimeout: 1200,
+                                    on: {
+                                        onTimedKeyPress: function () {
+                                            $$('allTrainingDataList').filter('#Data#', this.getValue())
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            id: 'allTrainingDataList',
+                            view: 'list',
+                            template: "#Data#",
+                            url: '/adm/trainingdata/',
+                            select: true,
+                        },
+                        {
+                            view: 'button',
+                            value: 'Refresh Bayesian',
+                            click: function () {
+                                webix.ajax('/adm/relearn/')
+                            }
+                        }
+                    ]
+                }
+            ]
+        });
+    });
+</script>
+</body>
+</html>
