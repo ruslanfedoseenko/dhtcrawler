@@ -252,7 +252,7 @@
                                         width: 3
                                     },
                                     padding: {
-                                        left: 75
+                                        left: 95
                                     },
                                     xAxis: {
                                         template: function (item) {
@@ -262,7 +262,7 @@
                                     },
                                     yAxis: {
                                         template: function (item) {
-                                            return formatBytes(item, 1);
+                                            return formatBytes(item, 4);
                                         },
                                         title: 'Total Files Size'
                                     },
@@ -281,7 +281,7 @@
                                     ],
                                     tooltip: {
                                         template: function (obj) {
-                                            return formatBytes(obj.TotalFilesSize)
+                                            return formatBytes(obj.TotalFilesSize,4)
                                         }
                                     }
                                 }
@@ -338,8 +338,6 @@
         webix.ui({
             rows: [
                 {
-
-
                     view: 'toolbar',
                     paddingY: 0,
                     paddingX: 0,

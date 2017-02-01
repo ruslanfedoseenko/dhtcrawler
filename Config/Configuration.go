@@ -32,7 +32,7 @@ type Configuration struct {
 	DhtConfig    DhtConfig
 	HttpConfig   HttpConfig
 	ScrapeConfig ScrapeConfig
-	ItemsPerPage int
+	ItemsPerPage uint64
 }
 
 func SetupConfiguration() *Configuration {

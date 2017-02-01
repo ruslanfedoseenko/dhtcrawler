@@ -10,14 +10,14 @@ import (
 )
 
 func TorrentsListHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	var page int = 1
+	var page uint64 = 1
 	var groupId int = -1
 	var err error
 	pageNumberStr := ps.ByName("pageNumber")
 	groupIdStr := ps.ByName("groupId")
 	if len(pageNumberStr) > 0 {
 
-		page, err = strconv.Atoi(pageNumberStr)
+		page, err = strconv.ParseUint(pageNumberStr,10,64)
 		if err != nil {
 			log.Println("Parsing Error", err.Error())
 			w.WriteHeader(http.StatusBadRequest)
@@ -39,17 +39,23 @@ func TorrentsListHandler(w http.ResponseWriter, r *http.Request, ps httprouter.P
 			w.WriteHeader(http.StatusBadRequest)
 		}
 	}
-	itemsPerPage := App.Config.ItemsPerPage
+	var itemsPerPage uint64 = App.Config.ItemsPerPage
 	var torrents []Models.Torrent = make([]Models.Torrent, itemsPerPage, itemsPerPage)
-	var itemsCount int
+	var itemsCount uint64
 
 	if groupId > 0 {
 
-		err = App.Db.Debug().Model(&Models.Torrent{}).Where(&Models.Torrent{GroupId: int32(groupId)}).Count(&itemsCount).Order("seeds desc,leechers desc").Limit(itemsPerPage).Offset((page - 1) * itemsPerPage).Find(&torrents).Error
+		err = App.Db.Debug().
+			Model(&Models.Torrent{}).
+			Where(&Models.Torrent{GroupId: int32(groupId)}).
+			Count(&itemsCount).Order("seeds desc,leechers desc").
+			Limit(itemsPerPage).
+			Offset((page - uint64(1)) * itemsPerPage).
+			Find(&torrents).Error
 	} else {
 		row := App.Db.Debug().Table("realtime_counters").Select("torrent_count").Row()
 		row.Scan(&itemsCount)
-		err = App.Db.Debug().Model(&Models.Torrent{}).Limit(itemsPerPage).Offset((page - 1) * itemsPerPage).Find(&torrents).Error
+		err = App.Db.Debug().Model(&Models.Torrent{}).Limit(itemsPerPage).Offset((page - uint64(1)) * itemsPerPage).Find(&torrents).Error
 	}
 	if err != nil {
 		log.Println("Error:", err.Error())
@@ -69,7 +75,7 @@ func TorrentsListHandler(w http.ResponseWriter, r *http.Request, ps httprouter.P
 		}
 
 	}
-	pageCountFix := 0
+	var pageCountFix uint64 = 0
 	if itemsCount%itemsPerPage != 0 {
 		pageCountFix = 1
 	}

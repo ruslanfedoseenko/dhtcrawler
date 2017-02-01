@@ -15,10 +15,10 @@ func TorrentSearchHandler(w http.ResponseWriter, r *http.Request, ps httprouter.
 	searchTerm := ps.ByName("term")
 	searchTerm = strings.Replace(searchTerm, " ", "%", -1)
 	pageNumberStr := ps.ByName("pageNumber")
-	var page int = 1
+	var page uint64 = 1
 	var err error
 	if len(pageNumberStr) > 0 {
-		page, err = strconv.Atoi(pageNumberStr)
+		page, err = strconv.ParseUint(pageNumberStr,10,64)
 		if err != nil {
 			log.Println("Parsing Error", err.Error())
 			w.WriteHeader(http.StatusBadRequest)
@@ -34,11 +34,18 @@ func TorrentSearchHandler(w http.ResponseWriter, r *http.Request, ps httprouter.
 		return
 	}
 	var torrents []Models.Torrent
-	itemsCount := 0
+	var itemsCount uint64 = 0
 	itemsPerPage := App.Config.ItemsPerPage
 
-
-	App.Db.Debug().Table("torrents").Select("id, group_id, leechers, seeds, infohash, name").Where("zdb('torrents', ctid) ==> 'name:(" + strings.Replace(searchTerm, "%", " ", 500) + ")'").Count(&itemsCount).Limit(itemsPerPage).Offset((page - 1) * itemsPerPage).Scan(&torrents)
+	nameQuery := " 'name:("+ strings.Replace(searchTerm, "%", " ", 500) + ")'"
+	type zdbEstimateCountHolder struct{
+		Count uint64
+	}
+	var countHolder zdbEstimateCountHolder
+	App.Db.Debug().Raw("select zdb_estimate_count as count from zdb_estimate_count('torrents',"+nameQuery + ")").Scan(&countHolder)
+	itemsCount = countHolder.Count
+	App.Db.Debug().Table("torrents").Select("id, group_id, leechers, seeds, infohash, name").Where("zdb('torrents', ctid) ==> " +
+		nameQuery ).Limit(itemsPerPage).Offset((page - 1) * itemsPerPage).Scan(&torrents)
 
 	for i := range torrents {
 		var files []Models.File
@@ -48,7 +55,7 @@ func TorrentSearchHandler(w http.ResponseWriter, r *http.Request, ps httprouter.
 		App.Db.Model(&torrents[i]).Association("Group").Find(&torrents[i].Group)
 	}
 
-	pageCountFix := 0
+	var pageCountFix uint64= 0
 	if itemsCount%itemsPerPage != 0 {
 		pageCountFix = 1
 	}

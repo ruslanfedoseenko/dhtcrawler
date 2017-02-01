@@ -8,7 +8,7 @@ webix.DataDriver.torrentsAdapter = webix.extend({
     },
     getInfo: function (data) {
         var info = webix.DataDriver.json.getInfo(data)
-        info.size = data.ItemsPerPage * data.PageCount;
+        info.size = data.ItemsCount;
         info.from = (data.Page - 1) * data.ItemsPerPage;
         info._page = data.Page;
         info._page_size = data.ItemsPerPage;

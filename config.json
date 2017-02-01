@@ -1,9 +1,9 @@
 {
   "DbConfig" : {
     "DbDriver": "postgres",
-    "TableName": "torrents",
-    "UserName" : "torrents",
-    "Password" : "tgf35fc2"
+    "TableName": "table",
+    "UserName" : "user",
+    "Password" : "password"
   },
   "DhtConfig" : {
     "StartPort" : 6991,

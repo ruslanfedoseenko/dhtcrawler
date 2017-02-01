@@ -136,7 +136,7 @@ func (ve *VideoInfoExtractor) GetAssociatedVideos(work VideoInfoExtractWork) (ti
 			Title:       name,
 			Year:        uint32(year),
 			Description: res.Results[i].Overview,
-			Ganres:		 ve.getGanres(res.Results[i].Genres),
+			Ganres:		 ve.getGenres(res.Results[i].Genres),
 			TitleType:   Models.TitleType(res.Results[i].MediaType),
 			Id:          crc32.ChecksumIEEE([]byte(name)),
 			PosterUrl:   posterUrl,
@@ -144,11 +144,11 @@ func (ve *VideoInfoExtractor) GetAssociatedVideos(work VideoInfoExtractWork) (ti
 	}
 	return
 }
-func (ve *VideoInfoExtractor) getGanres(ganre_ids []uint32) (ganreNames []string){
+func (ve *VideoInfoExtractor) getGenres(ganre_ids []uint32) (genreNames []string){
 	len := len(ganre_ids)
-	ganreNames = make([]string, len, len)
+	genreNames = make([]string, len, len)
 	for i := 0; i < len; i++ {
-		ganreNames[i] = ve.ganres[ganre_ids[i]]
+		genreNames[i] = ve.ganres[ganre_ids[i]]
 	}
 	return
 }

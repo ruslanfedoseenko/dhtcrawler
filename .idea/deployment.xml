@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="cutetorrenthost">
+    <serverData>
+      <paths name="cutetorrenthost">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/root" local="$PROJECT_DIR$/bin" web="/" />
+            <mapping deploy="/var/www/dhtcrawler" local="$PROJECT_DIR$/static" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

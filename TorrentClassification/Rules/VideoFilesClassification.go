@@ -34,7 +34,7 @@ func (v *VideoFilesClassification) ApplyRule(t *Models.Torrent) int {
 		Name: t.Name,
 	})
 	videoFilesClassificationLog.Debug(titles);
-	return titles[0].Ganres
+	return titles[0].Ganres[0]
 
 }
 func (v *VideoFilesClassification)IsFinalRule() bool{

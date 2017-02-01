@@ -5,6 +5,6 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="GOPATH &lt;DhtCrawler&gt;" level="project" />
+    <orderEntry type="library" name="GOPATH &lt;dhtcrawler&gt;" level="project" />
   </component>
 </module>

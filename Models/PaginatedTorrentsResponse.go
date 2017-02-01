@@ -1,9 +1,9 @@
 package Models
 
 type PaginatedTorrentsResponse struct {
-	Page         int
-	PageCount    int
-	ItemsCount   int
-	ItemsPerPage int
+	Page         uint64
+	PageCount    uint64
+	ItemsCount   uint64
+	ItemsPerPage uint64
 	Torrents     []Torrent
 }

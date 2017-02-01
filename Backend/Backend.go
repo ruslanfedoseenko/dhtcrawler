@@ -10,7 +10,7 @@ import (
 	//"github.com/ruslanfedoseenko/dhtcrawler/Services/tracker"
 )
 
-var logger = logging.MustGetLogger("Main")
+var logger = logging.MustGetLogger("Backend")
 
 // Example format string. Everything except the message has a custom color
 // which is dependent on the log level. Many fields have a custom output
@@ -36,9 +36,8 @@ func main() {
 
 	Routers.Setup(app)
 
-	Services.SetupScrape(app)
+
 	Services.SetupTorrentCountStatsUpdater(app)
-	Services.SetupDhtCrawling(app)
 	app.Run()
 }
 

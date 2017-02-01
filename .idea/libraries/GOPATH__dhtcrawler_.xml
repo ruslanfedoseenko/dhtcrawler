@@ -2,16 +2,16 @@
   <library name="GOPATH &lt;dhtcrawler&gt;">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/../.." />
-      <root url="file://$USER_HOME$/golang/src/gopkg.in" />
-      <root url="file://$USER_HOME$/golang/src/github.com" />
-      <root url="file://$USER_HOME$/golang/src/golang.org" />
+      <root url="file://$PROJECT_DIR$/../../../../../Go/src/gopkg.in" />
+      <root url="file://$PROJECT_DIR$/../../../../../Go/src/github.com" />
+      <root url="file://$PROJECT_DIR$/../../../../../Go/src/golang.org" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
       <root url="file://$PROJECT_DIR$/../.." />
-      <root url="file://$USER_HOME$/golang/src/gopkg.in" />
-      <root url="file://$USER_HOME$/golang/src/github.com" />
-      <root url="file://$USER_HOME$/golang/src/golang.org" />
+      <root url="file://$PROJECT_DIR$/../../../../../Go/src/gopkg.in" />
+      <root url="file://$PROJECT_DIR$/../../../../../Go/src/github.com" />
+      <root url="file://$PROJECT_DIR$/../../../../../Go/src/golang.org" />
     </SOURCES>
     <excluded>
       <root url="file://$PROJECT_DIR$" />

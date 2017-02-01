@@ -13,7 +13,7 @@ import (
 )
 
 type DhtCrawlingService struct {
-	dht 	    *dht.DHT
+	dht 	   *dht.DHT
 	wire       *dht.Wire
 	config     *dht.Config
 	shouldStop bool
@@ -33,7 +33,7 @@ func SetupDhtCrawling(app *Config.App) {
 
 func (svc DhtCrawlingService) Start() {
 	for i := 0; i < App.Config.DhtConfig.Workers; i++ {
-		w := dht.NewWire(65536, 6144, 3072)
+		wire := dht.NewWire(65536, 6144, 6144, 3072)
 		var config *dht.Config = dht.NewCrawlConfig()
 		config.MaxNodes = 70000;
 		config.Address = fmt.Sprintf(":%d", App.Config.DhtConfig.StartPort+i)
@@ -45,12 +45,13 @@ func (svc DhtCrawlingService) Start() {
 			App.Db.Model(&Models.Torrent{}).Where(Models.Torrent{Infohash: infoHashStr}).Count(&count)
 
 			if count == 0 {
-				w.Request([]byte(infoHash), ip, port)
+				wire.Request([]byte(infoHash), ip, port)
 			}
 		}
 		svc.dht = dht.New(config)
+
 		go func() {
-			for resp := range w.Response() {
+			for resp := range wire.Response() {
 
 				metadata, err := dht.Decode(resp.MetadataInfo)
 				if err != nil {
@@ -84,7 +85,7 @@ func (svc DhtCrawlingService) Start() {
 				if v, ok = info["files"]; ok {
 
 					var files []interface{}
-					if files, ok = v.([]interface{}); !ok{
+					if files, ok = v.([]interface{}); !ok {
 						continue
 					}
 
@@ -144,8 +145,8 @@ func (svc DhtCrawlingService) Start() {
 
 			}
 		}()
-		go w.Run()
-		go svc.dht .Run()
 
+		go wire.Run()
+		go svc.dht.Run()
 	}
 }
