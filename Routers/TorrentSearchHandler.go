@@ -9,11 +9,46 @@ import (
 	"strconv"
 	"strings"
 	"github.com/ruslanfedoseenko/dhtcrawler/Models"
+	"github.com/lestrrat/go-ngram"
+	"github.com/op/go-logging"
 )
-
+var searchLog = logging.MustGetLogger("SearchHandler")
 func TorrentSearchHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	searchTerm := ps.ByName("term")
-	searchTerm = strings.Replace(searchTerm, " ", "%", -1)
+	searchLog.Info("Search Term:", searchTerm)
+	gramsTerm := ""
+	words := strings.Split(searchTerm, " ")
+	for _, word := range words{
+		wordLen := len(word)
+		if wordLen == 0 {
+			continue
+		}
+		oneGram := ngram.NewTokenize(1, word)
+		triGram := ngram.NewTokenize(3, word)
+		twoGran := ngram.NewTokenize(2, word)
+		for _, s := range oneGram.Tokens() {
+
+			gramsTerm += s.String()
+			gramsTerm += " "
+		}
+		if wordLen > 1 {
+			for _, s := range twoGran.Tokens() {
+
+				gramsTerm += s.String()
+				gramsTerm += " "
+			}
+			if wordLen > 2 {
+				for _, s := range triGram.Tokens() {
+
+					gramsTerm += s.String()
+					gramsTerm += " "
+				}
+			}
+		}
+
+	}
+
+	searchLog.Info("Tokenized:", gramsTerm)
 	pageNumberStr := ps.ByName("pageNumber")
 	var page uint64 = 1
 	var err error
@@ -37,15 +72,19 @@ func TorrentSearchHandler(w http.ResponseWriter, r *http.Request, ps httprouter.
 	var itemsCount uint64 = 0
 	itemsPerPage := App.Config.ItemsPerPage
 
-	nameQuery := " 'name:("+ strings.Replace(searchTerm, "%", " ", 500) + ")'"
-	type zdbEstimateCountHolder struct{
-		Count uint64
-	}
-	var countHolder zdbEstimateCountHolder
+	nameQuery := " 'name:("+ strings.Replace(gramsTerm, "%", " ", 500) + ")'"
+
+	var countHolder Models.ZdbEstimateCountHolder
 	App.Db.Debug().Raw("select zdb_estimate_count as count from zdb_estimate_count('torrents',"+nameQuery + ")").Scan(&countHolder)
 	itemsCount = countHolder.Count
-	App.Db.Debug().Table("torrents").Select("id, group_id, leechers, seeds, infohash, name").Where("zdb('torrents', ctid) ==> " +
-		nameQuery ).Limit(itemsPerPage).Offset((page - 1) * itemsPerPage).Scan(&torrents)
+	App.Db.Debug().
+		Table("torrents").
+		Select("zdb_score('torrents', torrents.ctid) as score, id, group_id, leechers, seeds, infohash, name").
+		Where("zdb('torrents', ctid) ==> " + nameQuery ).
+		Order("zdb_score('torrents', torrents.ctid) desc").
+		Limit(itemsPerPage).
+		Offset((page - 1) * itemsPerPage).
+		Scan(&torrents)
 
 	for i := range torrents {
 		var files []Models.File

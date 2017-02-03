@@ -22,14 +22,13 @@ func main() {
 
 	app := Config.NewApp()
 
-	Services.SetupScrape(app)
-	Services.SetupDhtCrawling(app)
+	Services.SetupRpc(app)
 	app.Run()
 }
 
 
 func setupLog(){
-	file,err := os.OpenFile("spider.log", os.O_APPEND|os.O_WRONLY| os.O_CREATE, 0666)
+	file,err := os.OpenFile("spider-master.log", os.O_APPEND|os.O_WRONLY| os.O_CREATE, 0666)
 	if err != nil {
 		log.Println(err)
 	}

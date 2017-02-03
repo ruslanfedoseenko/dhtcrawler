@@ -48,14 +48,20 @@ func TorrentsListHandler(w http.ResponseWriter, r *http.Request, ps httprouter.P
 		err = App.Db.Debug().
 			Model(&Models.Torrent{}).
 			Where(&Models.Torrent{GroupId: int32(groupId)}).
-			Count(&itemsCount).Order("seeds desc,leechers desc").
+			Count(&itemsCount).
+			Order("seeds desc,leechers desc").
 			Limit(itemsPerPage).
 			Offset((page - uint64(1)) * itemsPerPage).
 			Find(&torrents).Error
 	} else {
 		row := App.Db.Debug().Table("realtime_counters").Select("torrent_count").Row()
 		row.Scan(&itemsCount)
-		err = App.Db.Debug().Model(&Models.Torrent{}).Limit(itemsPerPage).Offset((page - uint64(1)) * itemsPerPage).Find(&torrents).Error
+		err = App.Db.Debug().
+			Model(&Models.Torrent{}).
+			Order("seeds desc,leechers desc").
+			Limit(itemsPerPage).
+			Offset((page - uint64(1)) * itemsPerPage).
+			Find(&torrents).Error
 	}
 	if err != nil {
 		log.Println("Error:", err.Error())

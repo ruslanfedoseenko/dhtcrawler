@@ -28,24 +28,29 @@ type App struct {
 
 func NewApp() *App {
 	config := SetupConfiguration()
-
-	var connectionString string = fmt.Sprintf("host=localhost user=%s dbname=%s sslmode=disable password=%s", config.DbConfig.UserName, config.DbConfig.TableName, config.DbConfig.Password)
-	log.Println("Using Connection string", connectionString)
-	db, err := gorm.Open(config.DbConfig.DbDriver, connectionString)
-	if err != nil {
-		log.Println("Db open error:", err.Error())
-	}
-	err = db.DB().Ping()
-	if err != nil {
-		log.Println("Db open error:", err.Error())
-	}
 	app := App{
-		Db:         db,
-		Classifier: SetupBayesianClassification(db),
+
 		Config:     config,
 		Scheduler:  gocron.NewScheduler(),
 
 	}
+	if config.DbConfig.DbDriver != "" {
+		var connectionString string = fmt.Sprintf("host=localhost user=%s dbname=%s sslmode=disable password=%s", config.DbConfig.UserName, config.DbConfig.TableName, config.DbConfig.Password)
+		log.Println("Using Connection string", connectionString)
+		db, err := gorm.Open(config.DbConfig.DbDriver, connectionString)
+		if err != nil {
+			log.Println("Db open error:", err.Error())
+		}
+		err = db.DB().Ping()
+		if err != nil {
+			log.Println("Db open error:", err.Error())
+		}
+
+		app.Db = db
+		app.Classifier = SetupBayesianClassification(db)
+	}
+
+
 	return &app
 }
 
@@ -63,7 +68,9 @@ func (app *App) Run() {
 		log.Println("Starting Scheduler")
 		<-app.Scheduler.Start()
 	}()
-	defer app.Db.Close()
+	if app.Db != nil {
+		defer app.Db.Close()
+	}
 
 	sigs := make(chan os.Signal, 1)
 	done := make(chan bool, 1)

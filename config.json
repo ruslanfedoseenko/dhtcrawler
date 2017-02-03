@@ -12,6 +12,11 @@
   "HttpConfig" : {
     "StaticDataFolder" : "/home/devrus/IdeaProjects/DhtCrawler/bin/static"
   },
+  "RpcConfig" : {
+    "Mode" : "SERVER",
+    "Host": "",
+    "Port": 13699
+  },
   "ScrapeConfig" :{
     "Trackers" : [
       "udp://tracker.coppersurfer.tk:6969/announce",

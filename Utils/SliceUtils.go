@@ -16,7 +16,7 @@ func SliceToPathString(values []interface{}) string {
 func IndexOf(slice []string, item string) int {
 
 	for index, s := range slice {
-		if s == item {
+		if strings.Trim(s, "\n\r ") == strings.Trim(item, "\n\r ") {
 			return index
 		}
 	}

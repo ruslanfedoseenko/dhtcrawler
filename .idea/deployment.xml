@@ -10,6 +10,14 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="cutetorrentslavehost">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/root" local="$PROJECT_DIR$/bin" web="/" />
+            <mapping deploy="/var/www/dhtcrawler" local="$PROJECT_DIR$/static" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
     </serverData>
   </component>
 </project>

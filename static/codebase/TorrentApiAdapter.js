@@ -22,7 +22,7 @@ webix.proxy.torrentApi = webix.extend({
 
 
         if (options) {
-            this.params.page = Math.floor(options.start / 20) + 1;
+            this.params.page = Math.floor(options.start / 30) + 1;
         }
 
         webix.ajax(this._buildSource(), callback, view);

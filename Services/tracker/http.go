@@ -50,7 +50,6 @@ func scrapeHTTP(sr *ScrapeRequest, _url *url.URL) (ret ScrapeResponse, err error
 	ret.ScrapeDatas = make(map[string]ScrapeTorrentInfo)
 	//log.Println("Bytes:", string(bytesArr), "decoded as:")
 	for key, value := range  httpResponse.Files {
-		log.Println("InfoHash:", key, "(S C L)", value)
 		var infoHash Hash;
 		infoHash.FromString(key)
 		ret.ScrapeDatas[infoHash.HexString()] = value

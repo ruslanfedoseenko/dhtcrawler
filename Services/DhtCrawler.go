@@ -10,13 +10,15 @@ import (
 	"github.com/ruslanfedoseenko/dhtcrawler/Models"
 	"github.com/ruslanfedoseenko/dhtcrawler/Utils"
 	"github.com/op/go-logging"
+	"github.com/ruslanfedoseenko/dhtcrawler/Services/rpc"
 )
 
 type DhtCrawlingService struct {
 	dht 	   *dht.DHT
 	wire       *dht.Wire
 	config     *dht.Config
-	shouldStop bool
+	rpcClient  *Rpc.RpcClient
+	shouldStop  bool
 }
 var dhtLog = logging.MustGetLogger("DhtCrawler")
 var App *Config.App
@@ -25,13 +27,16 @@ var dhtCrawlingSvc DhtCrawlingService
 
 func SetupDhtCrawling(app *Config.App) {
 	App = app
-	videExtractor = NewVideoInfoExtractor()
-	dhtCrawlingSvc = DhtCrawlingService{}
+	//videExtractor = NewVideoInfoExtractor()
+	dhtCrawlingSvc = DhtCrawlingService{
+		rpcClient: Rpc.GetRpcCLientInstance(app),
+	}
 	App.AddService(dhtCrawlingSvc)
 
 }
 
 func (svc DhtCrawlingService) Start() {
+	svc.rpcClient.Start()
 	for i := 0; i < App.Config.DhtConfig.Workers; i++ {
 		wire := dht.NewWire(65536, 6144, 6144, 3072)
 		var config *dht.Config = dht.NewCrawlConfig()
@@ -40,13 +45,16 @@ func (svc DhtCrawlingService) Start() {
 		dhtLog.Info("Starting Dht Crawling On ", App.Config.DhtConfig.StartPort+i)
 
 		config.OnAnnouncePeer = func(infoHash, ip string, port int) {
-			var count int
-			var infoHashStr = hex.EncodeToString([]byte(infoHash));
-			App.Db.Model(&Models.Torrent{}).Where(Models.Torrent{Infohash: infoHashStr}).Count(&count)
+			go func(infoHash, ip string, port int) {
+				var infoHashStr = hex.EncodeToString([]byte(infoHash));
 
-			if count == 0 {
-				wire.Request([]byte(infoHash), ip, port)
-			}
+
+				if ok, _ := svc.rpcClient.HasTorrent(infoHashStr); !ok {
+					wire.Request([]byte(infoHash), ip, port)
+				}
+			}(infoHash, ip , port)
+
+
 		}
 		svc.dht = dht.New(config)
 
@@ -119,29 +127,27 @@ func (svc DhtCrawlingService) Start() {
 
 				}
 
-				group := App.Classifier.Classify(bt)
 
-				bt.GroupId = group.Id
+				svc.rpcClient.AddTorrent(&bt)
+				/*Avar count int
 
-				var count int
-
-				App.Db.Model(&Models.Torrent{}).Where(Models.Torrent{Infohash: bt.Infohash}).Count(&count)
+				pp.Db.Model(&Models.Torrent{}).Where(Models.Torrent{Infohash: bt.Infohash}).Count(&count)
 
 				if count > 0 {
 					continue
 				} else {
 					//dhtLog.Println("Found new torrent", bt.Infohash, "group", bt.Group.Name, "group_id", bt.GroupId)
-					/*for _, title := range bt.Titles {
+					for _, title := range bt.Titles {
 						dhtLog.Println("Inserting title", title)
 						App.Db.Debug().Exec("INSERT INTO `titles`(`id`, `title`, `poster`, `title_type`, `description`) " +
 							"VALUES (?,?,?,?,?) ON DUPLICATE KEY " +
 							"UPDATE `title`=VALUES(`title`),`poster`=VALUES(`poster`),`title_type`=VALUES(`title_type`),`description`=VALUES(`description`)", title.Id, title.Title,title.PosterUrl, title.TitleType, title.Description)
-					}*/
+					}
 					err = App.Db.Create(&bt).Error
 					if err != nil {
 						dhtLog.Error("Torrent Add to DB err:", err.Error())
 					}
-				}
+				}*/
 
 			}
 		}()

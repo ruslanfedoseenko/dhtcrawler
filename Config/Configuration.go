@@ -5,6 +5,8 @@ import (
 	"flag"
 	"log"
 	"os"
+	"strings"
+	"errors"
 )
 
 type DbConfig struct {
@@ -26,12 +28,37 @@ type ScrapeConfig struct {
 	WorkerThreads int
 	ScrapeTimeout int
 }
+type RpcMode string
+const (
+	SERVER RpcMode = "SERVER"
+	CLIENT	       = "CLIENT"
+)
+
+func (o *RpcMode) UnmarshalText(b []byte) (e error) {
+	str := strings.Trim(string(b), `"`)
+
+	switch str {
+	case string(SERVER), string(CLIENT):
+		*o = RpcMode(str)
+
+	default:
+		e =  errors.New("Unknown RpcMode specified")
+	}
+
+	return e
+}
+type RpcConfig struct{
+	Mode RpcMode
+	Host string
+	Port int
+}
 
 type Configuration struct {
 	DbConfig     DbConfig
 	DhtConfig    DhtConfig
 	HttpConfig   HttpConfig
 	ScrapeConfig ScrapeConfig
+	RpcConfig    RpcConfig
 	ItemsPerPage uint64
 }
 
@@ -49,6 +76,6 @@ func SetupConfiguration() *Configuration {
 	if err != nil {
 		log.Panicln("Error reading Config:", err)
 	}
-
+	log.Println("Configuration ", configuration)
 	return &configuration
 }
