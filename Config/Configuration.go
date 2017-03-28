@@ -11,6 +11,8 @@ import (
 
 type DbConfig struct {
 	DbDriver  string
+	Host string
+	Port uint32
 	TableName string
 	UserName  string
 	Password  string
@@ -22,7 +24,9 @@ type DhtConfig struct {
 type HttpConfig struct {
 	StaticDataFolder string
 }
-
+type TagProducersConfig struct {
+	TagProducers map[string][]string
+}
 type ScrapeConfig struct {
 	Trackers      []string
 	WorkerThreads int
@@ -59,6 +63,7 @@ type Configuration struct {
 	HttpConfig   HttpConfig
 	ScrapeConfig ScrapeConfig
 	RpcConfig    RpcConfig
+	TagProducersConfig TagProducersConfig
 	ItemsPerPage uint64
 }
 

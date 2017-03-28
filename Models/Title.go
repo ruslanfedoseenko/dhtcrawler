@@ -19,7 +19,7 @@ type Title struct {
 	Title       string    `gorm:"column:title"`
 	TitleType   TitleType `gorm:"column:title_type"`
 	Description string    `gorm:"column:description"`
-	Ganres		[]string  `gorm:"-"`
+	Ganres	    []string  `gorm:"-"`
 	PosterUrl   string    `gorm:"column:poster"`
 }
 

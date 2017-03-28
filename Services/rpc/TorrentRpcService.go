@@ -6,17 +6,18 @@ import (
 	"github.com/jinzhu/gorm"
 	"errors"
 	"github.com/op/go-logging"
+	"github.com/ruslanfedoseenko/dhtcrawler/Services/TagProducer"
 )
 var torrentRpcService = logging.MustGetLogger("TorrentRpcService")
 type TorrentRpcService struct {
 	db 		*gorm.DB
-	classifier 	*Config.Classifier
+	tagProducer     *TagProducer.TorrentTagsProducer
 }
 
 func NewTorrentRpcService(app *Config.App)  *TorrentRpcService {
 	return &TorrentRpcService{
 		db: app.Db,
-		classifier : app.Classifier,
+		tagProducer: TagProducer.NewTorrentTagsProducer(app),
 	}
 }
 
@@ -35,9 +36,9 @@ func (s *TorrentRpcService) AddTorrent(torrent *Models.Torrent) (err error) {
 		err = errors.New("Torrent with InfoHash" + torrent.Infohash + "already exists")
 		return
 	}
-	group := s.classifier.Classify(*torrent)
 
-	torrent.GroupId = group.Id
+	s.tagProducer.FillTorrentTags(torrent)
+
 	tx:= s.db.Begin()
 	tx.Exec("SET zombodb.batch_mode = true;")
 	err = tx.Create(torrent).Error

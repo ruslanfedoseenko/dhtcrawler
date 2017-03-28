@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/shiyanhui/dht"
 	"strings"
-	"github.com/lib/pq"
 	"github.com/ruslanfedoseenko/dhtcrawler/Config"
 	"github.com/ruslanfedoseenko/dhtcrawler/Models"
 	"github.com/ruslanfedoseenko/dhtcrawler/Utils"
@@ -22,12 +21,10 @@ type DhtCrawlingService struct {
 }
 var dhtLog = logging.MustGetLogger("DhtCrawler")
 var App *Config.App
-var videExtractor *VideoInfoExtractor
 var dhtCrawlingSvc DhtCrawlingService
 
 func SetupDhtCrawling(app *Config.App) {
 	App = app
-	//videExtractor = NewVideoInfoExtractor()
 	dhtCrawlingSvc = DhtCrawlingService{
 		rpcClient: Rpc.GetRpcCLientInstance(app),
 	}
@@ -83,11 +80,6 @@ func (svc DhtCrawlingService) Start() {
 				bt := Models.Torrent{
 					Infohash: hex.EncodeToString(resp.InfoHash),
 					Name: name,
-					Leechers: -1,
-					Seeds:    -1,
-					LastScrape: pq.NullTime{
-						Valid: false,
-					},
 				}
 				var v interface{}
 				if v, ok = info["files"]; ok {

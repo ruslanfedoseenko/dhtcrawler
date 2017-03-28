@@ -12,7 +12,14 @@ func SliceToPathString(values []interface{}) string {
 	}
 	return strings.Join(s, "/")
 }
-
+func ToInterfaceSlice(slice []string) (res []interface{}){
+	sliceLen := len(slice)
+	res = make([]interface{}, sliceLen)
+	for index, item:= range slice {
+		res[index] = item
+	}
+	return;
+}
 func IndexOf(slice []string, item string) int {
 
 	for index, s := range slice {

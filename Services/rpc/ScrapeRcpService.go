@@ -8,24 +8,28 @@ import (
 	"sync/atomic"
 	"github.com/ruslanfedoseenko/dhtcrawler/Models"
 	"time"
+	"github.com/jasonlvhit/gocron"
+	"github.com/lib/pq"
+	"sync"
 )
 
 var scrapeRpcServiceLog = logging.MustGetLogger("ScrapeRpcService")
 
-
-type ScrapeRpcService struct{
-	lastScrapedId int32
-	lastTorrentId int32
+type ScrapeRpcService struct {
+	lastScrapedId     int32
+	lastTorrentId     int32
 	hasAvailableTasks bool
-	scrapeTimeOut int
-	db *gorm.DB
-	results chan *ScrapeResult
-
+	scrapeTimeOut     int
+	db                *gorm.DB
+	scheduler         *gocron.Scheduler
+	results           chan *ScrapeResult
+	lastScrapeMutex   sync.Mutex
 }
 
 func NewScrapeRpcService(app *Config.App) *ScrapeRpcService {
 	service := ScrapeRpcService{
 		db: app.Db,
+		scheduler: app.Scheduler,
 		lastScrapedId: -1,
 		lastTorrentId: -1,
 		hasAvailableTasks: true,
@@ -41,21 +45,23 @@ func NewScrapeRpcService(app *Config.App) *ScrapeRpcService {
 
 const DefaultWorkSize int = 74
 
-type ScrapeTask struct{
+type ScrapeTask struct {
 	InfoHashes []string
-	LastID uint32
+	LastID     uint32
 }
 
-type ScrapeResult struct{
-	Response *tracker.ScrapeResponse
-	LastID uint32
+type ScrapeResult struct {
+	TrackerUrl string
+	Response   *tracker.ScrapeResponse
+	LastID     uint32
 }
-func (s *ScrapeRpcService) getLastScrapeID() int32{
+
+func (s *ScrapeRpcService) getLastScrapeID() int32 {
 	return atomic.LoadInt32(&s.lastScrapedId)
 }
-func (s *ScrapeRpcService) setLastScrapeId(value int32){
+func (s *ScrapeRpcService) setLastScrapeId(value int32) {
 	atomic.StoreInt32(&s.lastScrapedId, value)
-	s.db.Exec("UPDATE `realtime_counters` SET last_scraped_id = ?", value)
+	s.db.Exec("UPDATE realtime_counters SET last_scraped_id = ?", value)
 }
 
 func (s *ScrapeRpcService) HasAvailableTasks() bool {
@@ -63,6 +69,8 @@ func (s *ScrapeRpcService) HasAvailableTasks() bool {
 }
 
 func (s *ScrapeRpcService) GetNextScrapeTask() *ScrapeTask {
+	s.lastScrapeMutex.Lock()
+	defer s.lastScrapeMutex.Unlock()
 	lastScrapeID := s.getLastScrapeID()
 
 	var torrent Models.Torrent
@@ -72,7 +80,7 @@ func (s *ScrapeRpcService) GetNextScrapeTask() *ScrapeTask {
 	var counters Models.Counters
 	err := s.db.First(&counters).Error
 	if err != nil {
-		scrapeRpcServiceLog.Error("Error reading counters from db:",err)
+		scrapeRpcServiceLog.Error("Error reading counters from db:", err)
 	}
 	if (lastScrapeID == -1) {
 		scrapeRpcServiceLog.Info("Last scraped", counters.LastScrapedId, "Torrent Count", counters.TorrentCount)
@@ -82,71 +90,107 @@ func (s *ScrapeRpcService) GetNextScrapeTask() *ScrapeTask {
 		scrapeRpcServiceLog.Info("Db Last scraped", counters.LastScrapedId, "Torrent Count", counters.TorrentCount, "Local LastScraped ID", lastScrapeID)
 		if (s.lastTorrentId - lastScrapeID < 100) {
 			lastScrapeID = 1
-			s.hasAvailableTasks = false
 		}
 	}
 
 	var torrents []Models.Torrent
 	err = s.db.Model(&Models.Torrent{}).
-		Where("((extract( epoch from (now() - last_scrape)))/3600 > ? OR last_scrape IS NULL)"+
+		Where("((extract( epoch from (now() - last_scrape)))/3600 > ? OR last_scrape IS NULL)" +
 		" AND id >= ?", s.scrapeTimeOut, lastScrapeID).Limit(DefaultWorkSize).Scan(&torrents).Error
 	if (err != nil) {
-		scrapeRpcServiceLog.Error("Failed to get torrents",err)
+		scrapeRpcServiceLog.Error("Failed to get torrents", err)
 	}
 	if len(torrents) == 0 {
-		scrapeRpcServiceLog.Error("Failed to get more torretns from ",lastScrapeID)
+		scrapeRpcServiceLog.Error("Failed to get more torretns from ", lastScrapeID)
 	}
 	var task ScrapeTask
 	task.InfoHashes = make([]string, len(torrents))
-	task.LastID = uint32(torrents[len(torrents)-1].Id)
-	defer s.setLastScrapeId(int32(task.LastID))
-	for i, torrent := range torrents{
+	task.LastID = uint32(torrents[len(torrents) - 1].Id)
+	s.setLastScrapeId(int32(task.LastID))
+	for i, torrent := range torrents {
 		task.InfoHashes[i] = torrent.Infohash
 	}
 	return &task
 }
 
-func (s *ScrapeRpcService) resultsWriterThread(){
+func (s *ScrapeRpcService) resultsWriterThread() {
 	for {
-		result := <- s.results
-		tx := s.db.Begin()
-		tx.Exec("SET zombodb.batch_mode = true;")
+		result := <-s.results
+
+		var infohases []string;
 		for key, value := range result.Response.ScrapeDatas {
-			scrapeRpcServiceLog.Info("Writing to db", key, "Leechers", value.Leechers, "Seeds", value.Seeders, "Completed" ,value.Completed)
-			err := tx.Debug().Model(&Models.Torrent{}).
-				Where(map[string]interface{}{"infohash": key}).
-				Update(map[string]interface{}{"Leechers": value.Leechers, "Seeds": value.Seeders + value.Completed, "LastScrape": time.Now()}).Error
-			if err != nil {
-				scrapeRpcServiceLog.Error("Error updating S L C", err)
-				tx.Commit()
-				tx = s.db.Begin()
+			if value.Completed + value.Leechers + value.Seeders != 0 {
+				infohases = append(infohases, key)
+			}
+
+		}
+		if (len(infohases) > 0) {
+			var torrentsToHash map[string]Models.Torrent = make(map[string]Models.Torrent, len(infohases))
+			var torrents []Models.Torrent;
+			s.db.Debug().Preload("ScraperResults").Where("infohash in (?)", infohases).Find(&torrents);
+			for i := 0; i < len(torrents); i++ {
+				torrentsToHash[torrents[i].Infohash] = torrents[i]
+			}
+
+			for i := 0; i < len(torrents); i++ {
+				torrent := torrents[i]
+				info := result.Response.ScrapeDatas[torrent.Infohash]
+
+				if info.Completed + info.Leechers + info.Seeders != 0 {
+					var found bool = false;
+					for j := 0; j < len(torrent.ScraperResults); j++ {
+						if torrent.ScraperResults[j].TrackerUrl == result.TrackerUrl {
+							found = true;
+							torrent.ScraperResults[j].LastUpdate = pq.NullTime{
+								Time:time.Now(),
+								Valid: true,
+							}
+							torrent.ScraperResults[j].Leaches = info.Leechers
+							torrent.ScraperResults[j].Seeds = info.Seeders
+							s.db.Debug().Model(&torrent.ScraperResults[j]).Update(torrent.ScraperResults[j]);
+						}
+					}
+					if !found {
+						s.db.Debug().Model(&torrent).
+							Association("ScraperResults").
+							Append(&Models.ScrapeTorrentResult{
+							Leaches:info.Leechers,
+							Seeds: info.Seeders,
+							TrackerUrl:result.TrackerUrl,
+							LastUpdate: pq.NullTime{
+								Time:time.Now(),
+								Valid: true,
+							},
+						});
+					}
+				}
 			}
 		}
-		tx.Commit()
+
+
 	}
 }
 
-func (s *ScrapeRpcService) ReportScrapeResults(result *ScrapeResult){
+func (s *ScrapeRpcService) ReportScrapeResults(result *ScrapeResult) {
 
 	if (len(result.Response.ScrapeDatas) != DefaultWorkSize) {
 		var torrent Models.Torrent
 		err := s.db.Model(&Models.Torrent{}).
 			Where("extract( epoch from (now() - last_scrape))/3600 > ? OR last_scrape IS NULL",
 			s.scrapeTimeOut).First(&torrent).Error
-		if (err != nil){
-			scrapeRpcServiceLog.Error("Failed to find lastscrapeId",err)
+		if (err != nil) {
+			scrapeRpcServiceLog.Error("Failed to find lastscrapeId", err)
 		}
-		if (torrent.Id < s.lastTorrentId){
+		if (torrent.Id < s.lastTorrentId) {
 			s.setLastScrapeId(torrent.Id)
 		}
 	} else {
-		if (result.LastID > uint32(s.getLastScrapeID())){
+		if (result.LastID > uint32(s.getLastScrapeID())) {
 			s.setLastScrapeId(int32(result.LastID))
 
 		}
 	}
 	scrapeRpcServiceLog.Debug("Results Queue Len", len(s.results))
 	s.results <- result
-
 
 }

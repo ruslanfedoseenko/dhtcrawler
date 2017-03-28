@@ -18,9 +18,10 @@ func TorrentInfoHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Pa
 		return
 	}
 	var torrent Models.Torrent
-	App.Db.First(&Models.Torrent{}, map[string]interface{}{"Infohash": infohash}).Scan(&torrent)
-	App.Db.Model(&torrent).Association("Files").Find(&torrent.Files)
-	App.Db.Model(&torrent).Association("Group").Find(&torrent.Group)
+	App.Db.Preload("Files").Preload("Titles").Preload("Tags").First(&torrent, map[string]interface{}{"Infohash": infohash})
+
+	torrent.FilesTree = Models.BuildTree(torrent.Files)
+
 	data, err := json.Marshal(torrent)
 
 	if err != nil {

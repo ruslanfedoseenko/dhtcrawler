@@ -56,7 +56,7 @@ func (c *RpcClient) HasTorrent(infoHash string) (b bool, err error){
 }
 
 func (c *RpcClient) AddTorrent(torrent *Models.Torrent) (err error) {
-	response, err := c.torrentServiceClient.Call("AddTorrent", torrent)
+	response, err := c.torrentServiceClient.CallAsync("AddTorrent", torrent)
 	rpcClsLog.Debug("AddTorrent response:",response, "err:",err);
 	return nil
 }

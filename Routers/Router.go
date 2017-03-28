@@ -53,11 +53,6 @@ func setupAdminHandlers(router *httprouter.Router) {
 			authentificactor,
 			strippedHandler.ServeHTTP),
 	)
-	router.HandlerFunc("GET", "/adm/groups/", auth.JustCheck(authentificactor, AdminCategoriesTreeHandler))
-	router.HandlerFunc("GET", "/adm/relearn/", auth.JustCheck(authentificactor, AdminRefreshClassifier))
-	router.HandlerFunc("POST", "/adm/group/addtoken/", auth.JustCheck(authentificactor, AdminCategoriesTreeHandlerAddToken))
-	router.HandlerFunc("GET", "/adm/trainingdata/", auth.JustCheck(authentificactor, AdminTrainingDataHandler))
-	router.HandlerFunc("POST", "/adm/trainingdata/", auth.JustCheck(authentificactor, AdminTrainingDataHandlerAdd))
 
 }
 func Setup(app *Config.App) {
@@ -65,13 +60,13 @@ func Setup(app *Config.App) {
 	go func() {
 		router := httprouter.New()
 		router.GET("/", IndexRedirect)
-		router.GET("/categories/", CategoriesTreeHandler)
+		router.GET("/search/suggest/:term", SearchSuggestHandler)
+
 		router.GET("/torrents/count/", TorrentCountHandler)
 		router.GET("/torrent/info/:infohash", TorrentInfoHandler)
 		router.GET("/torrents/", TorrentsListHandler)
 		router.GET("/torrents/stats/", TorrentStatsHandler)
 		router.GET("/torrents/page/:pageNumber", TorrentsListHandler)
-		router.GET("/torrents/group/:groupId/page/:pageNumber", TorrentsListHandler)
 		router.GET("/torrents/search/:term", TorrentSearchHandler)
 		router.GET("/torrents/search/:term/page/:pageNumber", TorrentSearchHandler)
 		log.Println("Starting Http Backend")

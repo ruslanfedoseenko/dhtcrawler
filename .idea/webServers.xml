@@ -3,15 +3,23 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="b54c8260-18aa-43d7-8acb-1b43e94ac030" name="cutetorrenthost" url="http://cutetorrent.info">
-        <fileTransfer host="cutetorrent.info" port="22" accessType="SFTP">
+        <fileTransfer host="cutetorrent.info" port="22" privateKey="C:\Users\Ruslan\.ssh\id_rsa" accessType="SFTP" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
           <option name="port" value="22" />
         </fileTransfer>
       </webServer>
-      <webServer id="5c3e47e3-4241-4dbd-bbad-acc26966bf48" name="cutetorrentslavehost" url="http://62.75.159.32">
-        <fileTransfer host="62.75.159.32" port="22" accessType="SFTP">
+      <webServer id="5c3e47e3-4241-4dbd-bbad-acc26966bf48" name="cutetorrentslavehost" url="http://slave1.cutetorrent.info">
+        <fileTransfer host="slave1.cutetorrent.info" port="22" privateKey="C:\Users\Ruslan\.ssh\id_rsa" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="7facd47c-67d0-4141-b9df-a93237793c47" name="cutetorrent.monitoring" url="http://monitoring.cutetorrent.info">
+        <fileTransfer host="monitoring.cutetorrent.info" port="22" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

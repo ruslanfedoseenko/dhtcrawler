@@ -4,15 +4,14 @@ import (
 	"errors"
 	"fmt"
 	"github.com/jasonlvhit/gocron"
-	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"log"
 	"os"
 	"os/signal"
 	"runtime/debug"
 	"syscall"
+	"github.com/jinzhu/gorm"
 )
-
 
 type Service interface {
 	Start()
@@ -21,7 +20,6 @@ type Service interface {
 type App struct {
 	Config     *Configuration
 	Db         *gorm.DB
-	Classifier *Classifier
 	Scheduler  *gocron.Scheduler
 	Services   []Service
 }
@@ -30,12 +28,11 @@ func NewApp() *App {
 	config := SetupConfiguration()
 	app := App{
 
-		Config:     config,
-		Scheduler:  gocron.NewScheduler(),
-
+		Config:    config,
+		Scheduler: gocron.NewScheduler(),
 	}
 	if config.DbConfig.DbDriver != "" {
-		var connectionString string = fmt.Sprintf("host=localhost user=%s dbname=%s sslmode=disable password=%s", config.DbConfig.UserName, config.DbConfig.TableName, config.DbConfig.Password)
+		var connectionString string = fmt.Sprintf("host=%s port=%d user=%s dbname=%s sslmode=disable password=%s", config.DbConfig.Host, config.DbConfig.Port, config.DbConfig.UserName, config.DbConfig.TableName, config.DbConfig.Password)
 		log.Println("Using Connection string", connectionString)
 		db, err := gorm.Open(config.DbConfig.DbDriver, connectionString)
 		if err != nil {
@@ -47,9 +44,7 @@ func NewApp() *App {
 		}
 
 		app.Db = db
-		app.Classifier = SetupBayesianClassification(db)
 	}
-
 
 	return &app
 }
@@ -106,8 +101,5 @@ func (app *App) Run() {
 	}()
 
 	<-done
-	if app.Classifier != nil {
-		app.Classifier.classifier.WriteToFile("/etc/dhtcrawler/cls.json")
-	}
 
 }
