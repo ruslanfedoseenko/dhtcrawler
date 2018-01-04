@@ -4,16 +4,15 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/julienschmidt/httprouter"
+	"github.com/op/go-logging"
+	"github.com/ruslanfedoseenko/dhtcrawler/Models"
+	"github.com/ruslanfedoseenko/dhtcrawler/Utils"
 	"log"
 	"net/http"
 	"strconv"
-	"github.com/ruslanfedoseenko/dhtcrawler/Models"
-	"github.com/op/go-logging"
-	"github.com/ruslanfedoseenko/dhtcrawler/Utils"
 )
+
 var searchLog = logging.MustGetLogger("SearchHandler")
-
-
 
 func TorrentSearchHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	searchTerm := ps.ByName("term")
@@ -22,7 +21,7 @@ func TorrentSearchHandler(w http.ResponseWriter, r *http.Request, ps httprouter.
 	var page uint64 = 1
 	var err error
 	if len(pageNumberStr) > 0 {
-		page, err = strconv.ParseUint(pageNumberStr,10,64)
+		page, err = strconv.ParseUint(pageNumberStr, 10, 64)
 		if err != nil {
 			log.Println("Parsing Error", err.Error())
 			w.WriteHeader(http.StatusBadRequest)
@@ -41,10 +40,10 @@ func TorrentSearchHandler(w http.ResponseWriter, r *http.Request, ps httprouter.
 	var itemsCount uint64 = 0
 	itemsPerPage := App.Config.ItemsPerPage
 
-	nameQuery := Utils.ZdbBuildQuery("name", searchTerm);
+	nameQuery := Utils.ZdbBuildQuery("name", searchTerm)
 
 	var countHolder Models.ZdbEstimateCountHolder
-	App.Db.Debug().Raw("select zdb_estimate_count as count from zdb_estimate_count('torrents',"+nameQuery + ")").Scan(&countHolder)
+	App.Db.Debug().Raw("select zdb_estimate_count as count from zdb_estimate_count('torrents'," + nameQuery + ")").Scan(&countHolder)
 	itemsCount = countHolder.Count
 	App.Db.Debug().
 		Preload("ScraperResults").
@@ -52,7 +51,7 @@ func TorrentSearchHandler(w http.ResponseWriter, r *http.Request, ps httprouter.
 		Preload("Titles").
 		Preload("Tags").
 		Model(Models.Torrent{}).
-		Where("zdb('torrents', ctid) ==> " + nameQuery ).
+		Where("zdb('torrents', ctid) ==> " + nameQuery).
 		Order("zdb_score('torrents', torrents.ctid) desc").
 		Limit(itemsPerPage).
 		Offset((page - 1) * itemsPerPage).
@@ -60,12 +59,11 @@ func TorrentSearchHandler(w http.ResponseWriter, r *http.Request, ps httprouter.
 
 	for i := range torrents {
 
-
 		torrents[i].FilesTree = Models.BuildTree(torrents[i].Files)
 
 	}
 
-	var pageCountFix uint64= 0
+	var pageCountFix uint64 = 0
 	if itemsCount%itemsPerPage != 0 {
 		pageCountFix = 1
 	}
@@ -85,4 +83,3 @@ func TorrentSearchHandler(w http.ResponseWriter, r *http.Request, ps httprouter.
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(data)
 }
-

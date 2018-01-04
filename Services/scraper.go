@@ -6,23 +6,21 @@ import (
 
 	"github.com/ruslanfedoseenko/dhtcrawler/Config"
 
-	"github.com/ruslanfedoseenko/dhtcrawler/Services/tracker"
 	"github.com/op/go-logging"
 	"github.com/ruslanfedoseenko/dhtcrawler/Services/rpc"
+	"github.com/ruslanfedoseenko/dhtcrawler/Services/tracker"
 	"time"
 )
 
 var scrapeerLog = logging.MustGetLogger("Scraper")
 
-
-
 type Scraper struct {
-	workersDone             sync.WaitGroup
-	quit 			chan bool
-	numThreads              int
-	trackerUrls             []string
-	workerId                int32
-	rpcClient 		*Rpc.RpcClient
+	workersDone sync.WaitGroup
+	quit        chan bool
+	numThreads  int
+	trackerUrls []string
+	workerId    int32
+	rpcClient   *Rpc.RpcClient
 }
 
 func NewScraper() (s *Scraper) {
@@ -61,10 +59,8 @@ func (s *Scraper) startInternal() {
 	scrapeerLog.Info("Scraping started")
 }
 
-
-
 func (s *Scraper) initChannels() {
-	s.quit = make(chan bool, s.numThreads + 1)
+	s.quit = make(chan bool, s.numThreads+1)
 }
 
 func (s *Scraper) scrapeThreadWorker() {
@@ -77,49 +73,47 @@ func (s *Scraper) scrapeThreadWorker() {
 			break
 		}
 		task := s.rpcClient.GetNextScrapeTask()
-		if (task == nil) {
+		if task == nil {
 			<-time.After(5 * time.Second)
 			continue
 		}
-		scrapeerLog.Info("ScrapeWorker",workerId, "recived work", task)
-
+		scrapeerLog.Info("ScrapeWorker", workerId, "recived work", task)
 
 		if len(task.InfoHashes) > 0 {
 
 			for _, trackerUrl := range s.trackerUrls {
 				var result Rpc.ScrapeResult
 				result.TrackerUrl = trackerUrl
-				var err error;
+				var err error
 				var response tracker.ScrapeResponse
 				response, err = tracker.Scrape(trackerUrl, task.InfoHashes)
 				result.Response = &response
-				scrapeerLog.Info("ScrapeResult from",trackerUrl, "Len", len(result.Response.ScrapeDatas), result.Response.ScrapeDatas)
+				scrapeerLog.Info("ScrapeResult from", trackerUrl, "Len", len(result.Response.ScrapeDatas), result.Response.ScrapeDatas)
 				if err != nil {
 					scrapeerLog.Error("failed scraping tracker", trackerUrl, err.Error())
 					continue
 				}
 				if len(result.Response.ScrapeDatas) == 0 {
 					scrapeerLog.Info("Empty scrape response from tracker", trackerUrl)
-					continue;
+					continue
 				}
 				scrapeerLog.Info("reporting scrape result for", trackerUrl, "result.TrackerUrl = ", result.TrackerUrl, "whole result", result)
 				s.rpcClient.ReportScrapeResults(&result)
 			}
 
-
 		}
 
 		select {
-			case <-s.quit:{
+		case <-s.quit:
+			{
 				scrapeerLog.Info("Recieved Quit Signal")
-				break;
+				break
 			}
-			default:{
+		default:
+			{
 				scrapeerLog.Info("Not recieved Quit Signal")
 			}
 		}
-
-
 
 	}
 	s.workersDone.Done()

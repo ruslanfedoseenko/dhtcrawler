@@ -1,16 +1,16 @@
 package Rpc
 
 import (
+	"github.com/jasonlvhit/gocron"
+	"github.com/jinzhu/gorm"
+	"github.com/lib/pq"
 	"github.com/op/go-logging"
 	"github.com/ruslanfedoseenko/dhtcrawler/Config"
-	"github.com/jinzhu/gorm"
-	"github.com/ruslanfedoseenko/dhtcrawler/Services/tracker"
-	"sync/atomic"
 	"github.com/ruslanfedoseenko/dhtcrawler/Models"
-	"time"
-	"github.com/jasonlvhit/gocron"
-	"github.com/lib/pq"
+	"github.com/ruslanfedoseenko/dhtcrawler/Services/tracker"
 	"sync"
+	"sync/atomic"
+	"time"
 )
 
 var scrapeRpcServiceLog = logging.MustGetLogger("ScrapeRpcService")
@@ -28,13 +28,13 @@ type ScrapeRpcService struct {
 
 func NewScrapeRpcService(app *Config.App) *ScrapeRpcService {
 	service := ScrapeRpcService{
-		db: app.Db,
-		scheduler: app.Scheduler,
-		lastScrapedId: -1,
-		lastTorrentId: -1,
+		db:                app.Db,
+		scheduler:         app.Scheduler,
+		lastScrapedId:     -1,
+		lastTorrentId:     -1,
 		hasAvailableTasks: true,
-		scrapeTimeOut: app.Config.ScrapeConfig.ScrapeTimeout,
-		results: make(chan *ScrapeResult, 65536),
+		scrapeTimeOut:     app.Config.ScrapeConfig.ScrapeTimeout,
+		results:           make(chan *ScrapeResult, 65536),
 	}
 	for i := 0; i < 8; i++ {
 		go service.resultsWriterThread()
@@ -82,22 +82,22 @@ func (s *ScrapeRpcService) GetNextScrapeTask() *ScrapeTask {
 	if err != nil {
 		scrapeRpcServiceLog.Error("Error reading counters from db:", err)
 	}
-	if (lastScrapeID == -1) {
+	if lastScrapeID == -1 {
 		scrapeRpcServiceLog.Info("Last scraped", counters.LastScrapedId, "Torrent Count", counters.TorrentCount)
 		s.setLastScrapeId(counters.LastScrapedId)
 		lastScrapeID = counters.LastScrapedId
 	} else {
 		scrapeRpcServiceLog.Info("Db Last scraped", counters.LastScrapedId, "Torrent Count", counters.TorrentCount, "Local LastScraped ID", lastScrapeID)
-		if (s.lastTorrentId - lastScrapeID < 100) {
+		if s.lastTorrentId-lastScrapeID < 100 {
 			lastScrapeID = 1
 		}
 	}
 
 	var torrents []Models.Torrent
 	err = s.db.Model(&Models.Torrent{}).
-		Where("((extract( epoch from (now() - last_scrape)))/3600 > ? OR last_scrape IS NULL)" +
-		" AND id >= ?", s.scrapeTimeOut, lastScrapeID).Limit(DefaultWorkSize).Scan(&torrents).Error
-	if (err != nil) {
+		Where("((extract( epoch from (now() - last_scrape)))/3600 > ? OR last_scrape IS NULL)"+
+			" AND id >= ?", s.scrapeTimeOut, lastScrapeID).Limit(DefaultWorkSize).Scan(&torrents).Error
+	if err != nil {
 		scrapeRpcServiceLog.Error("Failed to get torrents", err)
 	}
 	if len(torrents) == 0 {
@@ -105,7 +105,7 @@ func (s *ScrapeRpcService) GetNextScrapeTask() *ScrapeTask {
 	}
 	var task ScrapeTask
 	task.InfoHashes = make([]string, len(torrents))
-	task.LastID = uint32(torrents[len(torrents) - 1].Id)
+	task.LastID = uint32(torrents[len(torrents)-1].Id)
 	s.setLastScrapeId(int32(task.LastID))
 	for i, torrent := range torrents {
 		task.InfoHashes[i] = torrent.Infohash
@@ -117,17 +117,17 @@ func (s *ScrapeRpcService) resultsWriterThread() {
 	for {
 		result := <-s.results
 
-		var infohases []string;
+		var infohases []string
 		for key, value := range result.Response.ScrapeDatas {
-			if value.Completed + value.Leechers + value.Seeders != 0 {
+			if value.Completed+value.Leechers+value.Seeders != 0 {
 				infohases = append(infohases, key)
 			}
 
 		}
-		if (len(infohases) > 0) {
+		if len(infohases) > 0 {
 			var torrentsToHash map[string]Models.Torrent = make(map[string]Models.Torrent, len(infohases))
-			var torrents []Models.Torrent;
-			s.db.Debug().Preload("ScraperResults").Where("infohash in (?)", infohases).Find(&torrents);
+			var torrents []Models.Torrent
+			s.db.Debug().Preload("ScraperResults").Where("infohash in (?)", infohases).Find(&torrents)
 			for i := 0; i < len(torrents); i++ {
 				torrentsToHash[torrents[i].Infohash] = torrents[i]
 			}
@@ -136,56 +136,55 @@ func (s *ScrapeRpcService) resultsWriterThread() {
 				torrent := torrents[i]
 				info := result.Response.ScrapeDatas[torrent.Infohash]
 
-				if info.Completed + info.Leechers + info.Seeders != 0 {
-					var found bool = false;
+				if info.Completed+info.Leechers+info.Seeders != 0 {
+					var found bool = false
 					for j := 0; j < len(torrent.ScraperResults); j++ {
 						if torrent.ScraperResults[j].TrackerUrl == result.TrackerUrl {
-							found = true;
+							found = true
 							torrent.ScraperResults[j].LastUpdate = pq.NullTime{
-								Time:time.Now(),
+								Time:  time.Now(),
 								Valid: true,
 							}
 							torrent.ScraperResults[j].Leaches = info.Leechers
 							torrent.ScraperResults[j].Seeds = info.Seeders
-							s.db.Debug().Model(&torrent.ScraperResults[j]).Update(torrent.ScraperResults[j]);
+							s.db.Debug().Model(&torrent.ScraperResults[j]).Update(torrent.ScraperResults[j])
 						}
 					}
 					if !found {
 						s.db.Debug().Model(&torrent).
 							Association("ScraperResults").
 							Append(&Models.ScrapeTorrentResult{
-							Leaches:info.Leechers,
-							Seeds: info.Seeders,
-							TrackerUrl:result.TrackerUrl,
-							LastUpdate: pq.NullTime{
-								Time:time.Now(),
-								Valid: true,
-							},
-						});
+								Leaches:    info.Leechers,
+								Seeds:      info.Seeders,
+								TrackerUrl: result.TrackerUrl,
+								LastUpdate: pq.NullTime{
+									Time:  time.Now(),
+									Valid: true,
+								},
+							})
 					}
 				}
 			}
 		}
-
 
 	}
 }
 
 func (s *ScrapeRpcService) ReportScrapeResults(result *ScrapeResult) {
 
-	if (len(result.Response.ScrapeDatas) != DefaultWorkSize) {
+	if len(result.Response.ScrapeDatas) != DefaultWorkSize {
 		var torrent Models.Torrent
 		err := s.db.Model(&Models.Torrent{}).
 			Where("extract( epoch from (now() - last_scrape))/3600 > ? OR last_scrape IS NULL",
-			s.scrapeTimeOut).First(&torrent).Error
-		if (err != nil) {
+				s.scrapeTimeOut).First(&torrent).Error
+		if err != nil {
 			scrapeRpcServiceLog.Error("Failed to find lastscrapeId", err)
 		}
-		if (torrent.Id < s.lastTorrentId) {
+		if torrent.Id < s.lastTorrentId {
 			s.setLastScrapeId(torrent.Id)
 		}
 	} else {
-		if (result.LastID > uint32(s.getLastScrapeID())) {
+		if result.LastID > uint32(s.getLastScrapeID()) {
 			s.setLastScrapeId(int32(result.LastID))
 
 		}

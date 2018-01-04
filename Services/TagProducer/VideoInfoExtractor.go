@@ -1,17 +1,18 @@
 package TagProducer
 
 import (
-	"github.com/ryanbradynd05/go-tmdb"
+	"github.com/ruslanfedoseenko/go-tmdb"
 	"hash/crc32"
 
+	"github.com/jinzhu/gorm"
+	"github.com/op/go-logging"
+	"github.com/ruslanfedoseenko/dhtcrawler/Config"
+	"github.com/ruslanfedoseenko/dhtcrawler/Models"
 	"regexp"
 	"strconv"
 	"strings"
-	"github.com/ruslanfedoseenko/dhtcrawler/Models"
-	"github.com/op/go-logging"
-	"github.com/ruslanfedoseenko/dhtcrawler/Config"
-	"github.com/jinzhu/gorm"
 )
+
 var videoExtractorLog = logging.MustGetLogger("VideoInfoExtractor")
 
 type VideoInfoExtractWork struct {
@@ -22,16 +23,18 @@ type VideoInfoExtractWork struct {
 type VideoInfoExtractor struct {
 	tmDb              *tmdb.TMDb
 	tmdbConfig        *tmdb.Configuration
-	ganres		  map[uint32]string
+	ganres            map[uint32]string
 	extraTitleContent *regexp.Regexp
 	titleDelimiters   *regexp.Regexp
-	db *gorm.DB
+	db                *gorm.DB
 }
+
 var instance *VideoInfoExtractor = nil
-func NewVideoInfoExtractor(app *Config.App) (*VideoInfoExtractor) {
+
+func NewVideoInfoExtractor(app *Config.App) *VideoInfoExtractor {
 	if instance == nil {
 		videoExtractorLog.Info("Creating new VideoInfoExtractor")
-		tmDb := tmdb.Init("7ed1ada0530b0bbac6b697b818fc9c50")
+		tmDb := tmdb.Init(app.Config.TmdbApi.ApiKey)
 		config, err := tmDb.GetConfiguration()
 		if err != nil {
 			videoExtractorLog.Error("Failed to get TMDB config", err.Error())
@@ -42,13 +45,13 @@ func NewVideoInfoExtractor(app *Config.App) (*VideoInfoExtractor) {
 			tmdbConfig:        config,
 			extraTitleContent: regexp.MustCompile("(?i)(\\d{4}|\\[([^]]+)]|\\(([^)]+)\\)|\\d(\\d)?x\\d(\\d)?(-\\d(\\d)?)?|web-dl|webdl|complete|temporada|season|episode|ep \\d+|tc|xxx|hdrip|dvdrip|bdrip|hdtv|1080p|1080|720|720p|480|480p|576|576p|xvid|divx|mkv|mp4|avi|brrip|ac3|mp3|x264|aac|s\\d(\\d)?(e\\d(\\d)?)?|bluray|rip|avc)"),
 			titleDelimiters:   regexp.MustCompile("(\\.|-|;|,|-|_|\\||\\(|\\)|\\[|]|/|\\\\)"),
-			db: app.Db,
+			db:                app.Db,
 		}
-		var genres *tmdb.Genre;
+		var genres *tmdb.Genre
 		genres, err = tmDb.GetMovieGenres(map[string]string{})
 		genresCount := len(genres.Genres)
 		instance.ganres = make(map[uint32]string)
-		for i:=0; i< genresCount; i++ {
+		for i := 0; i < genresCount; i++ {
 			genre := genres.Genres[i]
 			instance.ganres[uint32(genre.ID)] = genre.Name
 		}
@@ -80,44 +83,67 @@ func (ve *VideoInfoExtractor) GetAssociatedVideos(work VideoInfoExtractWork) (ti
 	//videoExtractorLog.Println("SearchMulti Result:", res)
 	titlesCount := minInt32(int32(res.TotalResults), 5)
 	var i int32
+
 	for i = 0; i < titlesCount; i++ {
 		var name string
-		var yearStr string
-		if res.Results[i].MediaType == "tv" {
-			name = res.Results[i].OriginalName
-			if len(res.Results[i].FirstAirDate) > 4 {
-				yearStr = res.Results[i].FirstAirDate[0:4]
-			}
-
-		} else if res.Results[i].MediaType == "movie" {
-			name = res.Results[i].OriginalTitle
-			if len(res.Results[i].ReleaseDate) > 4 {
-				yearStr = res.Results[i].ReleaseDate[0:4]
-			}
-
-		}
 
 		var posterUrl string
-		if len(res.Results[i].PosterPath) > 0 {
-			posterUrl = ve.tmdbConfig.Images.BaseURL + "original" + res.Results[i].PosterPath
-		}
-		year, err := strconv.ParseInt(yearStr, 10, 32)
-		if err != nil {
-			year = 0
+		var description string
+		var titleType   Models.TitleType
+		var genres []string
+		var year int64
+		if tvSeriesInfo, ok := res.Results[i].(tmdb.MultiSearchTvInfo); ok {
+			name = tvSeriesInfo.OriginalName
+			var yearStr string
+			if len(tvSeriesInfo.FirstAirDate) > 4 {
+				yearStr = tvSeriesInfo.FirstAirDate[0:4]
+			}
+			genres = ve.getGenres(tvSeriesInfo.GenreIDs)
+
+			if len(tvSeriesInfo.PosterPath) > 0 {
+				posterUrl = ve.tmdbConfig.Images.BaseURL + "original" + tvSeriesInfo.PosterPath
+			}
+			year, err = strconv.ParseInt(yearStr, 10, 32)
+			if err != nil {
+				year = 0
+			}
+
+			description = tvSeriesInfo.Overview
+			titleType = Models.TitleType(tvSeriesInfo.MediaType)
+		} else if movieInfo, ok := res.Results[i].(tmdb.MultiSearchMovieInfo); ok {
+			name = movieInfo.OriginalTitle
+			var yearStr string
+			if len(movieInfo.ReleaseDate) > 4 {
+				yearStr = movieInfo.ReleaseDate[0:4]
+			}
+
+			if len(movieInfo.PosterPath) > 0 {
+				posterUrl = ve.tmdbConfig.Images.BaseURL + "original" + movieInfo.PosterPath
+			}
+			year, err = strconv.ParseInt(yearStr, 10, 32)
+			if err != nil {
+				year = 0
+			}
+
+			description = movieInfo.Overview
+			titleType = Models.TitleType(movieInfo.MediaType)
+
 		}
 		titles = append(titles, Models.Title{
 			Title:       name,
 			Year:        uint32(year),
-			Description: res.Results[i].Overview,
-			Ganres:		 ve.getGenres(res.Results[i].Genres),
-			TitleType:   Models.TitleType(res.Results[i].MediaType),
+			Description: description,
+			Ganres:      genres,
+			TitleType:   titleType,
 			Id:          crc32.ChecksumIEEE([]byte(name)),
 			PosterUrl:   posterUrl,
 		})
+
+
 	}
 	return
 }
-func (ve *VideoInfoExtractor) getGenres(ganre_ids []uint32) (genreNames []string){
+func (ve *VideoInfoExtractor) getGenres(ganre_ids []uint32) (genreNames []string) {
 	ganresLen := len(ganre_ids)
 	genreNames = make([]string, ganresLen, ganresLen)
 	for i := 0; i < ganresLen; i++ {

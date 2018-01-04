@@ -1,27 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="cutetorrenthost">
+  <component name="PublishConfigData" serverName="cutetorrent">
     <serverData>
-      <paths name="cutetorrent.monitoring">
+      <paths name="cutetorrent">
         <serverdata>
           <mappings>
-            <mapping deploy="/root" local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="cutetorrenthost">
-        <serverdata>
-          <mappings>
+            <mapping deploy="/var/www/dhtcrawler" local="$PROJECT_DIR$/static/dist" web="/" />
             <mapping deploy="/usr/bin" local="$PROJECT_DIR$/bin" web="/" />
-            <mapping deploy="/var/www/dhtcrawler" local="$PROJECT_DIR$/static/build" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="cutetorrentslavehost">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/usr/bin" local="$PROJECT_DIR$/bin" web="/" />
-            <mapping deploy="/var/www/dhtcrawler" local="$PROJECT_DIR$/static" web="/" />
           </mappings>
         </serverdata>
       </paths>

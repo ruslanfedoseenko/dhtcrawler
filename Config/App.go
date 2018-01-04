@@ -4,13 +4,13 @@ import (
 	"errors"
 	"fmt"
 	"github.com/jasonlvhit/gocron"
+	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"log"
 	"os"
 	"os/signal"
 	"runtime/debug"
 	"syscall"
-	"github.com/jinzhu/gorm"
 )
 
 type Service interface {
@@ -18,10 +18,10 @@ type Service interface {
 }
 
 type App struct {
-	Config     *Configuration
-	Db         *gorm.DB
-	Scheduler  *gocron.Scheduler
-	Services   []Service
+	Config    *Configuration
+	Db        *gorm.DB
+	Scheduler *gocron.Scheduler
+	Services  []Service
 }
 
 func NewApp() *App {

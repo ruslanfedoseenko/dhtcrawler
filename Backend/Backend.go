@@ -1,10 +1,10 @@
 package main
 
 import (
-	"github.com/ruslanfedoseenko/dhtcrawler/Services"
-	"github.com/ruslanfedoseenko/dhtcrawler/Routers"
-	"github.com/ruslanfedoseenko/dhtcrawler/Config"
 	"github.com/op/go-logging"
+	"github.com/ruslanfedoseenko/dhtcrawler/Config"
+	"github.com/ruslanfedoseenko/dhtcrawler/Routers"
+	"github.com/ruslanfedoseenko/dhtcrawler/Services"
 	"log"
 	"os"
 	//"github.com/ruslanfedoseenko/dhtcrawler/Services/tracker"
@@ -18,9 +18,10 @@ var logger = logging.MustGetLogger("Backend")
 var format = logging.MustStringFormatter(
 	`%{color}%{time:15:04:05.000} %{module} %{shortfunc} - %{level:.4s} %{color:reset}: %{message}`,
 )
+
 func main() {
 
-	setupLog();
+	setupLog()
 
 	/*var infoHashes = []string {"00006a32d5ccef525cbc82669ac2dadb2a9994ff"};
 	response, err := tracker.Scrape("http://p4p.arenabg.com:1337/announce", infoHashes)
@@ -36,14 +37,12 @@ func main() {
 
 	Routers.Setup(app)
 
-
 	Services.SetupTorrentCountStatsUpdater(app)
 	app.Run()
 }
 
-
-func setupLog(){
-	file,err := os.OpenFile("crawler.log", os.O_APPEND|os.O_WRONLY| os.O_CREATE, 0666)
+func setupLog() {
+	file, err := os.OpenFile("crawler.log", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0666)
 	if err != nil {
 		log.Println(err)
 	}

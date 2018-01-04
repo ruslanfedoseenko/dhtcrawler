@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/julienschmidt/httprouter"
+	"github.com/ruslanfedoseenko/dhtcrawler/Models"
 	"log"
 	"net/http"
-	"github.com/ruslanfedoseenko/dhtcrawler/Models"
 )
 
 func TorrentInfoHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {

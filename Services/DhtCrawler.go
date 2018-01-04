@@ -3,22 +3,23 @@ package Services
 import (
 	"encoding/hex"
 	"fmt"
-	"github.com/shiyanhui/dht"
-	"strings"
+	"github.com/op/go-logging"
 	"github.com/ruslanfedoseenko/dhtcrawler/Config"
 	"github.com/ruslanfedoseenko/dhtcrawler/Models"
-	"github.com/ruslanfedoseenko/dhtcrawler/Utils"
-	"github.com/op/go-logging"
 	"github.com/ruslanfedoseenko/dhtcrawler/Services/rpc"
+	"github.com/ruslanfedoseenko/dhtcrawler/Utils"
+	"github.com/shiyanhui/dht"
+	"strings"
 )
 
 type DhtCrawlingService struct {
-	dht 	   *dht.DHT
+	dht        *dht.DHT
 	wire       *dht.Wire
 	config     *dht.Config
 	rpcClient  *Rpc.RpcClient
-	shouldStop  bool
+	shouldStop bool
 }
+
 var dhtLog = logging.MustGetLogger("DhtCrawler")
 var App *Config.App
 var dhtCrawlingSvc DhtCrawlingService
@@ -36,21 +37,19 @@ func (svc DhtCrawlingService) Start() {
 	svc.rpcClient.Start()
 	for i := 0; i < App.Config.DhtConfig.Workers; i++ {
 		wire := dht.NewWire(65536, 6144, 6144, 3072)
-		var config *dht.Config = dht.NewCrawlConfig()
-		config.MaxNodes = 70000;
+		var config = dht.NewCrawlConfig()
+		config.MaxNodes = 70000
 		config.Address = fmt.Sprintf(":%d", App.Config.DhtConfig.StartPort+i)
 		dhtLog.Info("Starting Dht Crawling On ", App.Config.DhtConfig.StartPort+i)
 
 		config.OnAnnouncePeer = func(infoHash, ip string, port int) {
 			go func(infoHash, ip string, port int) {
-				var infoHashStr = hex.EncodeToString([]byte(infoHash));
-
+				var infoHashStr = hex.EncodeToString([]byte(infoHash))
 
 				if ok, _ := svc.rpcClient.HasTorrent(infoHashStr); !ok {
 					wire.Request([]byte(infoHash), ip, port)
 				}
-			}(infoHash, ip , port)
-
+			}(infoHash, ip, port)
 
 		}
 		svc.dht = dht.New(config)
@@ -71,7 +70,7 @@ func (svc DhtCrawlingService) Start() {
 				if _, ok = info["name"]; !ok {
 					continue
 				}
-				var name string;
+				var name string
 
 				if name, ok = info["name"].(string); !ok {
 					dhtLog.Error("Info section has name but it is not a string", info)
@@ -79,7 +78,7 @@ func (svc DhtCrawlingService) Start() {
 				}
 				bt := Models.Torrent{
 					Infohash: hex.EncodeToString(resp.InfoHash),
-					Name: name,
+					Name:     name,
 				}
 				var v interface{}
 				if v, ok = info["files"]; ok {
@@ -94,7 +93,7 @@ func (svc DhtCrawlingService) Start() {
 					for i, item := range files {
 						var f map[string]interface{}
 						if f, ok = item.(map[string]interface{}); !ok {
-							continue;
+							continue
 						}
 						if f == nil || f["path"] == nil {
 							continue
@@ -118,7 +117,6 @@ func (svc DhtCrawlingService) Start() {
 					}
 
 				}
-
 
 				svc.rpcClient.AddTorrent(&bt)
 				/*Avar count int

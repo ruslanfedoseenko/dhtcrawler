@@ -2,17 +2,17 @@ package Config
 
 import (
 	"encoding/json"
+	"errors"
 	"flag"
 	"log"
 	"os"
 	"strings"
-	"errors"
 )
 
 type DbConfig struct {
 	DbDriver  string
-	Host string
-	Port uint32
+	Host      string
+	Port      uint32
 	TableName string
 	UserName  string
 	Password  string
@@ -33,9 +33,10 @@ type ScrapeConfig struct {
 	ScrapeTimeout int
 }
 type RpcMode string
+
 const (
 	SERVER RpcMode = "SERVER"
-	CLIENT	       = "CLIENT"
+	CLIENT         = "CLIENT"
 )
 
 func (o *RpcMode) UnmarshalText(b []byte) (e error) {
@@ -46,25 +47,29 @@ func (o *RpcMode) UnmarshalText(b []byte) (e error) {
 		*o = RpcMode(str)
 
 	default:
-		e =  errors.New("Unknown RpcMode specified")
+		e = errors.New("Unknown RpcMode specified")
 	}
 
 	return e
 }
-type RpcConfig struct{
+
+type RpcConfig struct {
 	Mode RpcMode
 	Host string
 	Port int
 }
-
+type TmdbApi struct{
+	ApiKey string
+}
 type Configuration struct {
-	DbConfig     DbConfig
-	DhtConfig    DhtConfig
-	HttpConfig   HttpConfig
-	ScrapeConfig ScrapeConfig
-	RpcConfig    RpcConfig
+	DbConfig           DbConfig
+	DhtConfig          DhtConfig
+	HttpConfig         HttpConfig
+	ScrapeConfig       ScrapeConfig
+	RpcConfig          RpcConfig
 	TagProducersConfig TagProducersConfig
-	ItemsPerPage uint64
+	TmdbApi		   TmdbApi
+	ItemsPerPage       uint64
 }
 
 func SetupConfiguration() *Configuration {

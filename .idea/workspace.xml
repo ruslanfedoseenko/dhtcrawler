@@ -1,154 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7eb11d8e-28f8-499d-a4dc-32432bea4c09" name="Default" comment="New UI&#10;Improvemnts in auto tagging system">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Go_SDK.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/typescript-compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Models/ScrapeTorrentResult.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Models/SearchSuggestResponse.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Models/Tag.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Routers/SearchSuggestHandler.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Services/TagProducer/TorrentTagsProducer.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Services/TagProducer/specialTagsProducer.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Services/TagProducer/specialVideoTagProducer.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Services/TagProducer/tokenExistenceTagProducer.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Utils/ZombodbQueryBuilder.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/.babelrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/src/app/Formaters.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/src/app/SideBarMenu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/src/app/TorrentStatsCountUp.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/src/app/TorrentsList.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/src/app/app.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/src/app/theme.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/src/www/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/src/www/main.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/webpack-dev-server.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/webpack-production.config.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Config/Classifier.go" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Models/AddTrainingToken.go" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Models/GeneralCategory.go" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Models/TrainingPortion.go" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Routers/AdminCategoriesHandler.go" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Routers/AdminTrainingDataHandler.go" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Routers/CategoriesTreeHandler.go" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TorrentClassification/Rule.go" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TorrentClassification/RuleBasedTorrentClassifier.go" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TorrentClassification/Rules/BasicTypeClassification.go" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TorrentClassification/Rules/FakeFilter.go" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TorrentClassification/Rules/VideoFilesClassification.go" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/admin/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/CategoriesHelper.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/PaginationHelper.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/TorrentApiAdapter.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/TorrentPaginationModelAdapter.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/backbone-min.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/backbone.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/bluewater.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/components/sidebar/sidebar.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/components/sidebar/sidebar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/countup.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/fonts/PTS-bold.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/fonts/PTS-webfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/fonts/Roboto-Medium-webfont.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/fonts/Roboto-Medium-webfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/fonts/Roboto-Medium-webfont.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/fonts/Roboto-Medium-webfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/fonts/Roboto-Regular-webfont.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/fonts/Roboto-Regular-webfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/fonts/Roboto-Regular-webfont.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/fonts/Roboto-Regular-webfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/fonts/font-license.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/fonts/fontawesome-webfont.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/fonts/fontawesome-webfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/fonts/fontawesome-webfont.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/fonts/fontawesome-webfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/i18n/be.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/i18n/de.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/i18n/en.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/i18n/es.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/i18n/fr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/i18n/it.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/i18n/ja.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/i18n/pt.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/i18n/ru.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/i18n/zh.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/legacy/excanvas/AUTHORS.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/legacy/excanvas/COPYING.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/legacy/excanvas/README.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/legacy/excanvas/excanvas.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/legacy/swfobject.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/legacy/uploader.swf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/air.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/aircompact.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/clouds.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/compact.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/contrast.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/debug/air.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/debug/aircompact.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/debug/clouds.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/debug/compact.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/debug/contrast.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/debug/flat.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/debug/glamour.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/debug/light.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/debug/material.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/debug/material.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/debug/metro.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/debug/terrace.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/debug/touch.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/debug/web.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/flat.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/glamour.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/light.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/material.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/metro.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/terrace.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/touch.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/skins/web.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/underscore-min.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/underscore.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/webix.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/webix.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/webix.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/codebase/webix_debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/index.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/GOPATH__dhtcrawler_.xml" afterPath="$PROJECT_DIR$/.idea/libraries/GOPATH__dhtcrawler_.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/webServers.xml" afterPath="$PROJECT_DIR$/.idea/webServers.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Config/App.go" afterPath="$PROJECT_DIR$/Config/App.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Config/Configuration.go" afterPath="$PROJECT_DIR$/Config/Configuration.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DhtCrawler.iml" afterPath="$PROJECT_DIR$/DhtCrawler.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Models/Title.go" afterPath="$PROJECT_DIR$/Models/Title.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Models/Torrent.go" afterPath="$PROJECT_DIR$/Models/Torrent.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Readme.md" afterPath="$PROJECT_DIR$/Readme.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Routers/Router.go" afterPath="$PROJECT_DIR$/Routers/Router.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Routers/TorrentInfoHandler.go" afterPath="$PROJECT_DIR$/Routers/TorrentInfoHandler.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Routers/TorrentSearchHandler.go" afterPath="$PROJECT_DIR$/Routers/TorrentSearchHandler.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Routers/TorrentsListHandler.go" afterPath="$PROJECT_DIR$/Routers/TorrentsListHandler.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Services/DhtCrawler.go" afterPath="$PROJECT_DIR$/Services/DhtCrawler.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Services/rpc/RpClient.go" afterPath="$PROJECT_DIR$/Services/rpc/RpClient.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Services/rpc/ScrapeRcpService.go" afterPath="$PROJECT_DIR$/Services/rpc/ScrapeRcpService.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Services/rpc/TorrentRpcService.go" afterPath="$PROJECT_DIR$/Services/rpc/TorrentRpcService.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Services/scraper.go" afterPath="$PROJECT_DIR$/Services/scraper.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Utils/SliceUtils.go" afterPath="$PROJECT_DIR$/Utils/SliceUtils.go" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Services/VideoInfoExtractor.go" afterPath="$PROJECT_DIR$/Services/TagProducer/VideoInfoExtractor.go" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/config.json" afterPath="$PROJECT_DIR$/bin/config.json" />
+    <list default="true" id="7189115d-3d33-4b7a-bffe-2b144520efcd" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/.editorconfig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/.eslintignore" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/.eslintrc.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/.postcssrc.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/build/build.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/build/check-versions.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/build/logo.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/build/torrents" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/build/utils.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/build/vue-loader.conf.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/build/webpack.base.conf.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/build/webpack.dev.conf.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/build/webpack.prod.conf.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/config/dev.env.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/config/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/config/prod.env.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/config/test.env.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/index.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/package-lock.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/src/App.vue" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/src/components/TorrentList.vue" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/src/main.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/src/router/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/src/store/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/src/torrents" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/GOPATH__dhtcrawler_.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Go_SDK.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/markdown-navigator.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/markdown-navigator/profiles_settings.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/preferred-vcs.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/typescript-compiler.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" afterPath="$PROJECT_DIR$/.idea/webServers.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Backend/Backend.go" afterPath="$PROJECT_DIR$/Backend/Backend.go" />
+      <change beforePath="$PROJECT_DIR$/Config/App.go" afterPath="$PROJECT_DIR$/Config/App.go" />
+      <change beforePath="$PROJECT_DIR$/Config/Configuration.go" afterPath="$PROJECT_DIR$/Config/Configuration.go" />
+      <change beforePath="$PROJECT_DIR$/DhtCrawler.iml" afterPath="$PROJECT_DIR$/DhtCrawler.iml" />
+      <change beforePath="$PROJECT_DIR$/Models/CountEstimateHolder.go" afterPath="$PROJECT_DIR$/Models/CountEstimateHolder.go" />
+      <change beforePath="$PROJECT_DIR$/Models/Counters.go" afterPath="$PROJECT_DIR$/Models/Counters.go" />
+      <change beforePath="$PROJECT_DIR$/Models/File.go" afterPath="$PROJECT_DIR$/Models/File.go" />
+      <change beforePath="$PROJECT_DIR$/Models/FileTreeItem.go" afterPath="$PROJECT_DIR$/Models/FileTreeItem.go" />
+      <change beforePath="$PROJECT_DIR$/Models/PaginatedTorrentsResponse.go" afterPath="$PROJECT_DIR$/Models/PaginatedTorrentsResponse.go" />
+      <change beforePath="$PROJECT_DIR$/Models/ScrapeTorrentResult.go" afterPath="$PROJECT_DIR$/Models/ScrapeTorrentResult.go" />
+      <change beforePath="$PROJECT_DIR$/Models/SearchSuggestResponse.go" afterPath="$PROJECT_DIR$/Models/SearchSuggestResponse.go" />
+      <change beforePath="$PROJECT_DIR$/Models/Tag.go" afterPath="$PROJECT_DIR$/Models/Tag.go" />
+      <change beforePath="$PROJECT_DIR$/Models/Title.go" afterPath="$PROJECT_DIR$/Models/Title.go" />
+      <change beforePath="$PROJECT_DIR$/Models/Torrent.go" afterPath="$PROJECT_DIR$/Models/Torrent.go" />
+      <change beforePath="$PROJECT_DIR$/Models/TorrentStatsPart.go" afterPath="$PROJECT_DIR$/Models/TorrentStatsPart.go" />
+      <change beforePath="$PROJECT_DIR$/Routers/Router.go" afterPath="$PROJECT_DIR$/Routers/Router.go" />
+      <change beforePath="$PROJECT_DIR$/Routers/SearchSuggestHandler.go" afterPath="$PROJECT_DIR$/Routers/SearchSuggestHandler.go" />
+      <change beforePath="$PROJECT_DIR$/Routers/TorrentCountHandler.go" afterPath="$PROJECT_DIR$/Routers/TorrentCountHandler.go" />
+      <change beforePath="$PROJECT_DIR$/Routers/TorrentInfoHandler.go" afterPath="$PROJECT_DIR$/Routers/TorrentInfoHandler.go" />
+      <change beforePath="$PROJECT_DIR$/Routers/TorrentSearchHandler.go" afterPath="$PROJECT_DIR$/Routers/TorrentSearchHandler.go" />
+      <change beforePath="$PROJECT_DIR$/Routers/TorrentsListHandler.go" afterPath="$PROJECT_DIR$/Routers/TorrentsListHandler.go" />
+      <change beforePath="$PROJECT_DIR$/Routers/TorrentsStatsHandler.go" afterPath="$PROJECT_DIR$/Routers/TorrentsStatsHandler.go" />
+      <change beforePath="$PROJECT_DIR$/RpcMaster/RpcMaster.go" afterPath="$PROJECT_DIR$/RpcMaster/RpcMaster.go" />
+      <change beforePath="$PROJECT_DIR$/Services/DhtCrawler.go" afterPath="$PROJECT_DIR$/Services/DhtCrawler.go" />
+      <change beforePath="$PROJECT_DIR$/Services/RpcCommon.go" afterPath="$PROJECT_DIR$/Services/RpcCommon.go" />
+      <change beforePath="$PROJECT_DIR$/Services/ScrapeWork.go" afterPath="$PROJECT_DIR$/Services/ScrapeWork.go" />
+      <change beforePath="$PROJECT_DIR$/Services/TagProducer/TorrentTagsProducer.go" afterPath="$PROJECT_DIR$/Services/TagProducer/TorrentTagsProducer.go" />
+      <change beforePath="$PROJECT_DIR$/Services/TagProducer/VideoInfoExtractor.go" afterPath="$PROJECT_DIR$/Services/TagProducer/VideoInfoExtractor.go" />
+      <change beforePath="$PROJECT_DIR$/Services/TagProducer/specialTagsProducer.go" afterPath="$PROJECT_DIR$/Services/TagProducer/specialTagsProducer.go" />
+      <change beforePath="$PROJECT_DIR$/Services/TagProducer/specialVideoTagProducer.go" afterPath="$PROJECT_DIR$/Services/TagProducer/specialVideoTagProducer.go" />
+      <change beforePath="$PROJECT_DIR$/Services/TagProducer/tokenExistenceTagProducer.go" afterPath="$PROJECT_DIR$/Services/TagProducer/tokenExistenceTagProducer.go" />
+      <change beforePath="$PROJECT_DIR$/Services/TorrentCountStatsUpdater.go" afterPath="$PROJECT_DIR$/Services/TorrentCountStatsUpdater.go" />
+      <change beforePath="$PROJECT_DIR$/Services/WorkQueue.go" afterPath="$PROJECT_DIR$/Services/WorkQueue.go" />
+      <change beforePath="$PROJECT_DIR$/Services/rpc/RpClient.go" afterPath="$PROJECT_DIR$/Services/rpc/RpClient.go" />
+      <change beforePath="$PROJECT_DIR$/Services/rpc/RpcServer.go" afterPath="$PROJECT_DIR$/Services/rpc/RpcServer.go" />
+      <change beforePath="$PROJECT_DIR$/Services/rpc/ScrapeRcpService.go" afterPath="$PROJECT_DIR$/Services/rpc/ScrapeRcpService.go" />
+      <change beforePath="$PROJECT_DIR$/Services/rpc/TorrentRpcService.go" afterPath="$PROJECT_DIR$/Services/rpc/TorrentRpcService.go" />
+      <change beforePath="$PROJECT_DIR$/Services/scraper.go" afterPath="$PROJECT_DIR$/Services/scraper.go" />
+      <change beforePath="$PROJECT_DIR$/Services/tracker/Hash.go" afterPath="$PROJECT_DIR$/Services/tracker/Hash.go" />
+      <change beforePath="$PROJECT_DIR$/Services/tracker/http.go" afterPath="$PROJECT_DIR$/Services/tracker/http.go" />
+      <change beforePath="$PROJECT_DIR$/Services/tracker/tracker.go" afterPath="$PROJECT_DIR$/Services/tracker/tracker.go" />
+      <change beforePath="$PROJECT_DIR$/Services/tracker/udp.go" afterPath="$PROJECT_DIR$/Services/tracker/udp.go" />
+      <change beforePath="$PROJECT_DIR$/Spider/Spider.go" afterPath="$PROJECT_DIR$/Spider/Spider.go" />
+      <change beforePath="$PROJECT_DIR$/Utils/HostParser.go" afterPath="$PROJECT_DIR$/Utils/HostParser.go" />
+      <change beforePath="$PROJECT_DIR$/Utils/SliceUtils.go" afterPath="$PROJECT_DIR$/Utils/SliceUtils.go" />
+      <change beforePath="$PROJECT_DIR$/Utils/ZombodbQueryBuilder.go" afterPath="$PROJECT_DIR$/Utils/ZombodbQueryBuilder.go" />
+      <change beforePath="$PROJECT_DIR$/static/.babelrc" afterPath="$PROJECT_DIR$/static/.babelrc" />
+      <change beforePath="$PROJECT_DIR$/static/.gitignore" afterPath="$PROJECT_DIR$/static/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/static/LICENSE" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/README.md" afterPath="$PROJECT_DIR$/static/README.md" />
+      <change beforePath="$PROJECT_DIR$/static/package.json" afterPath="$PROJECT_DIR$/static/package.json" />
+      <change beforePath="$PROJECT_DIR$/static/src/app/Formaters.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/src/app/SideBarMenu.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/src/app/TorrentStatsCountUp.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/src/app/TorrentsList.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/src/app/app.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/src/app/theme.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/src/www/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/src/www/main.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/webpack-dev-server.config.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/webpack-production.config.js" afterPath="" />
     </list>
-    <ignored path="dhtcrawler.iws" />
-    <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -156,124 +115,90 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_TABLE_DETAILS" value="true" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-  </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
-  <component name="FavoritesManager">
-    <favorites_list name="dhtcrawler" />
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TorrentSearchHandler.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Routers/TorrentSearchHandler.go">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/src/store/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="17" column="49" lean-forward="false" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
+            <state relative-caret-position="198">
+              <caret line="53" column="4" lean-forward="false" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="4" />
               <folding>
-                <element signature="e#17#245#0" expanded="true" />
+                <element signature="e#0#21#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="specialVideoTagProducer.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Services/TagProducer/specialVideoTagProducer.go">
+      <file leaf-file-name="TorrentList.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/src/components/TorrentList.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="34" column="15" lean-forward="false" selection-start-line="34" selection-start-column="15" selection-end-line="34" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/src/www/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="33" column="23" lean-forward="false" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Router.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Routers/Router.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="32" column="18" lean-forward="false" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/src/app/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="99" column="12" lean-forward="false" selection-start-line="99" selection-start-column="12" selection-end-line="99" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VideoInfoExtractor.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Services/TagProducer/VideoInfoExtractor.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="120" column="17" lean-forward="false" selection-start-line="120" selection-start-column="17" selection-end-line="120" selection-end-column="17" />
+            <state relative-caret-position="31">
+              <caret line="80" column="30" lean-forward="false" selection-start-line="80" selection-start-column="30" selection-end-line="80" selection-end-column="30" />
               <folding>
-                <element signature="e#21#266#0" expanded="true" />
+                <element signature="n#style#0;n#v-layout#0;n#v-footer#0;n#div#0;n#template#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="webpack-dev-server.config.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/webpack-dev-server.config.js">
+      <file leaf-file-name="build.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/build/build.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="51" column="60" lean-forward="true" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="60" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TorrentStatsCountUp.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/src/app/TorrentStatsCountUp.js">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/config/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="27" column="16" lean-forward="false" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+            <state relative-caret-position="-798">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TorrentsList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/src/app/TorrentsList.js">
+      <file leaf-file-name="dev.env.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/config/dev.env.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="179" column="21" lean-forward="false" selection-start-line="179" selection-start-column="21" selection-end-line="179" selection-end-column="21" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SideBarMenu.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/src/app/SideBarMenu.js">
+      <file leaf-file-name="setup.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/test/unit/setup.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="32" column="12" lean-forward="false" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jest.conf.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/test/unit/jest.conf.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HelloWorld.spec.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/test/unit/specs/HelloWorld.spec.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -283,29 +208,19 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
-        <option value="HTML File" />
-        <option value="CSS File" />
+        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
-        <option value="Go File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>minInt32</find>
-      <find>App.Db</find>
-      <find>Header</find>
-      <find>crc32</find>
-      <find>icon</find>
-      <find>tag</find>
-      <find>DefaultWorkSize</find>
-      <find>hdrip</find>
+      <find>&quot;</find>
+      <find>drawer</find>
+      <find>GetTags</find>
     </findStrings>
-    <replaceStrings>
-      <replace>ve.db</replace>
-    </replaceStrings>
   </component>
+  <component name="GOROOT" path="C:\Go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -317,88 +232,40 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Services/rpc/ScrapeRcpService.go" />
-        <option value="$PROJECT_DIR$/Readme.md" />
         <option value="$PROJECT_DIR$/static/index.html" />
-        <option value="$PROJECT_DIR$/static/ReactUI/src/app/SideBarMenu.js" />
-        <option value="$PROJECT_DIR$/static/ReactUI/src/app/Formaters.js" />
-        <option value="$PROJECT_DIR$/static/ReactUI/build/main.css" />
-        <option value="$PROJECT_DIR$/static/ReactUI/src/app/theme.js" />
-        <option value="D:/Temp/kopf[cutetorrent-search].url" />
-        <option value="$PROJECT_DIR$/static/ReactUI/src/www/main.css" />
-        <option value="$PROJECT_DIR$/static/ReactUI/src/app/app.js" />
-        <option value="$PROJECT_DIR$/static/ReactUI/src/app/TorrentsList.js" />
-        <option value="$PROJECT_DIR$/static/ReactUI/src/www/index.html" />
-        <option value="$PROJECT_DIR$/static/ReactUI/src/app/TorrentStatsCountUp.js" />
-        <option value="$PROJECT_DIR$/static/.eslintrc" />
-        <option value="$PROJECT_DIR$/static/package.json" />
-        <option value="$PROJECT_DIR$/static/.eslintrc.js" />
-        <option value="$PROJECT_DIR$/Models/GeneralCategory.go" />
-        <option value="$PROJECT_DIR$/Config/App.go" />
-        <option value="$PROJECT_DIR$/Models/Torrent.go" />
-        <option value="$PROJECT_DIR$/Models/Tag.go" />
-        <option value="$PROJECT_DIR$/Routers/Router.go" />
-        <option value="$PROJECT_DIR$/Services/TorrentTagsProducer.go" />
-        <option value="$PROJECT_DIR$/Models/Title.go" />
-        <option value="$PROJECT_DIR$/Services/TagProducer/specialTagsProducer.go" />
-        <option value="$PROJECT_DIR$/Config/Configuration.go" />
-        <option value="$PROJECT_DIR$/Services/rpc/TorrentRpcService.go" />
-        <option value="$PROJECT_DIR$/Services/TagProducer/tokenExistenceTagProducer.go" />
-        <option value="$PROJECT_DIR$/Services/DhtCrawler.go" />
-        <option value="$PROJECT_DIR$/../../../../../Go/src/github.com/ryanbradynd05/go-tmdb/main.go" />
-        <option value="$PROJECT_DIR$/bin/config.json" />
+        <option value="$PROJECT_DIR$/static/src/store/index,js.js" />
         <option value="$PROJECT_DIR$/Routers/TorrentsListHandler.go" />
+        <option value="$PROJECT_DIR$/Routers/Router.go" />
+        <option value="$PROJECT_DIR$/static/.eslintrc.js" />
         <option value="$PROJECT_DIR$/Services/TagProducer/TorrentTagsProducer.go" />
-        <option value="$PROJECT_DIR$/static/build/main.css" />
-        <option value="$PROJECT_DIR$/static/src/www/main.css" />
-        <option value="$PROJECT_DIR$/static/webpack-production.config.js" />
-        <option value="$PROJECT_DIR$/Routers/TorrentSearchHandler.go" />
-        <option value="$PROJECT_DIR$/Services/rpc/RpClient.go" />
-        <option value="$PROJECT_DIR$/Utils/ZombodbQueryBuilder.go" />
-        <option value="$PROJECT_DIR$/Services/scraper.go" />
-        <option value="$PROJECT_DIR$/Backend/Backend.go" />
-        <option value="$PROJECT_DIR$/static/src/app/Formaters.js" />
-        <option value="$PROJECT_DIR$/Routers/TorrentInfoHandler.go" />
-        <option value="$PROJECT_DIR$/Utils/SliceUtils.go" />
-        <option value="$PROJECT_DIR$/static/src/app/TorrentStatsCountUp.js" />
-        <option value="$PROJECT_DIR$/static/src/app/TorrentsList.js" />
-        <option value="$PROJECT_DIR$/static/src/app/SideBarMenu.js" />
-        <option value="$PROJECT_DIR$/Services/TagProducer/specialVideoTagProducer.go" />
-        <option value="$PROJECT_DIR$/static/src/www/index.html" />
-        <option value="$PROJECT_DIR$/static/src/app/app.js" />
-        <option value="$PROJECT_DIR$/Services/TagProducer/VideoInfoExtractor.go" />
-        <option value="$PROJECT_DIR$/static/webpack-dev-server.config.js" />
+        <option value="$PROJECT_DIR$/static/src/App.vue" />
+        <option value="$PROJECT_DIR$/static/src/router/index.js" />
+        <option value="$PROJECT_DIR$/static/src/main.js" />
+        <option value="$PROJECT_DIR$/static/src/store/index.js" />
+        <option value="$PROJECT_DIR$/static/src/components/TorrentList.vue" />
       </list>
     </option>
   </component>
-  <component name="JsBowerSettings">
-    <exe-path />
-    <config-path />
-  </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="Bundled (Maven 3)" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/static/node_modules" />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1874" />
-    <option name="height" value="1096" />
-  </component>
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="225" />
+    <option name="y" value="40" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -415,197 +282,53 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtcrawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtcrawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtcrawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtcrawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtcrawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Utils" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtcrawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtcrawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtcrawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtcrawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TagProducer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtcrawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtcrawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rpc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtcrawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtcrawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Routers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtcrawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtcrawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtcrawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtcrawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtcrawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtcrawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtcrawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtcrawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Backend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
+          <expand>
+            <path>
+              <item name="dhtcrawler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dhtcrawler" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dhtcrawler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dhtcrawler" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dhtcrawler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dhtcrawler" type="462c0819:PsiDirectoryNode" />
+              <item name="RpcMaster" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dhtcrawler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dhtcrawler" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dhtcrawler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dhtcrawler" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="go.libraries.notification.had.been.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Go" />
-    <property name="configurable.Global.libraries.is.expanded" value="true" />
-    <property name="configurable.Project.libraries.is.expanded" value="true" />
-    <property name="configurable.Module.libraries.is.expanded" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="js-jscs-nodeInterpreter" value="c:\program files\nodejs\node.exe" />
-    <property name="DefaultGoTemplateProperty" value="Go File" />
-    <property name="GO_FMT" value="false" />
-    <property name="JavaScriptPreferStrict" value="true" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="settings.editor.selected.configurable" value="web.server" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
-    <property name="nodejs_interpreter_path" value="c:/program files/nodejs/node" />
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="last.edited.regexp" value="" />
-    <property name="js.eslint.eslintPackage" value="C:\Users\Ruslan\AppData\Roaming\npm\node_modules\eslint" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\src\GoRoot\src\github.com\ruslanfedoseenko\dhtcrawler\Services\TagProducer" />
-      <recent name="E:\src\GoRoot\src\github.com\ruslanfedoseenko\dhtcrawler\static\ReactUI\src\www" />
-      <recent name="E:\src\GoRoot\src\github.com\ruslanfedoseenko\dhtcrawler\static\ReactUI\src\app" />
-      <recent name="E:\src\GoRoot\src\github.com\ruslanfedoseenko\dhtcrawler\static\ReactUI\app" />
-      <recent name="E:\src\GoRoot\src\github.com\ruslanfedoseenko\dhtcrawler\static" />
-    </key>
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/bin" />
+    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Module.GOPATH.is.expanded" value="false" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -619,109 +342,137 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Application.spider">
-    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+  <component name="RunManager" selected="Go Build.spider-master">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
-      <working_directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <method />
-    </configuration>
-    <configuration default="true" type="GoRunFileConfiguration" factoryName="Go Single File">
-      <module name="dhtcrawler" />
-      <working_directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <method />
-    </configuration>
-    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
-      <module name="dhtcrawler" />
-      <working_directory value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <kind value="DIRECTORY" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
-      <node-interpreter value="project" />
-      <working-dir value="" />
       <envs />
-      <scope-kind value="ALL" />
-      <method />
     </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
-      <config-file value="" />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run" />
-      <scripts />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="spider" type="GoApplicationRunConfiguration" factoryName="Go Application" singleton="true">
-      <output_file path="E:\src\GoRoot\src\github.com\ruslanfedoseenko\dhtcrawler\bin" />
+    <configuration name="spider http" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="dhtcrawler" />
       <working_directory value="$PROJECT_DIR$" />
       <envs>
-        <env name="GOOS" value="linux" />
         <env name="GOARCH" value="amd64" />
-      </envs>
-      <filePath value="E:\src\GoRoot\src\github.com\ruslanfedoseenko\dhtcrawler\Spider\Spider.go" />
-      <kind value="PACKAGE" />
-      <package value="github.com/ruslanfedoseenko/dhtcrawler/spider" />
-      <method />
-    </configuration>
-    <configuration default="false" name="spider-http" type="GoApplicationRunConfiguration" factoryName="Go Application">
-      <output_file path="E:\src\GoRoot\src\github.com\ruslanfedoseenko\dhtcrawler\bin" />
-      <module name="dhtcrawler" />
-      <working_directory value="E:\src\GoRoot\src\github.com\ruslanfedoseenko\dhtcrawler\" />
-      <envs>
         <env name="GOOS" value="linux" />
-        <env name="GOARCH" value="amd64" />
       </envs>
-      <filePath value="E:\src\GoRoot\src\github.com\ruslanfedoseenko\dhtcrawler\backend.go" />
       <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$" />
       <package value="github.com/ruslanfedoseenko/dhtcrawler/Backend" />
-      <method />
+      <directory value="$PROJECT_DIR$" />
+      <output_directory value="F:\GoRoot\src\github.com\ruslanfedoseenko\dhtcrawler\bin" />
+      <option name="run" value="false" />
     </configuration>
-    <configuration default="false" name="spider-master" type="GoApplicationRunConfiguration" factoryName="Go Application">
-      <output_file path="E:\src\GoRoot\src\github.com\ruslanfedoseenko\dhtcrawler\bin" />
+    <configuration name="spider-master" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="dhtcrawler" />
       <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
       <envs>
-        <env name="GOOS" value="linux" />
         <env name="GOARCH" value="amd64" />
+        <env name="GOOS" value="linux" />
       </envs>
-      <filePath value="E:\src\GoRoot\src\github.com\ruslanfedoseenko\dhtcrawler\RpcMaster\RpcMaster.go" />
       <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$" />
       <package value="github.com/ruslanfedoseenko/dhtcrawler/RpcMaster" />
-      <method />
+      <directory value="$PROJECT_DIR$" />
+      <output_directory value="F:\GoRoot\src\github.com\ruslanfedoseenko\dhtcrawler\bin" />
+      <option name="run" value="false" />
+    </configuration>
+    <configuration name="spider" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="dhtcrawler" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <envs>
+        <env name="GOARCH" value="amd64" />
+        <env name="GOOS" value="linux" />
+      </envs>
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$" />
+      <package value="github.com/ruslanfedoseenko/dhtcrawler/Spider" />
+      <directory value="$PROJECT_DIR$" />
+      <output_directory value="F:\GoRoot\src\github.com\ruslanfedoseenko\dhtcrawler\bin" />
+      <option name="run" value="false" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
     <list size="3">
-      <item index="0" class="java.lang.String" itemvalue="Go Application.spider" />
-      <item index="1" class="java.lang.String" itemvalue="Go Application.spider-http" />
-      <item index="2" class="java.lang.String" itemvalue="Go Application.spider-master" />
+      <item index="0" class="java.lang.String" itemvalue="Go Build.spider http" />
+      <item index="1" class="java.lang.String" itemvalue="Go Build.spider" />
+      <item index="2" class="java.lang.String" itemvalue="Go Build.spider-master" />
     </list>
-  </component>
-  <component name="SFStoredExecutionPersistentComponent">
-    <executions>
-      <execution name="Default" sourceToExecute="" />
-    </executions>
-    <lastSelectedExecutionName>Default</lastSelectedExecutionName>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -731,584 +482,512 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7eb11d8e-28f8-499d-a4dc-32432bea4c09" name="Default" comment="" />
-      <created>1485885415599</created>
+      <changelist id="7189115d-3d33-4b7a-bffe-2b144520efcd" name="Default" comment="" />
+      <created>1514981551802</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1485885415599</updated>
-      <workItem from="1485885416828" duration="6899000" />
-      <workItem from="1485899953614" duration="2431000" />
-      <workItem from="1485974072661" duration="115000" />
-      <workItem from="1485974215220" duration="24196000" />
-      <workItem from="1486041639672" duration="3249000" />
-      <workItem from="1486055019690" duration="27932000" />
-      <workItem from="1486123019766" duration="2900000" />
-      <workItem from="1486168515211" duration="2486000" />
-      <workItem from="1486214581826" duration="25788000" />
-      <workItem from="1486364671000" duration="3591000" />
-      <workItem from="1486472729086" duration="851000" />
-      <workItem from="1486488928361" duration="576000" />
-      <workItem from="1486489530030" duration="29700000" />
-      <workItem from="1486583378573" duration="20727000" />
-      <workItem from="1486614295193" duration="29593000" />
-      <workItem from="1486766376900" duration="7005000" />
-      <workItem from="1486811533632" duration="1871000" />
-      <workItem from="1486860335301" duration="28000" />
-      <workItem from="1487413903400" duration="3000" />
-      <workItem from="1487415557501" duration="5205000" />
-      <workItem from="1487432833869" duration="2221000" />
-      <workItem from="1487661893751" duration="2862000" />
-      <workItem from="1487831177906" duration="6278000" />
-      <workItem from="1487847658066" duration="40000" />
-      <workItem from="1487939508693" duration="9491000" />
-      <workItem from="1488010353440" duration="6543000" />
-      <workItem from="1488029000759" duration="6154000" />
-      <workItem from="1488574453343" duration="4894000" />
-      <workItem from="1488776559122" duration="962000" />
+      <updated>1514981551802</updated>
+      <workItem from="1514981554240" duration="86000" />
+      <workItem from="1514981655014" duration="19658000" />
+      <workItem from="1515017551271" duration="3167000" />
+      <workItem from="1515053937390" duration="1717000" />
+      <workItem from="1515055678397" duration="4857000" />
+      <workItem from="1515065479867" duration="378000" />
+      <workItem from="1515067513039" duration="3092000" />
     </task>
-    <task id="LOCAL-00001" summary="Add Missing IDEA project files.&#10;Split http backend and search crawler.&#10;Search items count optimization.">
-      <created>1485978873108</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1485978873108</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Start implementing distributed arch with transport over tcp RPC">
-      <created>1486094324265</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1486094324265</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="234591000" />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
+    <option name="totallyTimeSpent" value="32955000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1874" height="1096" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1867" height="1096" extended-state="6" />
     <layout>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.49779493" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32977587" sideWeight="0.49338478" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3276414" sideWeight="0.5352811" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.49338478" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15368196" sideWeight="0.4536935" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25720385" sideWeight="0.415656" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19459757" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="705" y="229" width="447" height="622" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32870865" sideWeight="0.46471885" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39761904" sideWeight="0.4911797" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug Logs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.49338478" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.49338478" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25358325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Salesforce" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.49558985" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26065302" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3340448" sideWeight="0.44597575" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug Logs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.49338478" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3276414" sideWeight="0.5352811" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.49338478" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25358325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3991462" sideWeight="0.4911797" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Salesforce" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.49558985" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.49779493" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.49338478" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3340448" sideWeight="0.44597575" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.49338478" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3276414" sideWeight="0.4536935" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25720385" sideWeight="0.415656" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25523704" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="705" y="229" width="447" height="622" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32870865" sideWeight="0.46471885" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32960325" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24959481" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="processedProjectFiles" value="true" />
-  </component>
-  <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USER_GROUPS">
-      <collection />
-    </option>
-    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-      <collection />
-    </option>
+    <option name="version" value="1" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add Missing IDEA project files.&#10;Split http backend and search crawler.&#10;Search items count optimization." />
-    <MESSAGE value="Start implementing distributed arch with transport over tcp RPC" />
-    <MESSAGE value="New UI&#10;Improvemnts in auto tagging system" />
-    <option name="LAST_COMMIT_MESSAGE" value="New UI&#10;Improvemnts in auto tagging system" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/../../../../../Go/src/github.com/ryanbradynd05/go-tmdb/main.go</url>
-          <line>2</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="8" />
+      <option name="time" value="1" />
     </breakpoint-manager>
     <watches-manager />
   </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../../../../Go/src/github.com/jinzhu/gorm/main.go">
+    <entry file="file://$PROJECT_DIR$/static/src/torrents">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="304" column="13" lean-forward="false" selection-start-line="304" selection-start-column="13" selection-end-line="304" selection-end-column="13" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../../Go/src/github.com/ryanbradynd05/go-tmdb/genres.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="16" column="18" lean-forward="false" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-        </state>
+    <entry file="file://$PROJECT_DIR$/static/src/assets/logo.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../../Go/src/github.com/ryanbradynd05/go-tmdb/search.go">
+    <entry file="file://$PROJECT_DIR$/static/src/components/TorrentList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="221" column="29" lean-forward="false" selection-start-line="221" selection-start-column="29" selection-end-line="221" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Go/src/net/http/header.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="37" column="16" lean-forward="false" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Go/src/net/http/response.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="124" column="25" lean-forward="false" selection-start-line="124" selection-start-column="25" selection-end-line="124" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../../Go/src/github.com/ryanbradynd05/go-tmdb/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="47" column="25" lean-forward="true" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
+        <state relative-caret-position="799">
+          <caret line="47" column="15" lean-forward="false" selection-start-line="47" selection-start-column="15" selection-end-line="47" selection-end-column="15" />
           <folding>
-            <element signature="e#14#107#0" expanded="false" />
-            <marker date="1487870250504" expanded="true" signature="812:2236" ph="{...}" />
-            <marker date="1487870250504" expanded="true" signature="1416:1737" ph="{...}" />
-            <marker date="1487870250504" expanded="true" signature="1565:1734" ph="{...}" />
+            <element signature="n#style#0;n#v-layout#0;n#v-footer#0;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../../Go/src/gopkg.in/fatih/set.v0/set.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="94" column="5" lean-forward="false" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Go/src/strings/strings.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-106">
-          <caret line="308" column="5" lean-forward="false" selection-start-line="308" selection-start-column="5" selection-end-line="308" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Config/Configuration.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="26" column="23" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2754">
-          <caret line="162" column="4" lean-forward="false" selection-start-line="19" selection-start-column="1" selection-end-line="162" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../../Go/src/github.com/ryanbradynd05/go-tmdb/configuration.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="5" lean-forward="false" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="1" lean-forward="false" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/ScrapeTorrentResult.go">
+    <entry file="file://$PROJECT_DIR$/static/.eslintrc.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/PaginatedTorrentsResponse.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/Tag.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Services/TagProducer/tokenExistenceTagProducer.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/src/app/theme.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/CountEstimateHolder.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="5" lean-forward="false" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Models/SearchSuggestResponse.go">
+    <entry file="file://$PROJECT_DIR$/static/node_modules/vuex/types/helpers.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="1037">
+          <caret line="62" column="38" lean-forward="false" selection-start-line="62" selection-start-column="38" selection-end-line="62" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/build/main.css">
+    <entry file="file://$PROJECT_DIR$/Routers/TorrentsListHandler.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        <state relative-caret-position="510">
+          <caret line="37" column="33" lean-forward="true" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/webpack-production.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="9" lean-forward="false" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/build/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1114923">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Services/TagProducer/specialTagsProducer.go">
+    <entry file="file://$PROJECT_DIR$/static/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
-          <folding />
+          <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Services/DhtCrawler.go">
+    <entry file="file://$PROJECT_DIR$/static/src/router/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1904">
-          <caret line="122" column="54" lean-forward="false" selection-start-line="122" selection-start-column="54" selection-end-line="122" selection-end-column="54" />
-          <folding />
+        <state relative-caret-position="221">
+          <caret line="15" column="29" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Models/Torrent.go">
+    <entry file="file://$PROJECT_DIR$/static/src/store/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="5" lean-forward="false" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
-          <folding />
+        <state relative-caret-position="748">
+          <caret line="45" column="13" lean-forward="false" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../../Go/src/github.com/valyala/gorpc/dispatcher.go">
+    <entry file="file://$PROJECT_DIR$/static/src/assets/logo.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/src/components/TorrentList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8466">
-          <caret line="507" column="28" lean-forward="false" selection-start-line="507" selection-start-column="28" selection-end-line="507" selection-end-column="28" />
-          <folding />
+        <state relative-caret-position="918">
+          <caret line="54" column="10" lean-forward="false" selection-start-line="54" selection-start-column="10" selection-end-line="54" selection-end-column="10" />
+          <folding>
+            <element signature="n#style#0;n#v-layout#0;n#v-footer#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Services/rpc/RpClient.go">
+    <entry file="file://$PROJECT_DIR$/static/node_modules/vuex/types/helpers.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="31" column="50" lean-forward="false" selection-start-line="31" selection-start-column="50" selection-end-line="31" selection-end-column="50" />
+        <state relative-caret-position="1037">
+          <caret line="62" column="38" lean-forward="false" selection-start-line="62" selection-start-column="38" selection-end-line="62" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1870">
+          <caret line="110" column="0" lean-forward="true" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#v-layout#0;n#v-toolbar#0;n#v-app#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#v-layout#1;n#v-toolbar#0;n#v-app#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/src/store/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="61" column="22" lean-forward="false" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/src/router/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="15" column="29" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/src/assets/logo.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/src/components/TorrentList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="48" column="36" lean-forward="false" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
+          <folding>
+            <element signature="n#style#0;n#v-layout#0;n#v-footer#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2278">
+          <caret line="134" column="20" lean-forward="false" selection-start-line="134" selection-start-column="20" selection-end-line="134" selection-end-column="20" />
+          <folding>
+            <element signature="n#style#0;n#v-layout#0;n#v-toolbar#0;n#v-app#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#v-layout#1;n#v-toolbar#0;n#v-app#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#v-layout#0;n#v-toolbar#0;n#v-app#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#v-layout#1;n#v-toolbar#0;n#v-app#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/src/components/HelloWorld.vue" />
+    <entry file="file://$PROJECT_DIR$/static/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/src/assets/logo.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/node_modules/vuex/types/helpers.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="62" column="38" lean-forward="false" selection-start-line="62" selection-start-column="38" selection-end-line="62" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/dist/static/css/app.3f6557394247b59ec66587c2179745f0.css" />
+    <entry file="file://$PROJECT_DIR$/static/src/torrents">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Routers/TorrentsListHandler.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="19" column="40" lean-forward="false" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Routers/Router.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="51" column="23" lean-forward="false" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/.eslintrc.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="48" lean-forward="false" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Services/rpc/TorrentRpcService.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="39" column="27" lean-forward="false" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
+        <state relative-caret-position="187">
+          <caret line="18" column="22" lean-forward="false" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Services/rpc/RpcServer.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="23" column="11" lean-forward="false" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RpcMaster/RpcMaster.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Services/TagProducer/tokenExistenceTagProducer.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Services/TagProducer/TorrentTagsProducer.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2295">
-          <caret line="146" column="61" lean-forward="false" selection-start-line="146" selection-start-column="43" selection-end-line="146" selection-end-column="61" />
-          <folding>
-            <marker date="1487947617402" expanded="true" signature="2310:2312" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Utils/ZombodbQueryBuilder.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="30" column="59" lean-forward="false" selection-start-line="30" selection-start-column="59" selection-end-line="30" selection-end-column="59" />
-          <folding>
-            <element signature="e#15#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Services/rpc/ScrapeRcpService.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="45" column="6" lean-forward="false" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Services/scraper.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../../Go/src/github.com/op/go-logging/log_windows.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="71" column="5" lean-forward="false" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Backend.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="49" column="44" lean-forward="false" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/Title.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/src/app/Formaters.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Routers/TorrentInfoHandler.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="47" lean-forward="false" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Routers/TorrentsListHandler.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="48" lean-forward="false" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Routers/SearchSuggestHandler.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="49" lean-forward="false" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/src/www/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="21" column="4" lean-forward="false" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Utils/SliceUtils.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="15" column="16" lean-forward="false" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Routers/TorrentSearchHandler.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="17" column="49" lean-forward="false" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
-          <folding>
-            <element signature="e#17#245#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/src/app/TorrentStatsCountUp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="27" column="16" lean-forward="false" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/src/app/TorrentsList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="179" column="21" lean-forward="false" selection-start-line="179" selection-start-column="21" selection-end-line="179" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/src/app/SideBarMenu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="32" column="12" lean-forward="false" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+        <state relative-caret-position="2329">
+          <caret line="148" column="52" lean-forward="false" selection-start-line="148" selection-start-column="52" selection-end-line="148" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Services/TagProducer/specialVideoTagProducer.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="34" column="15" lean-forward="false" selection-start-line="34" selection-start-column="15" selection-end-line="34" selection-end-column="15" />
+        <state relative-caret-position="408">
+          <caret line="29" column="35" lean-forward="false" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/src/www/index.html">
+    <entry file="file://$PROJECT_DIR$/static/src/App.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="33" column="23" lean-forward="false" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Routers/Router.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="32" column="18" lean-forward="false" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/src/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="99" column="12" lean-forward="false" selection-start-line="99" selection-start-column="12" selection-end-line="99" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Services/TagProducer/VideoInfoExtractor.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="120" column="17" lean-forward="false" selection-start-line="120" selection-start-column="17" selection-end-line="120" selection-end-column="17" />
+        <state relative-caret-position="321">
+          <caret line="93" column="19" lean-forward="false" selection-start-line="93" selection-start-column="19" selection-end-line="93" selection-end-column="19" />
           <folding>
-            <element signature="e#21#266#0" expanded="true" />
+            <element signature="n#style#0;n#v-layout#0;n#v-toolbar#0;n#v-app#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#v-layout#1;n#v-toolbar#0;n#v-app#0;n#template#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/webpack-dev-server.config.js">
+    <entry file="file://$PROJECT_DIR$/static/src/router/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="51" column="60" lean-forward="true" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="60" />
+        <state relative-caret-position="340">
+          <caret line="22" column="6" lean-forward="false" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="e#140#161#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/src/store/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="53" column="4" lean-forward="false" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/src/components/TorrentList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="80" column="30" lean-forward="false" selection-start-line="80" selection-start-column="30" selection-end-line="80" selection-end-column="30" />
+          <folding>
+            <element signature="n#style#0;n#v-layout#0;n#v-footer#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/build/build.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/config/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-798">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/config/dev.env.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/test/unit/setup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/test/unit/jest.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/dist/static/css/app.a2e7e738c32d18ff0506a40477525a86.css.map">
+      <provider editor-type-id="sourcemapFileViewerProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/dist/static/css/app.a2e7e738c32d18ff0506a40477525a86.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/test/unit/specs/HelloWorld.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

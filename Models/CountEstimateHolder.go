@@ -1,6 +1,5 @@
 package Models
 
-
-type ZdbEstimateCountHolder struct{
+type ZdbEstimateCountHolder struct {
 	Count uint64
 }

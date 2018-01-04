@@ -2,11 +2,12 @@ package Services
 
 import (
 	"github.com/jasonlvhit/gocron"
-	"time"
-	"github.com/ruslanfedoseenko/dhtcrawler/Models"
-	"github.com/ruslanfedoseenko/dhtcrawler/Config"
 	"github.com/op/go-logging"
+	"github.com/ruslanfedoseenko/dhtcrawler/Config"
+	"github.com/ruslanfedoseenko/dhtcrawler/Models"
+	"time"
 )
+
 var statsUpdLog = logging.MustGetLogger("StatsUpdater")
 
 type StatsUpdater struct {

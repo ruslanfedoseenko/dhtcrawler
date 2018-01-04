@@ -3,10 +3,10 @@ package Routers
 import (
 	"encoding/json"
 	"github.com/julienschmidt/httprouter"
+	"github.com/ruslanfedoseenko/dhtcrawler/Models"
 	"log"
 	"net/http"
 	"strconv"
-	"github.com/ruslanfedoseenko/dhtcrawler/Models"
 )
 
 func TorrentsListHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
@@ -37,7 +37,7 @@ func TorrentsListHandler(w http.ResponseWriter, r *http.Request, ps httprouter.P
 		Preload("Files").Preload("Titles").Preload("Tags").
 		Model(&Models.Torrent{}).
 		Limit(itemsPerPage).
-		Offset((page - uint64(1)) * itemsPerPage).
+		Offset((page - uint64(1)) * itemsPerPage).Order("id desc").
 		Find(&torrents).Error
 
 	for i := range torrents {
@@ -50,12 +50,12 @@ func TorrentsListHandler(w http.ResponseWriter, r *http.Request, ps httprouter.P
 	log.Println("Total items count:", itemsCount)
 
 	var pageCountFix uint64 = 0
-	if itemsCount % itemsPerPage != 0 {
+	if itemsCount%itemsPerPage != 0 {
 		pageCountFix = 1
 	}
 	paginatedResponse := Models.PaginatedTorrentsResponse{
 		Torrents:     torrents,
-		PageCount:    itemsCount / itemsPerPage + pageCountFix,
+		PageCount:    itemsCount/itemsPerPage + pageCountFix,
 		ItemsCount:   itemsCount,
 		Page:         page,
 		ItemsPerPage: itemsPerPage,

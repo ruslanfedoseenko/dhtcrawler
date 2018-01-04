@@ -1,14 +1,13 @@
 package tracker
 
 import (
-
 	"fmt"
-	"net/http"
-	"net/url"
 	"github.com/anacrolix/missinggo/httptoo"
 	"log"
+	"net/http"
+	"net/url"
 
- 	"github.com/zeebo/bencode"
+	"github.com/zeebo/bencode"
 )
 
 type HttpScrapeResponse struct {
@@ -42,15 +41,15 @@ func scrapeHTTP(sr *ScrapeRequest, _url *url.URL) (ret ScrapeResponse, err error
 		err = fmt.Errorf("response from tracker: %s:", resp.Status)
 		return
 	}
-	var httpResponse HttpScrapeResponse;
+	var httpResponse HttpScrapeResponse
 
 	decoder := bencode.NewDecoder(resp.Body)
 	err = decoder.Decode(&httpResponse)
 
 	ret.ScrapeDatas = make(map[string]ScrapeTorrentInfo)
 	//log.Println("Bytes:", string(bytesArr), "decoded as:")
-	for key, value := range  httpResponse.Files {
-		var infoHash Hash;
+	for key, value := range httpResponse.Files {
+		var infoHash Hash
 		infoHash.FromString(key)
 		ret.ScrapeDatas[infoHash.HexString()] = value
 	}

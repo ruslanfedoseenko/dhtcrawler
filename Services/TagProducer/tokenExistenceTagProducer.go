@@ -6,15 +6,15 @@ type tokenExistenceTagProducer struct {
 }
 
 func (p tokenExistenceTagProducer) SatisfyTag(torrentTokens []string) bool {
-	tokensLen := len(torrentTokens);
+	tokensLen := len(torrentTokens)
 	for i := 0; i < tokensLen; i++ {
 		if _, ok := p.tokens[torrentTokens[i]]; ok {
-			return true;
+			return true
 		}
 	}
-	return false;
+	return false
 }
 
 func (p tokenExistenceTagProducer) GetTag() string {
-	return p.tag;
+	return p.tag
 }

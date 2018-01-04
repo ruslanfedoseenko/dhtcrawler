@@ -4,10 +4,10 @@ import (
 	"github.com/abbot/go-http-auth"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/julienschmidt/httprouter"
+	"github.com/ruslanfedoseenko/dhtcrawler/Config"
 	"log"
 	"net/http"
 	"path"
-	"github.com/ruslanfedoseenko/dhtcrawler/Config"
 )
 
 var App *Config.App
@@ -75,6 +75,7 @@ func Setup(app *Config.App) {
 		router.ServeFiles("/index/*filepath", http.Dir(App.Config.HttpConfig.StaticDataFolder))
 
 		hs := make(HostSwitch)
+		hs["btoogle.com"] = router
 		hs["search.cutetorrent.info"] = router
 		hs["localhost:6060"] = router
 

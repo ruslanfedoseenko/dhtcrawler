@@ -5,13 +5,13 @@ import (
 	"encoding/binary"
 	"errors"
 	"fmt"
+	"github.com/ruslanfedoseenko/dhtcrawler/Utils"
 	"io"
 	"log"
 	"math/rand"
 	"net"
 	"net/url"
 	"time"
-	"github.com/ruslanfedoseenko/dhtcrawler/Utils"
 )
 
 type Action int32

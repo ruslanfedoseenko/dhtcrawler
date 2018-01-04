@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/ruslanfedoseenko/dhtcrawler/Services"
-	"github.com/ruslanfedoseenko/dhtcrawler/Config"
 	"github.com/op/go-logging"
+	"github.com/ruslanfedoseenko/dhtcrawler/Config"
+	"github.com/ruslanfedoseenko/dhtcrawler/Services"
 	"log"
 	"os"
 )
@@ -16,9 +16,10 @@ var logger = logging.MustGetLogger("Spider")
 var format = logging.MustStringFormatter(
 	`%{color}%{time:15:04:05.000} %{module} %{shortfunc} - %{level:.4s} %{color:reset}: %{message}`,
 )
+
 func main() {
 
-	setupLog();
+	setupLog()
 
 	app := Config.NewApp()
 
@@ -26,9 +27,8 @@ func main() {
 	app.Run()
 }
 
-
-func setupLog(){
-	file,err := os.OpenFile("spider-master.log", os.O_APPEND|os.O_WRONLY| os.O_CREATE, 0666)
+func setupLog() {
+	file, err := os.OpenFile("spider-master.log", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0666)
 	if err != nil {
 		log.Println(err)
 	}

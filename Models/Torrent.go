@@ -1,15 +1,14 @@
 package Models
 
-
 type Torrent struct {
-	Id             int32           		`gorm:"primary_key;AUTO_INCREMENT" json:"-"`
-	Infohash       string          		`gorm:"size:40"`
-	Name           string          		`gorm:"column:name;size:250"`
-	ScraperResults []ScrapeTorrentResult 	`gorm:"ForeignKey:TorrentId" json:"TrackersInfo,omitempty"`
-	Files          []File          		`gorm:"ForeignKey:TorrentId" json:"-"`
-	FilesTree      []FileTreeItem  		`gorm:"-" json:"FilesTree"`
-	Titles         []Title         		`gorm:"many2many:torrent_to_title" json:"Titles,omitempty"`
-	Tags           []Tag			`gorm:"many2many:torrent_tags" json:"Tags,omitempty"`
+	Id             int32                 `gorm:"primary_key;AUTO_INCREMENT" json:"-"`
+	Infohash       string                `gorm:"size:40"`
+	Name           string                `gorm:"column:name;size:250"`
+	ScraperResults []ScrapeTorrentResult `gorm:"ForeignKey:TorrentId" json:"TrackersInfo,omitempty"`
+	Files          []File                `gorm:"ForeignKey:TorrentId" json:"-"`
+	FilesTree      []FileTreeItem        `gorm:"-" json:"FilesTree"`
+	Titles         []Title               `gorm:"many2many:torrent_to_title" json:"Titles,omitempty"`
+	Tags           []Tag                 `gorm:"many2many:torrent_tags" json:"Tags,omitempty"`
 }
 
 func (Torrent) TableName() string {
