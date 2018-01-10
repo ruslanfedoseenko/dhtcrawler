@@ -6,6 +6,7 @@
     <v-navigation-drawer
       fixed
       clipped
+      temporary
       v-model="drawer"
       app
     >
@@ -26,12 +27,6 @@
             <v-list-tile-title v-text="item.text"/>
           </v-list-tile>
         </v-list>
-        <v-list-tile class="mt-3" @click="">
-          <v-list-tile-action>
-            <v-icon color="grey darken-1">add_circle_outline</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title class="grey--text text--darken-1">Browse Channels</v-list-tile-title>
-        </v-list-tile>
         <v-list-tile @click="">
           <v-list-tile-action>
             <v-icon color="grey darken-1">settings</v-icon>
@@ -44,49 +39,63 @@
       <v-toolbar-title>
         <v-toolbar-side-icon @click="toggleDrawler"/>
       </v-toolbar-title>
-      <v-layout row align-center style="max-width: 550px">
-        <h2 class="ml-0 pl-3">Torrent Search Engine</h2>
+      <v-layout row align-center style="max-width: 150px">
+        <v-flex class="text-xs-center" pa-2>
+          <router-link :to="{name: 'HomePage'}">
+          <img src="/static/logo.png" width="100" style="margin-top: 10px" alt="avatar">
+          </router-link>
+        </v-flex>
       </v-layout>
       <v-layout row align-center style="max-width: 650px">
-        <v-text-field
-          placeholder="Search..."
-          single-line
-          append-icon="search"
-          :append-icon-cb="() => {}"
-          v-model="searchText"
-          class="white--text"
-          hide-details
-        />
+        <v-form @submit.prevent="performSearch" ref="form" lazy-validation>
+          <v-text-field v-if="enableSearch"
+                        placeholder="Search..."
+                        single-line
+                        append-icon="search"
+                        :append-icon-cb="performSearch"
+                        v-model="searchText"
+                        :rules="[rules.minLength]"
+                        dark
+                        hide-details
+          />
+        </v-form>
       </v-layout>
     </v-toolbar>
     <v-content>
-      <v-container justify-space-around fill-height>
-        <v-layout justify-space-around align-content-end>
+
           <router-view/>
-        </v-layout>
-      </v-container>
+        <btoogle-footer/>
     </v-content>
   </v-app>
 </template>
 
 <script>
-  import TorrentList from './components/TorrentList'
-
   export default {
-    components: {TorrentList},
     data: () => ({
       drawer: false,
       menuItems: [
         {icon: 'trending_up', text: 'Most Popular'}
       ],
-      items2: []
+      items2: [],
+      rules: {
+        minLength: (value) => value.length >= 3 || 'Enter 3 or more chars'
+      }
     }),
     methods: {
       toggleDrawler() {
         this.drawer = !this.drawer
+      },
+      performSearch() {
+        if (this.$refs.form.validate()) {
+          this.$store.commit('ChangeSearch', this.searchText)
+          this.$router.push({name: 'SearchTorrentList', params: {search: this.searchText}})
+        }
       }
     },
     computed: {
+      enableSearch() {
+        return (this.$route.name !== 'HomePage' && this.$route.name !== 'MaintenancePage')
+      },
       searchText: {
         get() {
           return this.$store.state.searchTerm
@@ -128,9 +137,11 @@
     direction: ltr;
     -webkit-font-smoothing: antialiased;
   }
+
   .pagination__item {
     max-width: 100px;
     min-width: 34px;
-    width: 55px;
+    width: auto !important;
+    padding: 0 6px;
   }
 </style>

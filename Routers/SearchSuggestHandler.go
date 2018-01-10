@@ -17,9 +17,10 @@ func SearchSuggestHandler(w http.ResponseWriter, r *http.Request, ps httprouter.
 	words := strings.Split(searchTerm, " ")
 	lastWord := words[len(words)-1]
 	App.Db.Debug().
-		Table("zdb_termlist('torrents', 'name', '" + lastWord + "', NULL, 10) ").
+		Table("zdb_termlist('torrents', 'name_autocomplete', '" + lastWord + "', NULL, 5000) ").
 		Select("term as name").
 		Order("totalfreq desc").
+		Limit(25).
 		Find(&torrents)
 	var response Models.SearchSuggestResponse
 	response.Suggestions = make([]string, len(torrents))

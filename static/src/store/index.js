@@ -8,7 +8,8 @@ export default new vuex.Store({
     torrents: [],
     page: 0,
     searchTerm: '',
-    pageCount: 0
+    pageCount: 0,
+    torrentDetails: {}
   },
   getters: {
     getPage: state => {
@@ -30,20 +31,28 @@ export default new vuex.Store({
     },
     ChangeTorrents(state, torrents) {
       state.torrents = torrents
+    },
+    ChangeTorrentDetails(state, torrent) {
+      state.torrentDetails = torrent
     }
   },
   actions: {
     fetchTorrents(ctx) {
-      return Vue.http.get('/torrents').then(resp => {
+      return Vue.http.get('/api/torrents/').then(resp => {
         ctx.commit('ChangeTorrents', resp.body.Torrents || [])
         ctx.commit('ChangePageCount', resp.body.PageCount || 0)
         ctx.commit('ChangePage', resp.body.Page || 0)
       })
     },
+    fetchTorrent(ctx, infoHash) {
+      return Vue.http.get('/api/torrent/info/' + infoHash).then(res => {
+        ctx.commit('ChangeTorrentDetails', res.body)
+      })
+    },
     fetchTorrentsPaged(ctx, page) {
-      let url = '/torrents'
+      let url = '/api/torrents/'
       if (page && page > 1) {
-        url += '/page/' + page
+        url += 'page/' + page
       }
       return Vue.http.get(url).then(resp => {
         ctx.commit('ChangeTorrents', resp.body.Torrents || [])
@@ -51,8 +60,9 @@ export default new vuex.Store({
         ctx.commit('ChangePage', resp.body.Page || 0)
       })
     },
-    searchTorrents(ctx, searchText) {
-      return Vue.http.get('/torrents/search/' + encodeURIComponent(searchText)).then(resp => {
+    searchTorrents(ctx, searchArgs) {
+      let searchText = searchArgs.search || ''
+      return Vue.http.get('/api/torrents/search/' + encodeURIComponent(searchText)).then(resp => {
         if (ctx.state.page !== 1) {
           ctx.commit('ChangePage', 1)
         }
@@ -60,8 +70,10 @@ export default new vuex.Store({
         ctx.commit('ChangePageCount', resp.body.PageCount || 0)
       })
     },
-    searchTorrentsPaged(ctx, searchText, page) {
-      return Vue.http.get('/torrents/search/' + encodeURIComponent(searchText) + '/page/' + page).then(resp => {
+    searchTorrentsPaged(ctx, searchArgs) {
+      let searchText = searchArgs.search || ''
+      let page = searchArgs.page || 1
+      return Vue.http.get('/api/torrents/search/' + encodeURIComponent(searchText) + '/page/' + page).then(resp => {
         ctx.commit('ChangeTorrents', resp.body.Torrents || [])
         ctx.commit('ChangePageCount', resp.body.PageCount || 0)
         ctx.commit('ChangePage', resp.body.Page || 0)

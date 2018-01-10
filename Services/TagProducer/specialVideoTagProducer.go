@@ -29,7 +29,7 @@ func (vtp *videoTagProducer) SatisfyTag(torrentTokens []string) bool {
 func (vtp *videoTagProducer) GetTags(torrent *Models.Torrent) []string {
 	TagProducerLog.Info("GetTags", vtp, vtp.videoInfoExtractor)
 	titles := vtp.videoInfoExtractor.GetAssociatedVideos(VideoInfoExtractWork{Name: torrent.Name, })
-
+	torrent.Titles = titles;
 	titlesLen := len(titles)
 	tags := make([]string, 0, titlesLen * 5)
 	for i := 0; i < titlesLen; i++ {

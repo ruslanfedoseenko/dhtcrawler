@@ -14,11 +14,12 @@ type FileTreeItem struct {
 func (fti *FileTreeItem) AddPath(path string, size int, icon string, folderIcon string) bool {
 	pathParts := strings.Split(path, "/")
 	pathPartsLen := len(pathParts)
+	fti.Icon = folderIcon
 	if fti.Name != pathParts[0] {
 		return false
 	}
 	if len(fti.Children) == 0 {
-		var currentItem *FileTreeItem = fti
+		var currentItem = fti
 		for i := 1; i < pathPartsLen; i++ {
 			item := new(FileTreeItem)
 			item.Name = pathParts[i]
@@ -61,15 +62,15 @@ func (fti *FileTreeItem) AddPath(path string, size int, icon string, folderIcon 
 
 func initFileTreeItem(path string, size int) FileTreeItem {
 	pathParts := strings.Split(path, "/")
-	var result FileTreeItem = FileTreeItem{
+	var result = FileTreeItem{
 		Name: pathParts[0],
 		Size: size,
 	}
 	if len(pathParts) > 1 {
-		result.AddPath(path, size, "fa-film", "fa-folder")
+		result.AddPath(path, size, "insert_drive_file", "folder")
 	} else {
 
-		result.Icon = "fa-film"
+		result.Icon = "insert_drive_file"
 
 	}
 
@@ -99,7 +100,7 @@ func BuildTree(fileList []File) []FileTreeItem {
 			result = append(result, initFileTreeItem(file.Path, file.Size))
 		} else {
 			result[childIndex].Size += file.Size
-			result[childIndex].AddPath(file.Path, file.Size, "fa-film", "fa-folder")
+			result[childIndex].AddPath(file.Path, file.Size, "insert_drive_file", "folder")
 		}
 	}
 

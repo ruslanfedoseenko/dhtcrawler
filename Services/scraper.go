@@ -16,6 +16,7 @@ var scrapeerLog = logging.MustGetLogger("Scraper")
 
 type Scraper struct {
 	workersDone sync.WaitGroup
+	isAlreadyWaiting bool
 	quit        chan bool
 	numThreads  int
 	trackerUrls []string
@@ -49,7 +50,12 @@ func (s *Scraper) Start() {
 }
 func (s *Scraper) startInternal() {
 	scrapeerLog.Info("waiting for previos task")
+	if s.isAlreadyWaiting {
+		return
+	}
+	s.isAlreadyWaiting = true;
 	s.workersDone.Wait()
+	s.isAlreadyWaiting = false;
 	scrapeerLog.Info("waiting for previos task completed")
 	s.initChannels()
 	s.workersDone.Add(s.numThreads)

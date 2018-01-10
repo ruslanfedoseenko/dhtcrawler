@@ -26,9 +26,6 @@ func (hs HostSwitch) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Forbidden", 403) // Or Redirect?
 	}
 }
-func IndexRedirect(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	http.Redirect(w, r, "/index/", 301)
-}
 
 func Secret(user, realm string) string {
 	users := map[string]string{
@@ -59,9 +56,7 @@ func Setup(app *Config.App) {
 	App = app
 	go func() {
 		router := httprouter.New()
-		router.GET("/", IndexRedirect)
 		router.GET("/search/suggest/:term", SearchSuggestHandler)
-
 		router.GET("/torrents/count/", TorrentCountHandler)
 		router.GET("/torrent/info/:infohash", TorrentInfoHandler)
 		router.GET("/torrents/", TorrentsListHandler)
