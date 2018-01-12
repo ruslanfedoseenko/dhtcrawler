@@ -1,3 +1,4 @@
+// @SubApi Search Helper API [/search]
 package Routers
 
 import (
@@ -8,6 +9,15 @@ import (
 	"net/http"
 	"strings"
 )
+
+// @Title SearchSuggestHandler
+// @Description retrieves suggestion for input search string
+// @Accept  json
+// @Produce  json
+// @Param   term     path    string     true        "Value of Search imput"
+// @Success 200 {array}  dhtcrawler.Model.SearchSuggestResponse
+// @Failure 400 {object} error    "Customer ID must be specified"
+// @Router /search/suggest/{term} [get]
 
 func SearchSuggestHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	searchTerm := ps.ByName("term")

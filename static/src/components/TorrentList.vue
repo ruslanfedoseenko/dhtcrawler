@@ -16,7 +16,7 @@
           <v-list v-if="loading === false" two-line>
             <template v-for='item in items'>
 
-              <v-list-tile @click="navigateDetails(item)">
+              <v-list-tile @click.prevent="navigateDetails(item)">
                 <v-list-tile-content>
                   <v-list-tile-title v-html="item.Name"/>
                   <v-list-tile-sub-title>
@@ -38,7 +38,7 @@
           <btoogle-footer>
             <v-layout row justify-center>
               <v-flex xs6 offset-xs1>
-                <v-pagination v-bind:length.sync="pageCount" total-visible="10" v-model="currentPage"/>
+                <v-pagination v-bind:length.sync="pageCount" :total-visible="10" v-model="currentPage" v-bind:disabled="loading === true"/>
               </v-flex>
             </v-layout>
           </btoogle-footer>
@@ -82,6 +82,7 @@
         if (this.$route.params.search) {
           this.searchText = this.$route.params.search
         }
+        this.loadData()
       },
       currentPage() {
         this.updateRoute()
@@ -120,6 +121,9 @@
           this.curentLoad.abort()
         }
         */
+        if (this.loading) {
+          return
+        }
         this.loading = true
         if (this.searchText) {
           this.curentLoad = this.searchTorrentsPaged({search: this.searchText, page: this.currentPage}).then(_ => {
@@ -150,11 +154,11 @@
         return this.$store.state.torrents
       },
       pageCount() {
-        return this.$store.state.pageCount
+        return parseInt(this.$store.state.pageCount)
       },
       currentPage: {
         get() {
-          return this.$store.state.page
+          return parseInt(this.$store.state.page)
         },
         set(value) {
           this.$store.commit('ChangePage', value)

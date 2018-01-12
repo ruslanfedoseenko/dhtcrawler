@@ -10,15 +10,17 @@ import 'vuetify/dist/vuetify.css'
 import Raven from 'raven-js'
 import RavenVue from 'raven-js/plugins/vue'
 import commonFooter from './components/Footer'
-
+import chart from './components/Chart'
+import SearchField from './components/SearchField'
 Raven
   .config('https://51ce0777a50a4e9683b5cc163ba1a667@sentry.io/266977')
   .addPlugin(RavenVue, Vue)
   .install()
 Vue.use(vueresource)
 Vue.use(vuetify)
+Vue.component('line-chart', chart)
 Vue.component('btoogle-footer', commonFooter)
-
+Vue.component('btoogle-search-field', SearchField)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

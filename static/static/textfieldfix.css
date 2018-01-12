@@ -1,13 +1,3 @@
-.theme--dark .input-group:not(.input-group--error) .input-group__details:before,
-.application .theme--dark.input-group:not(.input-group--error) .input-group__details:before {
-  background-color: transparent !important;
-}
-.theme--dark .input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled):not(.input-group--disabled):not(.input-group--overflow):not(.input-group--segmented):not(.input-group--editable):hover .input-group__details:before,
-.application .theme--dark.input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled):not(.input-group--disabled):not(.input-group--overflow):not(.input-group--segmented):not(.input-group--editable):hover .input-group__details:before {
-  background-color: transparent !important;
-}
-
-.theme--dark .input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled):not(.input-group--disabled):not(.input-group--overflow):not(.input-group--segmented):not(.input-group--editable):focus .input-group__details:before,
-.application .theme--dark.input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled):not(.input-group--disabled):not(.input-group--overflow):not(.input-group--segmented):not(.input-group--editable):focus .input-group__details:before {
-  background-color: transparent !important;
+.menu-content-bg-fix{
+  background: #424242;
 }

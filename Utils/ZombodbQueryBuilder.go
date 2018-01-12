@@ -9,7 +9,7 @@ func tokenizer(c rune) bool {
 	return strings.ContainsRune(" #''\":*~?!%(),<=>[]^{}\r\n\t\f.", c)
 }
 
-func ZdbBuildQuery(field, searchRequest string) string {
+func ZdbBuildQuery(field, searchRequest string, offset, limit uint64) string {
 	words := strings.FieldsFunc(searchRequest, tokenizer)
 	wordsLen := len(words)
 	fixedTerm := strings.Join(words, " ")
@@ -26,9 +26,9 @@ func ZdbBuildQuery(field, searchRequest string) string {
 
 	var nameQuery string
 	if wordsLen == 1 {
-		nameQuery = " '" + field + ":(" + words[0] + ")'"
+		nameQuery = " '#limit(_score desc,"+strconv.FormatUint(offset, 10)+"," + strconv.FormatUint(limit, 10) + ") " + field + ":(" + words[0] + ")'"
 	} else {
-		nameQuery = " '" + field + ":(" + fixedTerm + " or " + strings.Join(words, " or ") + ")'"
+		nameQuery = " '#limit(_score desc,"+strconv.FormatUint(offset, 10)+"," + strconv.FormatUint(limit, 10) + ") " + field + ":(" + fixedTerm + "," + strings.Join(words, ",") + ")'"
 	}
 
 	return nameQuery

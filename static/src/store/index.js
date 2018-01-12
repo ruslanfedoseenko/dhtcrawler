@@ -9,7 +9,9 @@ export default new vuex.Store({
     page: 0,
     searchTerm: '',
     pageCount: 0,
-    torrentDetails: {}
+    suggestions: [],
+    torrentDetails: {},
+    torrentStats: {}
   },
   getters: {
     getPage: state => {
@@ -20,6 +22,12 @@ export default new vuex.Store({
     }
   },
   mutations: {
+    ChangeTorrentStats(state, stats) {
+      state.torrentStats = stats
+    },
+    ChangeSuggestions(state, suggestions) {
+      state.suggestions = suggestions
+    },
     ChangeSearch(state, term) {
       state.searchTerm = term
     },
@@ -37,6 +45,16 @@ export default new vuex.Store({
     }
   },
   actions: {
+    fetchStats(ctx) {
+      return Vue.http.get('/api/torrents/stats/').then(resp => {
+        ctx.commit('ChangeTorrentStats', resp.body || {})
+      })
+    },
+    fetchSuggestions(ctx, input) {
+      return Vue.http.get('/api/search/suggest/' + encodeURIComponent(input)).then(resp => {
+        ctx.commit('ChangeSuggestions', resp.body.data || [])
+      })
+    },
     fetchTorrents(ctx) {
       return Vue.http.get('/api/torrents/').then(resp => {
         ctx.commit('ChangeTorrents', resp.body.Torrents || [])
@@ -45,14 +63,14 @@ export default new vuex.Store({
       })
     },
     fetchTorrent(ctx, infoHash) {
-      return Vue.http.get('/api/torrent/info/' + infoHash).then(res => {
+      return Vue.http.get('/api/torrent/info/' + encodeURIComponent(infoHash)).then(res => {
         ctx.commit('ChangeTorrentDetails', res.body)
       })
     },
     fetchTorrentsPaged(ctx, page) {
       let url = '/api/torrents/'
       if (page && page > 1) {
-        url += 'page/' + page
+        url += 'page/' + encodeURIComponent(page)
       }
       return Vue.http.get(url).then(resp => {
         ctx.commit('ChangeTorrents', resp.body.Torrents || [])

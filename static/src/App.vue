@@ -11,7 +11,7 @@
       app
     >
       <v-list dense>
-        <v-list-tile v-for="item in menuItems" :key="item.text" @click="">
+        <v-list-tile v-for="item in menuItems" :key="item.text" :href="item.href">
           <v-list-tile-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-tile-action>
@@ -35,6 +35,15 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
+    <v-snackbar
+      :timeout="6000"
+      :top="true"
+      :multi-line="true"
+      v-model="snackbar"
+    >
+      {{ validationText }}
+      <v-btn flat color="pink" @click.native="snackbar = false">Close</v-btn>
+    </v-snackbar>
     <v-toolbar dark dense fixed clipped-left app>
       <v-toolbar-title>
         <v-toolbar-side-icon @click="toggleDrawler"/>
@@ -42,29 +51,18 @@
       <v-layout row align-center style="max-width: 150px">
         <v-flex class="text-xs-center" pa-2>
           <router-link :to="{name: 'HomePage'}">
-          <img src="/static/logo.png" width="100" style="margin-top: 10px" alt="avatar">
+            <img src="/static/logo.png" width="100" style="margin-top: 10px" alt="avatar">
           </router-link>
         </v-flex>
       </v-layout>
       <v-layout row align-center style="max-width: 650px">
-        <v-form @submit.prevent="performSearch" ref="form" lazy-validation>
-          <v-text-field v-if="enableSearch"
-                        placeholder="Search..."
-                        single-line
-                        append-icon="search"
-                        :append-icon-cb="performSearch"
-                        v-model="searchText"
-                        :rules="[rules.minLength]"
-                        dark
-                        hide-details
-          />
-        </v-form>
+        <btoogle-search-field v-if="enableSearch" :performSearch="performSearch"/>
       </v-layout>
     </v-toolbar>
     <v-content>
 
-          <router-view/>
-        <btoogle-footer/>
+      <router-view/>
+      <btoogle-footer/>
     </v-content>
   </v-app>
 </template>
@@ -73,23 +71,24 @@
   export default {
     data: () => ({
       drawer: false,
+
       menuItems: [
-        {icon: 'trending_up', text: 'Most Popular'}
+        {icon: 'trending_up', text: 'Most Popular'},
+        {icon: 'insert_chart', text: 'Statistics', href: '#/stats'}
       ],
       items2: [],
       rules: {
-        minLength: (value) => value.length >= 3 || 'Enter 3 or more chars'
-      }
+        minLength: (value) => (value !== null && value.trim().length >= 3) || 'Enter 3 or more chars'
+      },
+      errors: []
     }),
     methods: {
       toggleDrawler() {
         this.drawer = !this.drawer
       },
       performSearch() {
-        if (this.$refs.form.validate()) {
-          this.$store.commit('ChangeSearch', this.searchText)
-          this.$router.push({name: 'SearchTorrentList', params: {search: this.searchText}})
-        }
+        this.$store.commit('ChangeSearch', this.searchText)
+        this.$router.push({name: 'SearchTorrentList', params: {search: this.searchText}})
       }
     },
     computed: {
@@ -112,10 +111,6 @@
 </script>
 
 <style>
-  .input-group__details:after {
-    background-color: rgba(255, 255, 255, 0.32) !important;
-  }
-
   @font-face {
     font-family: 'Material Icons';
     font-style: normal;

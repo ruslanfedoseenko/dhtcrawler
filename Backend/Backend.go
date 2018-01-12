@@ -10,6 +10,15 @@ import (
 	//"github.com/ruslanfedoseenko/dhtcrawler/Services/tracker"
 )
 
+// @APIVersion 1.0.0
+// @APITitle Btoogle Torrent Search API
+// @APIDescription API to search for Torrents
+// @Contact ruslan.fedoseenko.91@gmail.com
+// @TermsOfServiceUrl http://google.com/
+// @License BSD
+// @LicenseUrl http://opensource.org/licenses/BSD-2-Clause
+// @BasePath http://btoogle.com/api/
+
 var logger = logging.MustGetLogger("Backend")
 
 // Example format string. Everything except the message has a custom color

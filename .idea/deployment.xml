@@ -10,6 +10,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="slave.cutetorrent">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/usr/bin" local="$PROJECT_DIR$/bin" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
     </serverData>
   </component>
 </project>

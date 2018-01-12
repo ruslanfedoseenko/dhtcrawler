@@ -4,11 +4,12 @@ import torrentList from '@/components/TorrentList'
 import homePage from '@/components/HomePage'
 import torrentDetails from '@/components/TorrentDetails'
 import page404 from '@/components/NotFoundPage'
+import stats from '@/components/StatisticsPage'
 import maintanance from '@/components/MaintenancePage'
 Vue.use(Router)
-let isMaintanance = true
+let isMaintenance = false
 let router
-if (isMaintanance) {
+if (isMaintenance) {
   router = new Router({
     routes: [
       {
@@ -49,6 +50,11 @@ if (isMaintanance) {
         path: '/details/:infohash',
         name: 'TorrentDetails',
         component: torrentDetails
+      },
+      {
+        path: '/stats',
+        name: 'Stats',
+        component: stats
       }
     ]
   })

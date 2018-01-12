@@ -10,6 +10,14 @@
           <option name="port" value="22" />
         </fileTransfer>
       </webServer>
+      <webServer id="79b1e743-5a78-4a42-8715-f11b429962aa" name="slave.cutetorrent" url="http://slave1.cutetorrent.info">
+        <fileTransfer host="slave1.cutetorrent.info" port="22" privateKey="D:\id_rsa.ppk" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

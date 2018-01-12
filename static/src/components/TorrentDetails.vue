@@ -37,7 +37,7 @@
         </v-data-table>
       </v-flex>
       <v-flex xs6>
-        <v-data-table v-bind:headers="trackerHeaders" :items="trackerScrapeInfos"  disable-initial-sort>
+        <v-data-table v-bind:headers="trackerHeaders" :items="trackerScrapeInfos"  v-bind:pagination.sync="trackerPagination" disable-initial-sort>
           <template slot="items" slot-scope="props">
             <td class="text-xs-left">{{props.item.TrackerUrl}}</td>
             <td class="text-xs-right">{{props.item.Seeds}}</td>
@@ -63,7 +63,11 @@
         { text: 'Size:', align: 'left', value: 'Size' }
       ],
       filePagination: {
-        sortBy: 'Path'
+        sortBy: 'Path',
+        rowsPerPage: 10
+      },
+      trackerPagination: {
+        rowsPerPage: 10
       },
       trackerHeaders: [
         { text: 'Tracker URL:', align: 'left' },

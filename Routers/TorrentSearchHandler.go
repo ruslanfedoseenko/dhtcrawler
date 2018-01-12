@@ -40,7 +40,7 @@ func TorrentSearchHandler(w http.ResponseWriter, r *http.Request, ps httprouter.
 	var itemsCount uint64 = 0
 	itemsPerPage := App.Config.ItemsPerPage
 
-	nameQuery := Utils.ZdbBuildQuery("name", searchTerm)
+	nameQuery := Utils.ZdbBuildQuery("name", searchTerm, (page - 1) * itemsPerPage, itemsPerPage)
 
 	var countHolder Models.ZdbEstimateCountHolder
 	App.Db.Debug().Raw("select zdb_estimate_count as count from zdb_estimate_count('torrents'," + nameQuery + ")").Scan(&countHolder)
@@ -53,8 +53,6 @@ func TorrentSearchHandler(w http.ResponseWriter, r *http.Request, ps httprouter.
 		Model(Models.Torrent{}).
 		Where("zdb('torrents', ctid) ==> " + nameQuery).
 		Order("zdb_score('torrents', torrents.ctid) desc").
-		Limit(itemsPerPage).
-		Offset((page - 1) * itemsPerPage).
 		Find(&torrents)
 
 	for i := range torrents {
