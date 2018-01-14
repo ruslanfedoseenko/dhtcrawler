@@ -65,14 +65,14 @@ type SentryLogBackend struct {
 }
 
 func (b SentryLogBackend) Log(logLvl logging.Level, i int, record *logging.Record) error {
-	e := errors.New(record.Formatted(i))
-	panic(fmt.Sprintf("capturing error with raven: %v %v", e, logLvl))
+
+
 	switch logLvl {
 		case logging.ERROR:
 		case logging.CRITICAL:
 		case logging.NOTICE:
 		{
-
+			e := errors.New(record.Formatted(i))
 			log.Println("captureing error with raven:", e)
 			raven.CaptureErrorAndWait(e, nil)
 			break
