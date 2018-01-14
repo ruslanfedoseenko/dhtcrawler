@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"strings"
+	"github.com/op/go-logging"
 )
 
 type DbConfig struct {
@@ -86,6 +87,7 @@ func SetupConfiguration() *Configuration {
 	if err != nil {
 		log.Panicln("Error reading Config:", err)
 	}
+	log.Println("Level values",logging.CRITICAL,logging.ERROR,logging.WARNING,logging.NOTICE,logging.INFO,logging.DEBUG)
 	log.Println("Configuration ", configuration)
 	return &configuration
 }

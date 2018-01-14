@@ -15,6 +15,8 @@ import (
 	"github.com/op/go-logging"
 )
 
+var clog = logging.MustGetLogger("Config")
+
 type Service interface {
 	Start()
 }
@@ -27,14 +29,16 @@ type App struct {
 }
 
 func NewApp() *App {
+	raven.SetDSN("http://b80ba7ce05cb42e7983d962d95a1a6e5:37cd46ed05b54ce69fca375afd606bff@sentry.btoogle.com/4")
 	setupLog()
+	clog.Info("Test output")
+	clog.Critical("Test Raven Error")
 	config := SetupConfiguration()
 	app := App{
 
 		Config:    config,
 		Scheduler: gocron.NewScheduler(),
 	}
-	raven.SetDSN("http://b80ba7ce05cb42e7983d962d95a1a6e5:37cd46ed05b54ce69fca375afd606bff@sentry.btoogle.com/4")
 	if config.DbConfig.DbDriver != "" {
 		var connectionString string = fmt.Sprintf("host=%s port=%d user=%s dbname=%s sslmode=disable password=%s", config.DbConfig.Host, config.DbConfig.Port, config.DbConfig.UserName, config.DbConfig.TableName, config.DbConfig.Password)
 		log.Println("Using Connection string", connectionString)
@@ -61,12 +65,17 @@ type SentryLogBackend struct {
 }
 
 func (b SentryLogBackend) Log(logLvl logging.Level, i int, record *logging.Record) error {
+	e := errors.New(record.Formatted(i))
+	panic(fmt.Sprintf("capturing error with raven: %v %v", e, logLvl))
 	switch logLvl {
-	case logging.ERROR:
-	case logging.CRITICAL:
-	case logging.NOTICE:
+		case logging.ERROR:
+		case logging.CRITICAL:
+		case logging.NOTICE:
 		{
-			raven.CaptureErrorAndWait(errors.New(record.Formatted(i)), nil)
+
+			log.Println("captureing error with raven:", e)
+			raven.CaptureErrorAndWait(e, nil)
+			break
 		}
 	}
 	return nil
@@ -76,7 +85,7 @@ func (b SentryLogBackend) Log(logLvl logging.Level, i int, record *logging.Recor
 func setupLog() {
 	stdOutBackend := logging.NewLogBackend(os.Stdout, "", 0)
 	leveledSentryBackend := logging.AddModuleLevel(SentryLogBackend{})
-	leveledSentryBackend.SetLevel(logging.ERROR, "")
+	leveledSentryBackend.SetLevel(logging.NOTICE, "")
 	leveledStdOutBackend := logging.AddModuleLevel(stdOutBackend)
 	leveledStdOutBackend.SetLevel(logging.DEBUG, "")
 	logging.SetFormatter(format)
