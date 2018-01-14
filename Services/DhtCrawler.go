@@ -35,7 +35,12 @@ func SetupDhtCrawling(app *Config.App) {
 	App.AddService(dhtCrawlingSvc)
 
 }
+var charsetAliases = map[string]string{
+	"GB-18030": "GB18030",
+	"ISO-8859-8-I": "ISO-8859-8",
+	"IBM424_ltr" : "IBM-424",
 
+}
 var detector = chardet.NewTextDetector()
 
 func (svc DhtCrawlingService) Start() {
@@ -176,7 +181,11 @@ func (svc DhtCrawlingService) Start() {
 	}
 }
 func convertStringToUtf8(r *chardet.Result, name string) string {
-	converter, err := iconv.Open("UTF-8", r.Charset)
+	charset := r.Charset
+	if alias, ok := charsetAliases[charset]; ok {
+		charset = alias
+	}
+	converter, err := iconv.Open("UTF-8", charset)
 	if err != nil {
 		dhtLog.Error("Unable to convert string", name, " from", r.Charset, "to UTF-8")
 	} else {
