@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7189115d-3d33-4b7a-bffe-2b144520efcd" name="Default" comment="">
+    <list default="true" id="7189115d-3d33-4b7a-bffe-2b144520efcd" name="Default" comment="Added charset aliaces for iconv">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Services/DhtCrawler.go" afterPath="$PROJECT_DIR$/Services/DhtCrawler.go" />
     </list>
@@ -58,8 +58,8 @@
       <file leaf-file-name="DhtCrawler.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Services/DhtCrawler.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="187" column="49" lean-forward="false" selection-start-line="187" selection-start-column="49" selection-end-line="187" selection-end-column="49" />
+            <state relative-caret-position="274">
+              <caret line="29" column="40" lean-forward="true" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
               <folding>
                 <element signature="e#18#388#0" expanded="true" />
               </folding>
@@ -612,7 +612,7 @@
       <workItem from="1515922850664" duration="88000" />
       <workItem from="1515922957264" duration="5707000" />
       <workItem from="1515930435795" duration="52000" />
-      <workItem from="1515930739440" duration="2725000" />
+      <workItem from="1515930739440" duration="3261000" />
     </task>
     <task id="LOCAL-00001" summary="Some changes and fixes in backend&#10;Rewriten frontend to Vue.js">
       <created>1515079702648</created>
@@ -649,14 +649,22 @@
       <option name="project" value="LOCAL" />
       <updated>1515932270432</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added charset aliaces for iconv">
+      <created>1515933509518</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1515933509518</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159733000" />
+    <option name="totallyTimeSpent" value="160269000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1867" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -668,7 +676,7 @@
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29583332" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29583332" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2401771" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -729,7 +737,8 @@
     <MESSAGE value="search filed as extra component&#10;Implemented stats page" />
     <MESSAGE value="Fix string charset errors" />
     <MESSAGE value="Compability Fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Compability Fix" />
+    <MESSAGE value="Added charset aliaces for iconv" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added charset aliaces for iconv" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1099,8 +1108,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Services/DhtCrawler.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="187" column="49" lean-forward="false" selection-start-line="187" selection-start-column="49" selection-end-line="187" selection-end-column="49" />
+        <state relative-caret-position="274">
+          <caret line="29" column="40" lean-forward="true" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
           <folding>
             <element signature="e#18#388#0" expanded="true" />
           </folding>
