@@ -40,7 +40,7 @@ var detector = chardet.NewTextDetector()
 
 func (svc DhtCrawlingService) Start() {
 	svc.rpcClient.Start()
-	svc.wire = dht.NewWire(65536, 6144, 6144, 3072)
+	svc.wire = dht.NewWire(65536, 6144, 6144)
 	svc.dht = make([]*dht.DHT, App.Config.DhtConfig.Workers)
 	for i := 0; i < App.Config.DhtConfig.Workers; i++ {
 
