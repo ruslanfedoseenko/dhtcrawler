@@ -73,7 +73,7 @@ func (b SentryLogBackend) Log(logLvl logging.Level, i int, record *logging.Recor
 		{
 			e := errors.New(record.Formatted(i))
 
-			evntId := raven.CaptureErrorAndWait(e, nil)
+			evntId := raven.CaptureError(e, nil)
 			log.Println("captureing error with raven:", e, "event id:", evntId)
 			break
 		}
