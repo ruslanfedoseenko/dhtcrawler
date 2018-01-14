@@ -41,10 +41,6 @@ func SetupScrape(app *Config.App) {
 	scraper = NewScraper()
 	scraper.rpcClient = Rpc.GetRpcCLientInstance(app)
 	scrapeerLog.Info("Scrape will repeat every", uint64(App.Config.ScrapeConfig.ScrapeTimeout), "hours")
-	scrapeerLog.Error("Test Sentry errors")
-	scrapeerLog.Critical("Test Sentry errors")
-	scrapeerLog.Fatal("Test Sentry errors")
-	scrapeerLog.Warning("Test Sentry errors")
 	App.Scheduler.Every(uint64(App.Config.ScrapeConfig.ScrapeTimeout)).Hours().Do(scraper.Start)
 	App.AddService(scraper)
 

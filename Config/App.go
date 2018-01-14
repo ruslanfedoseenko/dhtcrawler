@@ -32,7 +32,6 @@ func NewApp() *App {
 	raven.SetDSN("http://b80ba7ce05cb42e7983d962d95a1a6e5:37cd46ed05b54ce69fca375afd606bff@sentry.btoogle.com/4")
 	setupLog()
 	clog.Info("Test output")
-	clog.Critical("Test Raven Error")
 	config := SetupConfiguration()
 	app := App{
 
@@ -73,8 +72,9 @@ func (b SentryLogBackend) Log(logLvl logging.Level, i int, record *logging.Recor
 		case logging.NOTICE:
 		{
 			e := errors.New(record.Formatted(i))
-			log.Println("captureing error with raven:", e)
-			raven.CaptureErrorAndWait(e, nil)
+
+			evntId := raven.CaptureErrorAndWait(e, nil)
+			log.Println("captureing error with raven:", e, "event id:", evntId)
 			break
 		}
 	}

@@ -4,6 +4,7 @@
     <list default="true" id="7189115d-3d33-4b7a-bffe-2b144520efcd" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Config/App.go" afterPath="$PROJECT_DIR$/Config/App.go" />
+      <change beforePath="$PROJECT_DIR$/Services/scraper.go" afterPath="$PROJECT_DIR$/Services/scraper.go" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,8 +31,8 @@
       <file leaf-file-name="App.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Config/App.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="69" column="19" lean-forward="true" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="19" />
+            <state relative-caret-position="221">
+              <caret line="76" column="79" lean-forward="true" selection-start-line="76" selection-start-column="79" selection-end-line="76" selection-end-column="79" />
               <folding>
                 <element signature="e#16#262#0" expanded="true" />
               </folding>
@@ -39,11 +40,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="client.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../getsentry/raven-go/client.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="713" column="36" lean-forward="false" selection-start-line="713" selection-start-column="36" selection-end-line="713" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="scraper.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Services/scraper.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="46" column="18" lean-forward="false" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
+            <state relative-caret-position="206">
+              <caret line="42" column="104" lean-forward="false" selection-start-line="42" selection-start-column="104" selection-end-line="42" selection-end-column="104" />
               <folding />
             </state>
           </provider>
@@ -82,8 +93,8 @@
       <file leaf-file-name="logger.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../op/go-logging/logger.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="963">
-              <caret line="157" column="64" lean-forward="false" selection-start-line="157" selection-start-column="64" selection-end-line="157" selection-end-column="64" />
+            <state relative-caret-position="198">
+              <caret line="197" column="17" lean-forward="false" selection-start-line="197" selection-start-column="17" selection-end-line="197" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -97,16 +108,6 @@
               <folding>
                 <element signature="e#14#174#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="log_windows.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../op/go-logging/log_windows.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="71" column="64" lean-forward="false" selection-start-line="71" selection-start-column="64" selection-end-line="71" selection-end-column="64" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -229,9 +230,9 @@
         <option value="$PROJECT_DIR$/../../shiyanhui/dht/peerwire.go" />
         <option value="$PROJECT_DIR$/Services/DhtCrawler.go" />
         <option value="$PROJECT_DIR$/static/src/components/StatisticsPage.vue" />
-        <option value="$PROJECT_DIR$/Services/scraper.go" />
         <option value="$PROJECT_DIR$/../../op/go-logging/level.go" />
         <option value="$PROJECT_DIR$/Config/Configuration.go" />
+        <option value="$PROJECT_DIR$/Services/scraper.go" />
         <option value="$PROJECT_DIR$/Config/App.go" />
       </list>
     </option>
@@ -542,7 +543,7 @@
       <workItem from="1515922850664" duration="88000" />
       <workItem from="1515922957264" duration="5707000" />
       <workItem from="1515930435795" duration="52000" />
-      <workItem from="1515930739440" duration="12280000" />
+      <workItem from="1515930739440" duration="12719000" />
     </task>
     <task id="LOCAL-00001" summary="Some changes and fixes in backend&#10;Rewriten frontend to Vue.js">
       <created>1515079702648</created>
@@ -607,11 +608,18 @@
       <option name="project" value="LOCAL" />
       <updated>1515957351601</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Test Logging">
+      <created>1515957504823</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1515957504823</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="169288000" />
+    <option name="totallyTimeSpent" value="169727000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1867" height="1096" extended-state="6" />
@@ -986,14 +994,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../getsentry/raven-go/client.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="712" column="5" lean-forward="false" selection-start-line="712" selection-start-column="5" selection-end-line="712" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Go/src/builtin/builtin.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
@@ -1054,22 +1054,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Services/scraper.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="46" column="18" lean-forward="false" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../op/go-logging/logger.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="963">
-          <caret line="157" column="64" lean-forward="false" selection-start-line="157" selection-start-column="64" selection-end-line="157" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../op/go-logging/level.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
@@ -1086,10 +1070,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Services/scraper.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="42" column="104" lean-forward="false" selection-start-line="42" selection-start-column="104" selection-end-line="42" selection-end-column="104" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../op/go-logging/logger.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="197" column="17" lean-forward="false" selection-start-line="197" selection-start-column="17" selection-end-line="197" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../getsentry/raven-go/client.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="713" column="36" lean-forward="false" selection-start-line="713" selection-start-column="36" selection-end-line="713" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Config/App.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="69" column="19" lean-forward="true" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="19" />
+        <state relative-caret-position="221">
+          <caret line="76" column="79" lean-forward="true" selection-start-line="76" selection-start-column="79" selection-end-line="76" selection-end-column="79" />
           <folding>
             <element signature="e#16#262#0" expanded="true" />
           </folding>
