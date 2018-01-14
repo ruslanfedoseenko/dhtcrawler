@@ -64,13 +64,15 @@ func (t *TorrentTagsProducer) processQueue() {
 	for {
 		var torrents []Models.Torrent
 		TagProducerLog.Info("Loading torrents")
-		t.db.Table("torrents t").Preload("Files").
+		err := t.db.Table("torrents t").Preload("Files").
 			Select("t.*").
-			Joins("left join torrent_tags tt on tt.torrent_id = t.id").
-			Where("tt.tag_id is null").
+			Where("t.hastag = false").
 			Order("t.id asc").
 			Limit(25).
-			Find(&torrents)
+			Find(&torrents).Error
+		if err != nil {
+			TagProducerLog.Error("Error while loading torrents:", err)
+		}
 		torrentsLen := len(torrents)
 		if torrentsLen == 0 {
 			TagProducerLog.Info("No torrents found waiting 5 secs....")
@@ -81,8 +83,14 @@ func (t *TorrentTagsProducer) processQueue() {
 		for i := 0; i < torrentsLen; i++ {
 			TagProducerLog.Info("Processing torrent:", torrents[i].Name)
 			t.FillTorrentTags(&torrents[i])
+
 			TagProducerLog.Info("Appending Tags:", torrents[i].Tags)
-			t.db.Model(&torrents[i]).Association("Tags").Append(torrents[i].Tags)
+			torrents[i].HasTag = len(torrents[i].Tags) > 0
+			t.db.Set("gorm:save_associations", false).Save(&torrents[i])
+			err = t.db.Model(&torrents[i]).Association("Tags").Append(torrents[i].Tags).Error
+			if err != nil {
+				TagProducerLog.Error("Error while appending torrent tags:", err)
+			}
 		}
 	}
 
@@ -92,7 +100,6 @@ func (t *TorrentTagsProducer) getTorrentTokens(torrent *Models.Torrent) []string
 	tokens := set.NewNonTS()
 	for _, file := range torrent.Files {
 		tokens.Add(Utils.ToInterfaceSlice(strings.FieldsFunc(strings.ToLower(file.Path), tokenizer))...)
-
 	}
 	tokens.Add(Utils.ToInterfaceSlice(strings.FieldsFunc(strings.ToLower(torrent.Name), tokenizer))...)
 	return set.StringSlice(tokens)
@@ -143,6 +150,15 @@ func (t *TorrentTagsProducer) FillTorrentTags(torrent *Models.Torrent) {
 			}
 
 		}
+
+	}
+	if len(torrent.Tags) == 0 {
+		var tag = "Other"
+		tagModel := Models.Tag{
+			Id:  crc32.ChecksumIEEE(([]byte)(tag)),
+			Tag: tag,
+		}
+		torrent.Tags = append(torrent.Tags, tagModel)
 
 	}
 	tagsBulkInsertSql = strings.TrimRight(tagsBulkInsertSql, ",")

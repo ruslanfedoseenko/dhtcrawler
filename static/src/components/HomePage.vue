@@ -7,7 +7,7 @@
        </v-layout>
         <v-layout row justify-center >
           <v-flex xs6 pa-3 elevation-20>
-            <btoogle-search-field :performSearch="performSearch"/>
+            <btoogle-search-field :performSearch="performSearch" :searchText.sync="searchText"/>
           </v-flex>
         </v-layout>
       </v-container>

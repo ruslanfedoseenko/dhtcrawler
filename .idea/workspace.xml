@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7189115d-3d33-4b7a-bffe-2b144520efcd" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/src/Formatters.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/src/components/Chart.vue" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/src/components/SearchField.vue" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/src/components/StatisticsPage.vue" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" afterPath="$PROJECT_DIR$/.idea/webServers.xml" />
+    <list default="true" id="7189115d-3d33-4b7a-bffe-2b144520efcd" name="Default" comment="search filed as extra component&#10;Implemented stats page">
+      <change beforePath="" afterPath="$PROJECT_DIR$/bin/setup.sh" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Backend/Backend.go" afterPath="$PROJECT_DIR$/Backend/Backend.go" />
-      <change beforePath="$PROJECT_DIR$/Routers/SearchSuggestHandler.go" afterPath="$PROJECT_DIR$/Routers/SearchSuggestHandler.go" />
+      <change beforePath="$PROJECT_DIR$/Config/App.go" afterPath="$PROJECT_DIR$/Config/App.go" />
+      <change beforePath="$PROJECT_DIR$/Config/Configuration.go" afterPath="$PROJECT_DIR$/Config/Configuration.go" />
+      <change beforePath="$PROJECT_DIR$/Models/Counters.go" afterPath="$PROJECT_DIR$/Models/Counters.go" />
+      <change beforePath="$PROJECT_DIR$/Models/Torrent.go" afterPath="$PROJECT_DIR$/Models/Torrent.go" />
       <change beforePath="$PROJECT_DIR$/Routers/TorrentSearchHandler.go" afterPath="$PROJECT_DIR$/Routers/TorrentSearchHandler.go" />
+      <change beforePath="$PROJECT_DIR$/RpcMaster/RpcMaster.go" afterPath="$PROJECT_DIR$/RpcMaster/RpcMaster.go" />
+      <change beforePath="$PROJECT_DIR$/Services/DhtCrawler.go" afterPath="$PROJECT_DIR$/Services/DhtCrawler.go" />
+      <change beforePath="$PROJECT_DIR$/Services/TagProducer/TorrentTagsProducer.go" afterPath="$PROJECT_DIR$/Services/TagProducer/TorrentTagsProducer.go" />
+      <change beforePath="$PROJECT_DIR$/Services/TagProducer/VideoInfoExtractor.go" afterPath="$PROJECT_DIR$/Services/TagProducer/VideoInfoExtractor.go" />
+      <change beforePath="$PROJECT_DIR$/Services/TagProducer/specialVideoTagProducer.go" afterPath="$PROJECT_DIR$/Services/TagProducer/specialVideoTagProducer.go" />
+      <change beforePath="$PROJECT_DIR$/Services/rpc/TorrentRpcService.go" afterPath="$PROJECT_DIR$/Services/rpc/TorrentRpcService.go" />
+      <change beforePath="$PROJECT_DIR$/Services/scraper.go" afterPath="$PROJECT_DIR$/Services/scraper.go" />
+      <change beforePath="$PROJECT_DIR$/Spider/Spider.go" afterPath="$PROJECT_DIR$/Spider/Spider.go" />
       <change beforePath="$PROJECT_DIR$/Utils/ZombodbQueryBuilder.go" afterPath="$PROJECT_DIR$/Utils/ZombodbQueryBuilder.go" />
-      <change beforePath="$PROJECT_DIR$/static/build/logo.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/static/build/torrents" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bin/config.json" afterPath="$PROJECT_DIR$/bin/config.json" />
       <change beforePath="$PROJECT_DIR$/static/config/index.js" afterPath="$PROJECT_DIR$/static/config/index.js" />
-      <change beforePath="$PROJECT_DIR$/static/index.html" afterPath="$PROJECT_DIR$/static/index.html" />
-      <change beforePath="$PROJECT_DIR$/static/package-lock.json" afterPath="$PROJECT_DIR$/static/package-lock.json" />
-      <change beforePath="$PROJECT_DIR$/static/package.json" afterPath="$PROJECT_DIR$/static/package.json" />
       <change beforePath="$PROJECT_DIR$/static/src/App.vue" afterPath="$PROJECT_DIR$/static/src/App.vue" />
-      <change beforePath="$PROJECT_DIR$/static/src/components/Footer.vue" afterPath="$PROJECT_DIR$/static/src/components/Footer.vue" />
       <change beforePath="$PROJECT_DIR$/static/src/components/HomePage.vue" afterPath="$PROJECT_DIR$/static/src/components/HomePage.vue" />
-      <change beforePath="$PROJECT_DIR$/static/src/components/TorrentDetails.vue" afterPath="$PROJECT_DIR$/static/src/components/TorrentDetails.vue" />
-      <change beforePath="$PROJECT_DIR$/static/src/components/TorrentList.vue" afterPath="$PROJECT_DIR$/static/src/components/TorrentList.vue" />
+      <change beforePath="$PROJECT_DIR$/static/src/components/SearchField.vue" afterPath="$PROJECT_DIR$/static/src/components/SearchField.vue" />
       <change beforePath="$PROJECT_DIR$/static/src/main.js" afterPath="$PROJECT_DIR$/static/src/main.js" />
-      <change beforePath="$PROJECT_DIR$/static/src/router/index.js" afterPath="$PROJECT_DIR$/static/src/router/index.js" />
-      <change beforePath="$PROJECT_DIR$/static/src/store/index.js" afterPath="$PROJECT_DIR$/static/src/store/index.js" />
-      <change beforePath="$PROJECT_DIR$/static/static/textfieldfix.css" afterPath="$PROJECT_DIR$/static/static/textfieldfix.css" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,108 +36,108 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TorrentList.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/src/components/TorrentList.vue">
+      <file leaf-file-name="TorrentRpcService.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Services/rpc/TorrentRpcService.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1683">
-              <caret line="99" column="8" lean-forward="false" selection-start-line="92" selection-start-column="6" selection-end-line="99" selection-end-column="8" />
+            <state relative-caret-position="646">
+              <caret line="45" column="24" lean-forward="false" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StatisticsPage.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/src/components/StatisticsPage.vue">
+      <file leaf-file-name="RpClient.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Services/rpc/RpClient.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="18" column="2" lean-forward="false" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="33" />
+            <state relative-caret-position="340">
+              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RpcServer.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Services/rpc/RpcServer.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="33" column="33" lean-forward="false" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScrapeRcpService.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Services/rpc/ScrapeRcpService.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2006">
+              <caret line="129" column="101" lean-forward="false" selection-start-line="129" selection-start-column="93" selection-end-line="129" selection-end-column="101" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="setup.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/setup.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="10" selection-end-column="60" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DhtCrawler.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Services/DhtCrawler.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="125" column="78" lean-forward="false" selection-start-line="125" selection-start-column="78" selection-end-line="125" selection-end-column="78" />
               <folding>
-                <element signature="e#406#437#0" expanded="true" />
+                <element signature="e#18#388#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/build/build.js">
+      <file leaf-file-name="reader.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../gopkg.in/iconv.v1/reader.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="119">
+              <caret line="9" column="9" lean-forward="false" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+              <folding>
+                <element signature="e#15#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="iconv.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../gopkg.in/iconv.v1/iconv.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="32" column="11" lean-forward="false" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+              <folding>
+                <element signature="e#415#473#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="detector.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../saintfish/chardet/detector.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1173">
+              <caret line="72" column="32" lean-forward="false" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/config/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1224">
-              <caret line="72" column="25" lean-forward="false" selection-start-line="72" selection-start-column="25" selection-end-line="72" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Formatters.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/src/Formatters.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Footer.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/src/components/Footer.vue">
+      <file leaf-file-name="SliceUtils.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Utils/SliceUtils.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="4" column="25" lean-forward="false" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+              <caret line="7" column="5" lean-forward="false" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="App.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/src/App.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="70" column="2" lean-forward="false" selection-start-line="70" selection-start-column="2" selection-end-line="70" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HomePage.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/src/components/HomePage.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="14" lean-forward="false" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SearchField.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/src/components/SearchField.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="51" column="8" lean-forward="true" selection-start-line="44" selection-start-column="5" selection-end-line="51" selection-end-column="8" />
-              <folding>
-                <element signature="n#style#0;n#v-list#0;n#v-menu#0;n#v-form#0;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/src/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="22" column="35" lean-forward="false" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="35" />
-              <folding>
-                <element signature="e#140#161#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -154,6 +151,7 @@
         <option value="HTML File" />
         <option value="JavaScript File" />
         <option value="Vue Single File Component" />
+        <option value="Go File" />
       </list>
     </option>
   </component>
@@ -173,11 +171,24 @@
       <find>errorBag</find>
       <find>&quot;</find>
       <find>: function</find>
+      <find>other</find>
+      <find>svc.dht</find>
+      <find>make</find>
+      <find>HTTPTransport</find>
+      <find>.Error</find>
+      <find>format</find>
+      <find>SetLevel</find>
+      <find>IsEnabledFor</find>
+      <find>bridge_iconv</find>
     </findStrings>
     <replaceStrings>
       <replace>insert_drive_file</replace>
       <replace>'</replace>
     </replaceStrings>
+    <dirStrings>
+      <dir>F:\GoRoot\src\github.com\ruslanfedoseenko\dhtcrawler\static\src</dir>
+      <dir>F:\GoRoot\src\github.com\ruslanfedoseenko\dhtcrawler\</dir>
+    </dirStrings>
   </component>
   <component name="GOROOT" path="C:\Go" />
   <component name="Git.Settings">
@@ -194,36 +205,47 @@
         <option value="$PROJECT_DIR$/static/src/store/index,js.js" />
         <option value="$PROJECT_DIR$/Routers/TorrentsListHandler.go" />
         <option value="$PROJECT_DIR$/static/.eslintrc.js" />
-        <option value="$PROJECT_DIR$/Services/TagProducer/TorrentTagsProducer.go" />
         <option value="$PROJECT_DIR$/Services/TagProducer/specialVideoTagProducer.go" />
         <option value="$PROJECT_DIR$/static/src/components/NotFoundPage.vue" />
         <option value="$PROJECT_DIR$/Routers/TorrentInfoHandler.go" />
         <option value="$PROJECT_DIR$/Models/FileTreeItem.go" />
-        <option value="$PROJECT_DIR$/Models/Torrent.go" />
         <option value="$PROJECT_DIR$/static/src/components/MaintenancePage.vue" />
         <option value="$PROJECT_DIR$/Services/scraper.go" />
-        <option value="$PROJECT_DIR$/Utils/ZombodbQueryBuilder.go" />
         <option value="$PROJECT_DIR$/Routers/TorrentSearchHandler.go" />
         <option value="$PROJECT_DIR$/static/src/components/TorrentDetails.vue" />
         <option value="$PROJECT_DIR$/static/static/api-docs/index.html" />
         <option value="$PROJECT_DIR$/Routers/Router.go" />
-        <option value="$PROJECT_DIR$/Backend/Backend.go" />
         <option value="$PROJECT_DIR$/Routers/SearchSuggestHandler.go" />
         <option value="$PROJECT_DIR$/static/static/textfieldfix.css" />
         <option value="$PROJECT_DIR$/static/index.html" />
         <option value="$PROJECT_DIR$/static/src/components/TorrentList.vue" />
         <option value="$PROJECT_DIR$/static/src/components/TorrentsCountChart.vue" />
-        <option value="$PROJECT_DIR$/static/src/router/index.js" />
         <option value="$PROJECT_DIR$/static/src/store/index.js" />
         <option value="$PROJECT_DIR$/static/src/components/Chart.vue" />
         <option value="$PROJECT_DIR$/static/src/Formatters.js" />
         <option value="$PROJECT_DIR$/static/src/components/StatisticsPage.vue" />
-        <option value="$PROJECT_DIR$/static/config/index.js" />
         <option value="$PROJECT_DIR$/static/src/components/Footer.vue" />
-        <option value="$PROJECT_DIR$/static/src/main.js" />
+        <option value="$PROJECT_DIR$/Models/Counters.go" />
+        <option value="$PROJECT_DIR$/bin/config.json" />
+        <option value="$PROJECT_DIR$/static/config/index.js" />
+        <option value="$PROJECT_DIR$/Models/Torrent.go" />
+        <option value="$PROJECT_DIR$/Services/TagProducer/TorrentTagsProducer.go" />
+        <option value="$PROJECT_DIR$/static/src/router/index.js" />
+        <option value="$PROJECT_DIR$/../go-tmdb/main.go" />
+        <option value="$PROJECT_DIR$/Utils/ZombodbQueryBuilder.go" />
+        <option value="$PROJECT_DIR$/static/src/components/HomePage.vue" />
         <option value="$PROJECT_DIR$/static/src/components/SearchField.vue" />
         <option value="$PROJECT_DIR$/static/src/App.vue" />
-        <option value="$PROJECT_DIR$/static/src/components/HomePage.vue" />
+        <option value="$PROJECT_DIR$/static/src/main.js" />
+        <option value="$PROJECT_DIR$/Services/rpc/ScrapeRcpService.go" />
+        <option value="$PROJECT_DIR$/RpcMaster/RpcMaster.go" />
+        <option value="$PROJECT_DIR$/Spider/Spider.go" />
+        <option value="$PROJECT_DIR$/Backend/Backend.go" />
+        <option value="$PROJECT_DIR$/Services/SentryLogBackend.go" />
+        <option value="$PROJECT_DIR$/Config/App.go" />
+        <option value="$PROJECT_DIR$/bin/setup.sh" />
+        <option value="$PROJECT_DIR$/Services/rpc/TorrentRpcService.go" />
+        <option value="$PROJECT_DIR$/Services/DhtCrawler.go" />
       </list>
     </option>
   </component>
@@ -266,8 +288,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
@@ -276,6 +296,11 @@
             <path>
               <item name="dhtcrawler" type="b2602c69:ProjectViewProjectNode" />
               <item name="dhtcrawler" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dhtcrawler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dhtcrawler" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dhtcrawler" type="b2602c69:ProjectViewProjectNode" />
@@ -310,19 +335,22 @@
             <path>
               <item name="dhtcrawler" type="b2602c69:ProjectViewProjectNode" />
               <item name="dhtcrawler" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="Services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dhtcrawler" type="b2602c69:ProjectViewProjectNode" />
               <item name="dhtcrawler" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
+              <item name="Services" type="462c0819:PsiDirectoryNode" />
+              <item name="rpc" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dhtcrawler" type="b2602c69:ProjectViewProjectNode" />
               <item name="dhtcrawler" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
+              <item name="Spider" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dhtcrawler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dhtcrawler" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -333,21 +361,73 @@
             </path>
             <path>
               <item name="dhtcrawler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dhtcrawler" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
             <path>
               <item name="dhtcrawler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dhtcrawler" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Go SDK 1.9.2" type="20ee2d1f:SyntheticLibraryElementNode" />
+            </path>
+            <path>
+              <item name="dhtcrawler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Go SDK 1.9.2" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dhtcrawler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Go SDK 1.9.2" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="errors" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dhtcrawler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="GOPATH &lt;dhtcrawler&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
+            </path>
+            <path>
+              <item name="dhtcrawler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="GOPATH &lt;dhtcrawler&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dhtcrawler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="GOPATH &lt;dhtcrawler&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="github.com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dhtcrawler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="GOPATH &lt;dhtcrawler&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="github.com" type="462c0819:PsiDirectoryNode" />
+              <item name="saintfish" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dhtcrawler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="GOPATH &lt;dhtcrawler&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="gopkg.in" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dhtcrawler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="GOPATH &lt;dhtcrawler&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="gopkg.in" type="462c0819:PsiDirectoryNode" />
+              <item name="iconv.v1" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -362,6 +442,7 @@
     <property name="GO_FMT" value="false" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="DefaultGoTemplateProperty" value="Go File" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -380,7 +461,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Build.spider-http">
+  <component name="RunManager" selected="Go Build.spider">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -544,7 +625,14 @@
       <workItem from="1515604552995" duration="1742000" />
       <workItem from="1515606316231" duration="10870000" />
       <workItem from="1515648903250" duration="30700000" />
-      <workItem from="1515736746498" duration="2669000" />
+      <workItem from="1515736746498" duration="2804000" />
+      <workItem from="1515739617955" duration="131000" />
+      <workItem from="1515774456557" duration="12320000" />
+      <workItem from="1515850883176" duration="11334000" />
+      <workItem from="1515922850664" duration="88000" />
+      <workItem from="1515922957264" duration="5707000" />
+      <workItem from="1515930435795" duration="52000" />
+      <workItem from="1515930739440" duration="1271000" />
     </task>
     <task id="LOCAL-00001" summary="Some changes and fixes in backend&#10;Rewriten frontend to Vue.js">
       <created>1515079702648</created>
@@ -560,15 +648,21 @@
       <option name="project" value="LOCAL" />
       <updated>1515606624654</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="search filed as extra component&#10;Implemented stats page">
+      <created>1515739479895</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1515739479896</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127241000" />
+    <option name="totallyTimeSpent" value="158279000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1867" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -579,10 +673,10 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29583332" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29773104" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2401771" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -638,7 +732,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="Some changes and fixes in backend&#10;Rewriten frontend to Vue.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some changes and fixes in backend&#10;Rewriten frontend to Vue.js" />
+    <MESSAGE value="search filed as extra component&#10;Implemented stats page" />
+    <option name="LAST_COMMIT_MESSAGE" value="search filed as extra component&#10;Implemented stats page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -647,182 +742,94 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/.postcssrc.js">
+    <entry file="file://$PROJECT_DIR$/Config/Configuration.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="27" column="4" lean-forward="false" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/config.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Services/rpc/RpcServer.go">
+    <entry file="file://$PROJECT_DIR$/static/build/build.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="23" column="11" lean-forward="false" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Services/rpc/TorrentRpcService.go">
+    <entry file="file://$PROJECT_DIR$/static/config/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="18" column="22" lean-forward="false" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+        <state relative-caret-position="636">
+          <caret line="72" column="25" lean-forward="false" selection-start-line="72" selection-start-column="25" selection-end-line="72" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Models/Title.go">
+    <entry file="file://$PROJECT_DIR$/static/src/router/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="7" lean-forward="false" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+        <state relative-caret-position="34">
+          <caret line="9" column="25" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Services/TagProducer/VideoInfoExtractor.go">
+    <entry file="file://$PROJECT_DIR$/static/dist/static/textfieldfix.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="69" column="35" lean-forward="false" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Services/TagProducer/specialVideoTagProducer.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="28" column="30" lean-forward="false" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Services/TagProducer/TorrentTagsProducer.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="93" column="104" lean-forward="false" selection-start-line="93" selection-start-column="104" selection-end-line="93" selection-end-column="104" />
+        <state relative-caret-position="359">
+          <caret line="71" column="33" lean-forward="false" selection-start-line="71" selection-start-column="33" selection-end-line="71" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/config/dev.env.js">
+    <entry file="file://$PROJECT_DIR$/Services/TagProducer/VideoInfoExtractor.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="74" column="31" lean-forward="false" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../go-tmdb/search.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="372" column="23" lean-forward="false" selection-start-line="372" selection-start-column="23" selection-end-line="372" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../go-tmdb/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="58" column="5" lean-forward="false" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Services/TagProducer/specialTagsProducer.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/node_modules/vuetify/dist/vuetify.css">
+    <entry file="file://$PROJECT_DIR$/../../shiyanhui/dht/peerwire.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="4033" column="23" lean-forward="false" selection-start-line="4033" selection-start-column="23" selection-end-line="4033" selection-end-column="23" />
+        <state relative-caret-position="-2803">
+          <caret line="173" column="5" lean-forward="false" selection-start-line="173" selection-start-column="5" selection-end-line="173" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Routers/TorrentInfoHandler.go">
+    <entry file="file://$PROJECT_DIR$/../../shiyanhui/dht/dht.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="27" column="36" lean-forward="false" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/FileTreeItem.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/File.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="41" lean-forward="false" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/src/components/NotFoundPage.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="16" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/src/components/MaintenancePage.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="58" lean-forward="false" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Services/scraper.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="57" column="30" lean-forward="false" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/Torrent.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="23" lean-forward="false" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Routers/TorrentSearchHandler.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="42" column="27" lean-forward="false" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Utils/ZombodbQueryBuilder.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="11" column="5" lean-forward="false" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Config/App.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/SearchSuggestResponse.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="26" lean-forward="false" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Backend.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="19" column="36" lean-forward="false" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
-          <folding>
-            <element signature="e#14#276#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/static/api-docs/index.html" />
-    <entry file="file://$PROJECT_DIR$/static/index.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/API.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/static/api-docs/index.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="325">
+          <caret line="98" column="38" lean-forward="false" selection-start-line="98" selection-start-column="38" selection-end-line="98" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -830,62 +837,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="14" column="16" lean-forward="false" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/static/textfieldfix.css">
+    <entry file="file://$PROJECT_DIR$/Routers/TorrentSearchHandler.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="544">
+          <caret line="42" column="28" lean-forward="false" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/index.html">
+    <entry file="file://$PROJECT_DIR$/Utils/ZombodbQueryBuilder.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="59" lean-forward="false" selection-start-line="6" selection-start-column="59" selection-end-line="6" selection-end-column="59" />
-          <folding />
+        <state relative-caret-position="204">
+          <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/src/router/index.js">
+    <entry file="file://$PROJECT_DIR$/static/src/components/HomePage.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="54" column="23" lean-forward="true" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#21#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Routers/Router.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="62" column="20" lean-forward="true" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/src/store/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="48" column="31" lean-forward="false" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/node_modules/vue-chartjs/src/BaseCharts/Line.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="50" column="6" lean-forward="false" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/node_modules/vue-chartjs/es/BaseCharts/Line.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="65" column="47" lean-forward="true" selection-start-line="65" selection-start-column="47" selection-end-line="65" selection-end-column="47" />
+        <state relative-caret-position="153">
+          <caret line="9" column="94" lean-forward="false" selection-start-line="9" selection-start-column="65" selection-end-line="9" selection-end-column="94" />
         </state>
       </provider>
     </entry>
@@ -896,136 +868,244 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/node_modules/vue-chartjs/es/index.js">
+    <entry file="file://$PROJECT_DIR$/static/src/App.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="58" column="8" lean-forward="false" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/node_modules/vue-chartjs/es/mixins/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/node_modules/vue-chartjs/es/mixins/reactiveProp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/src/components/TorrentDetails.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="23" lean-forward="false" selection-start-line="1" selection-start-column="2" selection-end-line="2" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/src/components/Chart.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="5" lean-forward="false" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/config/prod.env.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/build/build.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/config/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="72" column="25" lean-forward="false" selection-start-line="72" selection-start-column="25" selection-end-line="72" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/build/logo.png" />
-    <entry file="file://$PROJECT_DIR$/static/src/components/TorrentList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1683">
-          <caret line="99" column="8" lean-forward="false" selection-start-line="92" selection-start-column="6" selection-end-line="99" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/src/components/Footer.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="25" lean-forward="false" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/src/Formatters.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="22" column="35" lean-forward="false" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="35" />
-          <folding>
-            <element signature="e#140#161#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/src/components/StatisticsPage.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="18" column="2" lean-forward="false" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="33" />
-          <folding>
-            <element signature="e#406#437#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="629">
+          <caret line="37" column="3" lean-forward="false" selection-start-line="37" selection-start-column="3" selection-end-line="37" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/src/components/SearchField.vue">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="70" column="45" lean-forward="false" selection-start-line="70" selection-start-column="45" selection-end-line="70" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/.babelrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Utils/HostParser.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="29" column="31" lean-forward="false" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../op/go-logging/memory.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-170">
+          <caret line="19" column="28" lean-forward="false" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Go/src/errors/errors.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../op/go-logging/format.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="261" column="5" lean-forward="false" selection-start-line="261" selection-start-column="5" selection-end-line="261" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="15" column="11" lean-forward="false" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/Torrent.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="18" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Services/ScrapeWork.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Services/scraper.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1496">
+          <caret line="98" column="37" lean-forward="true" selection-start-line="98" selection-start-column="31" selection-end-line="98" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../getsentry/raven-go/client.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="713" column="41" lean-forward="false" selection-start-line="713" selection-start-column="41" selection-end-line="713" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../op/go-logging/multi.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="15" column="5" lean-forward="false" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../op/go-logging/backend.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="17" column="5" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../op/go-logging/logger.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="58" column="17" lean-forward="false" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../op/go-logging/log_windows.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1139">
+          <caret line="72" column="14" lean-forward="false" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../op/go-logging/level.go">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="51" column="8" lean-forward="true" selection-start-line="44" selection-start-column="5" selection-end-line="51" selection-end-column="8" />
+          <caret line="22" column="11" lean-forward="false" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RpcMaster/RpcMaster.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Spider/Spider.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Backend.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="53" lean-forward="false" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Services/SentryLogBackend.go" />
+    <entry file="file://$PROJECT_DIR$/Config/App.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="5" lean-forward="false" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../valyala/gorpc/transport.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2567">
+          <caret line="156" column="5" lean-forward="false" selection-start-line="156" selection-start-column="5" selection-end-line="156" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Services/rpc/TorrentRpcService.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="45" column="24" lean-forward="false" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Services/rpc/RpClient.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Services/rpc/RpcServer.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="33" column="33" lean-forward="false" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Services/rpc/ScrapeRcpService.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2006">
+          <caret line="129" column="101" lean-forward="false" selection-start-line="129" selection-start-column="93" selection-end-line="129" selection-end-column="101" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/setup.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="10" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../gopkg.in/iconv.v1/reader.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="9" lean-forward="false" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
           <folding>
-            <element signature="n#style#0;n#v-list#0;n#v-menu#0;n#v-form#0;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#15#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/src/App.vue">
+    <entry file="file://$PROJECT_DIR$/../../saintfish/chardet/detector.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="70" column="2" lean-forward="false" selection-start-line="70" selection-start-column="2" selection-end-line="70" selection-end-column="2" />
+        <state relative-caret-position="1173">
+          <caret line="72" column="32" lean-forward="false" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/src/components/HomePage.vue">
+    <entry file="file://$PROJECT_DIR$/Utils/SliceUtils.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="14" lean-forward="false" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+        <state relative-caret-position="68">
+          <caret line="7" column="5" lean-forward="false" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../gopkg.in/iconv.v1/iconv.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="11" lean-forward="false" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+          <folding>
+            <element signature="e#415#473#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Services/DhtCrawler.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="125" column="78" lean-forward="false" selection-start-line="125" selection-start-column="78" selection-end-line="125" selection-end-column="78" />
+          <folding>
+            <element signature="e#18#388#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

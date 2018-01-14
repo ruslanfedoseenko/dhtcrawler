@@ -13,7 +13,7 @@ import commonFooter from './components/Footer'
 import chart from './components/Chart'
 import SearchField from './components/SearchField'
 Raven
-  .config('https://51ce0777a50a4e9683b5cc163ba1a667@sentry.io/266977')
+  .config('http://067a88a545394790801f0086c15c8d15@sentry.btoogle.com/3')
   .addPlugin(RavenVue, Vue)
   .install()
 Vue.use(vueresource)

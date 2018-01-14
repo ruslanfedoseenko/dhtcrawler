@@ -3,6 +3,7 @@ package Config
 import (
 	"errors"
 	"fmt"
+	"github.com/getsentry/raven-go"
 	"github.com/jasonlvhit/gocron"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
@@ -11,6 +12,7 @@ import (
 	"os/signal"
 	"runtime/debug"
 	"syscall"
+	"github.com/op/go-logging"
 )
 
 type Service interface {
@@ -25,12 +27,14 @@ type App struct {
 }
 
 func NewApp() *App {
+	setupLog()
 	config := SetupConfiguration()
 	app := App{
 
 		Config:    config,
 		Scheduler: gocron.NewScheduler(),
 	}
+	raven.SetDSN("http://b80ba7ce05cb42e7983d962d95a1a6e5:37cd46ed05b54ce69fca375afd606bff@sentry.btoogle.com/4")
 	if config.DbConfig.DbDriver != "" {
 		var connectionString string = fmt.Sprintf("host=%s port=%d user=%s dbname=%s sslmode=disable password=%s", config.DbConfig.Host, config.DbConfig.Port, config.DbConfig.UserName, config.DbConfig.TableName, config.DbConfig.Password)
 		log.Println("Using Connection string", connectionString)
@@ -42,11 +46,58 @@ func NewApp() *App {
 		if err != nil {
 			log.Println("Db open error:", err.Error())
 		}
-
+		applySentryPlugin(db)
 		app.Db = db
 	}
 
 	return &app
+}
+
+var format = logging.MustStringFormatter(
+	`%{color}%{time:15:04:05.000} %{module} %{shortfunc} - %{level:.4s} %{color:reset}: %{message}`,
+)
+
+type SentryLogBackend struct {
+}
+
+func (b SentryLogBackend) Log(logLvl logging.Level, i int, record *logging.Record) error {
+	switch logLvl {
+	case logging.ERROR:
+	case logging.CRITICAL:
+	case logging.NOTICE:
+		{
+			raven.CaptureErrorAndWait(errors.New(record.Formatted(i)), nil)
+		}
+	}
+	return nil
+}
+
+
+func setupLog() {
+	stdOutBackend := logging.NewLogBackend(os.Stdout, "", 0)
+	leveledSentryBackend := logging.AddModuleLevel(SentryLogBackend{})
+	leveledSentryBackend.SetLevel(logging.ERROR, "")
+	leveledStdOutBackend := logging.AddModuleLevel(stdOutBackend)
+	leveledStdOutBackend.SetLevel(logging.DEBUG, "")
+	logging.SetFormatter(format)
+	logging.SetBackend(leveledStdOutBackend, leveledSentryBackend)
+}
+
+func reportErrToSentryio(scope *gorm.Scope) {
+	if scope.HasError() {
+		err := scope.DB().Error
+		sql := scope.CombinedConditionSql()
+		sentryAdditionalData := map[string]string{
+			"sql": sql,
+		}
+		raven.CaptureError(err, sentryAdditionalData)
+	}
+}
+func applySentryPlugin(db *gorm.DB) {
+	db.Callback().Create().After("gorm:create").Register("sentryio_plugin:after_create", reportErrToSentryio)
+	db.Callback().Query().After("gorm:query").Register("sentryio_plugin:after_query", reportErrToSentryio)
+	db.Callback().Delete().After("gorm:delete").Register("sentryio_plugin:after_delete", reportErrToSentryio)
+	db.Callback().Update().After("gorm:update").Register("sentryio_plugin:after_update", reportErrToSentryio)
 }
 
 func (app *App) AddService(svc Service) {

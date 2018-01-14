@@ -39,17 +39,9 @@
   export default {
     name: 'search-field',
     props: [
-      'performSearch'
+      'performSearch', 'searchText'
     ],
     computed: {
-      searchText: {
-        get() {
-          return this.$store.state.searchTerm
-        },
-        set(value) {
-          this.$store.commit('ChangeSearch', value)
-        }
-      },
       suggestions: {
         get() {
           return this.$store.state.suggestions
@@ -76,6 +68,7 @@
           this.suggestions = []
           this.openMenu = false
         }
+        this.$emit('update:searchText', value)
       }
     },
     methods: Object.assign(mapActions(['fetchSuggestions']), {

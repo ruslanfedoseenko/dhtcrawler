@@ -40,7 +40,7 @@ func TorrentSearchHandler(w http.ResponseWriter, r *http.Request, ps httprouter.
 	var itemsCount uint64 = 0
 	itemsPerPage := App.Config.ItemsPerPage
 
-	nameQuery := Utils.ZdbBuildQuery("name", searchTerm, (page - 1) * itemsPerPage, itemsPerPage)
+	nameQuery := Utils.ZdbBuildQuery("name", searchTerm, (page-1)*itemsPerPage, itemsPerPage)
 
 	var countHolder Models.ZdbEstimateCountHolder
 	App.Db.Debug().Raw("select zdb_estimate_count as count from zdb_estimate_count('torrents'," + nameQuery + ")").Scan(&countHolder)

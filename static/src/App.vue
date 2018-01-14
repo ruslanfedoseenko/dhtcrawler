@@ -35,15 +35,6 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-snackbar
-      :timeout="6000"
-      :top="true"
-      :multi-line="true"
-      v-model="snackbar"
-    >
-      {{ validationText }}
-      <v-btn flat color="pink" @click.native="snackbar = false">Close</v-btn>
-    </v-snackbar>
     <v-toolbar dark dense fixed clipped-left app>
       <v-toolbar-title>
         <v-toolbar-side-icon @click="toggleDrawler"/>
@@ -56,7 +47,7 @@
         </v-flex>
       </v-layout>
       <v-layout row align-center style="max-width: 650px">
-        <btoogle-search-field v-if="enableSearch" :performSearch="performSearch"/>
+        <btoogle-search-field v-if="enableSearch" :performSearch="performSearch" :searchText.sync="searchText"/>
       </v-layout>
     </v-toolbar>
     <v-content>

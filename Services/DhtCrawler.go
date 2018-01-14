@@ -9,11 +9,14 @@ import (
 	"github.com/ruslanfedoseenko/dhtcrawler/Services/rpc"
 	"github.com/ruslanfedoseenko/dhtcrawler/Utils"
 	"github.com/shiyanhui/dht"
+	"unicode/utf8"
 	"strings"
+	"github.com/saintfish/chardet"
+	"gopkg.in/iconv.v1"
 )
 
 type DhtCrawlingService struct {
-	dht        *dht.DHT
+	dht        []*dht.DHT
 	wire       *dht.Wire
 	config     *dht.Config
 	rpcClient  *Rpc.RpcClient
@@ -33,10 +36,14 @@ func SetupDhtCrawling(app *Config.App) {
 
 }
 
+var detector = chardet.NewTextDetector()
+
 func (svc DhtCrawlingService) Start() {
 	svc.rpcClient.Start()
+	svc.wire = dht.NewWire(65536, 6144, 6144, 3072)
+	svc.dht = make([]*dht.DHT, App.Config.DhtConfig.Workers)
 	for i := 0; i < App.Config.DhtConfig.Workers; i++ {
-		wire := dht.NewWire(65536, 6144, 6144, 3072)
+
 		var config = dht.NewCrawlConfig()
 		config.MaxNodes = 70000
 		config.Address = fmt.Sprintf(":%d", App.Config.DhtConfig.StartPort+i)
@@ -47,15 +54,15 @@ func (svc DhtCrawlingService) Start() {
 				var infoHashStr = hex.EncodeToString([]byte(infoHash))
 
 				if ok, _ := svc.rpcClient.HasTorrent(infoHashStr); !ok {
-					wire.Request([]byte(infoHash), ip, port)
+					svc.wire.Request([]byte(infoHash), ip, port)
 				}
 			}(infoHash, ip, port)
 
 		}
-		svc.dht = dht.New(config)
+		svc.dht[i] = dht.New(config)
 
 		go func() {
-			for resp := range wire.Response() {
+			for resp := range svc.wire.Response() {
 
 				metadata, err := dht.Decode(resp.MetadataInfo)
 				if err != nil {
@@ -75,6 +82,17 @@ func (svc DhtCrawlingService) Start() {
 				if name, ok = info["name"].(string); !ok {
 					dhtLog.Error("Info section has name but it is not a string", info)
 					continue
+				}
+				r, err := detector.DetectBest([]byte(name))
+				if err == nil {
+					if r.Charset != "UTF-8" {
+						name = convertStringToUtf8(r, name)
+					}
+				} else {
+					dhtLog.Info("Error Detecting charset", err)
+				}
+				if !utf8.ValidString(name) {
+					dhtLog.Error("Name string is not valid utf8 string:", name)
 				}
 				bt := Models.Torrent{
 					Infohash: hex.EncodeToString(resp.InfoHash),
@@ -101,6 +119,17 @@ func (svc DhtCrawlingService) Start() {
 						pathString := Utils.SliceToPathString(f["path"].([]interface{}))
 						if strings.Contains(pathString, "___padding") {
 							continue
+						}
+						r, err := detector.DetectBest([]byte(pathString))
+						if err == nil {
+							if r.Charset != "UTF-8" {
+								pathString = convertStringToUtf8(r, pathString)
+							}
+						} else {
+							dhtLog.Info("Error Detecting charset", err)
+						}
+						if !utf8.ValidString(pathString) {
+							dhtLog.Error("Path string is not valid utf8 string:", pathString)
 						}
 						bt.Files[i] = Models.File{
 							Path: pathString,
@@ -142,7 +171,16 @@ func (svc DhtCrawlingService) Start() {
 			}
 		}()
 
-		go wire.Run()
-		go svc.dht.Run()
+		go svc.wire.Run()
+		go svc.dht[i].Run()
 	}
+}
+func convertStringToUtf8(r *chardet.Result, name string) string {
+	converter, err := iconv.Open("UTF-8", r.Charset)
+	if err != nil {
+		dhtLog.Error("Unable to convert string", name, " from", r.Charset, "to UTF-8")
+	} else {
+		name = converter.ConvString(name)
+	}
+	return name
 }

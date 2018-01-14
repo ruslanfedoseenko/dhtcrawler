@@ -4,6 +4,7 @@ type Torrent struct {
 	Id             int32                 `gorm:"primary_key;AUTO_INCREMENT" json:"-"`
 	Infohash       string                `gorm:"size:40"`
 	Name           string                `gorm:"column:name;size:250"`
+	HasTag         bool                  `gorm:"column:hastag;" json:"-"`
 	ScraperResults []ScrapeTorrentResult `gorm:"ForeignKey:TorrentId" json:"TrackersInfo,omitempty"`
 	Files          []File                `gorm:"ForeignKey:TorrentId" json:"Files"`
 	FilesTree      []FileTreeItem        `gorm:"-" json:"FilesTree"`

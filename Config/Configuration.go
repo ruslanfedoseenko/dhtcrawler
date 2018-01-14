@@ -58,7 +58,7 @@ type RpcConfig struct {
 	Host string
 	Port int
 }
-type TmdbApi struct{
+type TmdbApi struct {
 	ApiKey string
 }
 type Configuration struct {
@@ -68,7 +68,7 @@ type Configuration struct {
 	ScrapeConfig       ScrapeConfig
 	RpcConfig          RpcConfig
 	TagProducersConfig TagProducersConfig
-	TmdbApi		   TmdbApi
+	TmdbApi            TmdbApi
 	ItemsPerPage       uint64
 }
 

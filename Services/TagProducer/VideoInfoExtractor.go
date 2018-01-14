@@ -89,7 +89,7 @@ func (ve *VideoInfoExtractor) GetAssociatedVideos(work VideoInfoExtractWork) (ti
 
 		var posterUrl string
 		var description string
-		var titleType   Models.TitleType
+		var titleType Models.TitleType
 		var genres []string
 		var year int64
 		if tvSeriesInfo, ok := res.Results[i].(tmdb.MultiSearchTvInfo); ok {
@@ -138,7 +138,6 @@ func (ve *VideoInfoExtractor) GetAssociatedVideos(work VideoInfoExtractWork) (ti
 			Id:          crc32.ChecksumIEEE([]byte(name)),
 			PosterUrl:   posterUrl,
 		})
-
 
 	}
 	return
