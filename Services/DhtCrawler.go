@@ -8,7 +8,7 @@ import (
 	"github.com/ruslanfedoseenko/dhtcrawler/Models"
 	"github.com/ruslanfedoseenko/dhtcrawler/Services/rpc"
 	"github.com/ruslanfedoseenko/dhtcrawler/Utils"
-	"github.com/shiyanhui/dht"
+	"github.com/ruslanfedoseenko/dht"
 	"unicode/utf8"
 	"strings"
 	"github.com/saintfish/chardet"
