@@ -192,6 +192,7 @@ func convertStringToUtf8(r *chardet.Result, name string) string {
 	if err != nil {
 		dhtLog.Error("Unable to convert string", name, " from", charset, "to UTF-8")
 	} else {
+		defer converter.Close()
 		name = converter.ConvString(name)
 	}
 	return name
