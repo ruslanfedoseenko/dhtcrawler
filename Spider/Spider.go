@@ -3,6 +3,9 @@ package main
 import (
 	"github.com/ruslanfedoseenko/dhtcrawler/Config"
 	"github.com/ruslanfedoseenko/dhtcrawler/Services"
+	_"net/http/pprof"
+	"log"
+	"net/http"
 )
 
 func main() {
@@ -11,5 +14,8 @@ func main() {
 
 	Services.SetupScrape(app)
 	Services.SetupDhtCrawling(app)
+	go func() {
+		log.Println(http.ListenAndServe("localhost:6060", nil))
+	}()
 	app.Run()
 }

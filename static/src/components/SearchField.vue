@@ -17,7 +17,7 @@
           single-line
           append-icon="search"
           :append-icon-cb="performSearchInternal"
-          v-model="searchText"
+          v-model="searchTextProp"
           :rules="[rules.minLength]"
           dark
           hide-details
@@ -49,6 +49,14 @@
         set(value) {
           this.$store.commit('ChangeSuggestions', value)
         }
+      },
+      searchTextProp: {
+        get() {
+          return this.searchText
+        },
+        set(value) {
+          this.$emit('update:searchText', value)
+        }
       }
     },
     data: () => ({
@@ -68,7 +76,6 @@
           this.suggestions = []
           this.openMenu = false
         }
-        this.$emit('update:searchText', value)
       }
     },
     methods: Object.assign(mapActions(['fetchSuggestions']), {
@@ -83,6 +90,7 @@
         }
       }
     })
+
   }
 </script>
 

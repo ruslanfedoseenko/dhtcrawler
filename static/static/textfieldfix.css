@@ -1,3 +1,8 @@
 .menu-content-bg-fix{
   background: #424242;
 }
+
+.menu-content-bg-fix .list {
+  padding-top: 0;
+  padding-bottom: 0;
+}

@@ -18,6 +18,9 @@
 <script>
   export default {
     name: 'home-page',
+    created() {
+      this.searchText = ''
+    },
     data: () => ({}),
     computed: {
       searchText: {
