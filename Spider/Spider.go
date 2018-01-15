@@ -15,7 +15,7 @@ func main() {
 	Services.SetupScrape(app)
 	Services.SetupDhtCrawling(app)
 	go func() {
-		log.Println(http.ListenAndServe("localhost:6060", nil))
+		log.Println(http.ListenAndServe("localhost:6061", nil))
 	}()
 	app.Run()
 }
