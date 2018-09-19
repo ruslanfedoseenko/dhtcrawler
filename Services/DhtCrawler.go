@@ -13,11 +13,12 @@ import (
 	"strings"
 	"github.com/saintfish/chardet"
 	"gopkg.in/iconv.v1"
+	"strconv"
 )
 
 type DhtCrawlingService struct {
 	dht        []*dht.DHT
-	wire       *dht.Wire
+	//wire       *dht.Wire
 	config     *dht.Config
 	rpcClient  *Rpc.RpcClient
 	shouldStop bool
@@ -48,10 +49,10 @@ var detector = chardet.NewTextDetector()
 
 func (svc DhtCrawlingService) Start() {
 	svc.rpcClient.Start()
-	svc.wire = dht.NewWire(65536, 6144, 6144)
+
 	svc.dht = make([]*dht.DHT, App.Config.DhtConfig.Workers)
 	for i := 0; i < App.Config.DhtConfig.Workers; i++ {
-
+		wire := dht.NewWire(65536, 6144, 6144)
 		var config = dht.NewCrawlConfig()
 		config.MaxNodes = 70000
 		config.Address = fmt.Sprintf(":%d", App.Config.DhtConfig.StartPort+i)
@@ -62,7 +63,7 @@ func (svc DhtCrawlingService) Start() {
 				var infoHashStr = hex.EncodeToString([]byte(infoHash))
 
 				if ok, _ := svc.rpcClient.HasTorrent(infoHashStr); !ok {
-					svc.wire.Request([]byte(infoHash), ip, port)
+					wire.Request([]byte(infoHash), ip, port)
 				}
 			}(infoHash, ip, port)
 
@@ -70,7 +71,7 @@ func (svc DhtCrawlingService) Start() {
 		svc.dht[i] = dht.New(config)
 
 		go func() {
-			for resp := range svc.wire.Response() {
+			for resp := range wire.Response() {
 
 				metadata, err := dht.Decode(resp.MetadataInfo)
 				if err != nil {
@@ -139,9 +140,21 @@ func (svc DhtCrawlingService) Start() {
 						if !utf8.ValidString(pathString) {
 							dhtLog.Error("Path string is not valid utf8 string:", pathString)
 						}
+						var size int
+						if size, ok = f["length"].(int); !ok {
+							if sizeStr, ok := f["length"].(string); ok {
+								size,err = strconv.Atoi(sizeStr)
+								if err != nil {
+									dhtLog.Error("Failed to convert", sizeStr, "to int")
+									size = -1
+								}
+							} else {
+								size = -1
+							}
+						}
 						bt.Files[i] = Models.File{
 							Path: pathString,
-							Size: f["length"].(int),
+							Size: size,
 						}
 
 					}
@@ -178,8 +191,7 @@ func (svc DhtCrawlingService) Start() {
 
 			}
 		}()
-
-		go svc.wire.Run()
+		go wire.Run()
 		go svc.dht[i].Run()
 	}
 }

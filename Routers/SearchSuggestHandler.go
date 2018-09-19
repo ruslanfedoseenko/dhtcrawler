@@ -24,7 +24,7 @@ func SearchSuggestHandler(w http.ResponseWriter, r *http.Request, ps httprouter.
 
 	var torrents []Models.Torrent
 
-	words := strings.Split(searchTerm, " ")
+	words := strings.Split(strings.Trim(searchTerm, " "), " ")
 	lastWord := words[len(words)-1]
 	App.Db.Debug().
 		Table("zdb_termlist('torrents', 'name_autocomplete', '" + lastWord + "', NULL, 5000) ").

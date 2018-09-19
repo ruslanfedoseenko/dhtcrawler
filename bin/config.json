@@ -13,8 +13,8 @@
     "StaticDataFolder" : "/home/devrus/IdeaProjects/DhtCrawler/bin/static"
   },
   "RpcConfig" : {
-    "Mode" : "SERVER",
-    "Host": "",
+    "Mode" : "CLIENT",
+    "Host": "79.143.188.25",
     "Port": 13699
   },
   "TagProducersConfig": {

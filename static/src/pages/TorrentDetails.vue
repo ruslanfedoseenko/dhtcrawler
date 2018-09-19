@@ -2,14 +2,11 @@
   <v-container fluid grid-list-md>
     <v-layout row wrap>
       <v-flex xs12>
-        <h1>{{torrent.Name}}
-          <v-chip>
-            <a v-bind:href="getUrl(torrent)">
-              <v-icon>file_download</v-icon>
-            </a>
-          </v-chip>
-        </h1>
-
+        <a v-bind:href="getUrl(torrent)" class="torrent-link">
+          <h1>{{torrent.Name}}
+            <v-icon>fas fa-cloud-download-alt</v-icon>
+          </h1>
+        </a>
       </v-flex>
       <v-flex xs12>
         <h2>Tags:</h2>
@@ -19,6 +16,51 @@
         <v-chip v-for="tag in torrent.Tags" :key="tag.Id">
           {{tag.Tag}}
         </v-chip>
+      </v-flex>
+      <v-flex xs12>
+        <h2>Descriptions:</h2>
+      </v-flex>
+      <v-flex xs12 v-if="torrent.Titles === undefined">
+        <v-layout row justify-center>
+          <h1>No descriptions found</h1>
+        </v-layout>
+      </v-flex>
+      <v-flex xs12 v-if="torrent.Titles !== undefined">
+        <v-layout row wrap>
+
+          <v-flex xs6 v-for="title in torrent.Titles">
+            <v-card>
+              <v-layout>
+                <v-flex xs5>
+                  <v-img
+                    v-bind:src="title.PosterUrl"
+                    height="350px"
+                    contain
+                  ></v-img>
+                </v-flex>
+                <v-flex xs7>
+                  <v-card-title primary-title>
+                    <div>
+                      <p class="text-lg-right">{{title.Title}}</p>
+                      <p class="text-lg-right">({{title.Year}})</p>
+                      <p>
+                        {{title.Description}}
+                      </p>
+                    </div>
+                  </v-card-title>
+                </v-flex>
+              </v-layout>
+              <v-divider light></v-divider>
+              <v-card-actions class="pa-3">
+                Rate this description as most suitable
+                <v-spacer></v-spacer>
+                <v-rating v-model="rating" dense
+                          half-increments
+                          hover></v-rating>
+              </v-card-actions>
+            </v-card>
+          </v-flex>
+        </v-layout>
       </v-flex>
       <v-flex xs6>
         <h2>Files</h2>
@@ -31,13 +73,15 @@
           <template slot="items" slot-scope="props">
             <td class="text-xs-left">
               <v-icon>insert_drive_file</v-icon>
-              {{ props.item.Path }}</td>
+              {{ props.item.Path }}
+            </td>
             <td class="text-xs-right">{{ formatBytes(props.item.Size,2) }}</td>
           </template>
         </v-data-table>
       </v-flex>
       <v-flex xs6>
-        <v-data-table v-bind:headers="trackerHeaders" :items="trackerScrapeInfos"  v-bind:pagination.sync="trackerPagination" disable-initial-sort>
+        <v-data-table v-bind:headers="trackerHeaders" :items="trackerScrapeInfos"
+                      v-bind:pagination.sync="trackerPagination" disable-initial-sort>
           <template slot="items" slot-scope="props">
             <td class="text-xs-left">{{props.item.TrackerUrl}}</td>
             <td class="text-xs-right">{{props.item.Seeds}}</td>
@@ -59,21 +103,22 @@
       infoHash: '',
       loading: false,
       fileHeaders: [
-        { text: 'Path:', align: 'left', value: 'Path' },
-        { text: 'Size:', align: 'left', value: 'Size' }
+        {text: 'Path:', align: 'left', value: 'Path'},
+        {text: 'Size:', align: 'left', value: 'Size'}
       ],
       filePagination: {
         sortBy: 'Path',
         rowsPerPage: 10
       },
+      rating: 0,
       trackerPagination: {
         rowsPerPage: 10
       },
       trackerHeaders: [
-        { text: 'Tracker URL:', align: 'left' },
-        { text: 'Seeds:', align: 'right' },
-        { text: 'Leechs:', align: 'right' },
-        { text: 'Last Update:', align: 'right' }
+        {text: 'Tracker URL:', align: 'left', value: 'TrackerUrl'},
+        {text: 'Seeds:', align: 'right', value: 'Seeds'},
+        {text: 'Leechs:', align: 'right', value: 'Leaches'},
+        {text: 'Last Update:', align: 'right', value: 'LastUpdate'}
       ],
       files: [],
       trackerScrapeInfos: []
@@ -105,7 +150,14 @@
       },
       toDateTimeStr(dataData) {
         if (dataData.Valid) {
-          var options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }
+          var options = {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+          }
           return new Date(dataData.Time).toLocaleDateString('ru-RU', options)
         }
         return '-'

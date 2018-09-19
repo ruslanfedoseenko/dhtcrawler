@@ -91,6 +91,10 @@ func (t *TorrentTagsProducer) processQueue() {
 			if err != nil {
 				TagProducerLog.Error("Error while appending torrent tags:", err)
 			}
+			err = t.db.Model(&torrents[i]).Association("Titles").Append(torrents[i].Titles).Error
+			if err != nil {
+				TagProducerLog.Error("Error while appending torrent tags:", err)
+			}
 		}
 	}
 

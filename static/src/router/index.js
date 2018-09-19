@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import torrentList from '@/components/TorrentList'
-import homePage from '@/components/HomePage'
-import torrentDetails from '@/components/TorrentDetails'
-import page404 from '@/components/NotFoundPage'
-import stats from '@/components/StatisticsPage'
-import maintanance from '@/components/MaintenancePage'
+import torrentList from '@/pages/TorrentList'
+import homePage from '@/pages/HomePage'
+import torrentDetails from '@/pages/TorrentDetails'
+import page404 from '@/pages/NotFoundPage'
+import stats from '@/pages/StatisticsPage'
+import maintanance from '@/pages/MaintenancePage'
 Vue.use(Router)
 let isMaintenance = false
 let router

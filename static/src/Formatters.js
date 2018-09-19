@@ -25,6 +25,6 @@ export default {
         break
       }
     }
-    return (num / si[i].value).toFixed(digits).replace(rx, '$1') + si[i].symbol
+    return (num / si[i].value).toFixed(digits).replace(rx, '$1') + ' ' + si[i].symbol
   }
 }

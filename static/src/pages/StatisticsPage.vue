@@ -52,6 +52,8 @@
     methods: Object.assign(mapActions(['fetchStats']), {
       setOptions(firstTorrentCount, firsFileCount, firsFileSize) {
         this.tabData[0].options = {
+          responsive: true,
+          maintainAspectRatio: false,
           tooltips: {
             callbacks: {
               label(tooltipItem, data) {
@@ -64,15 +66,16 @@
             yAxes: [{
               ticks: {
                 suggestedMin: firstTorrentCount,
-                // Include a dollar sign in the ticks
                 callback(value) {
-                  return formatters.nFormatter(value + firstTorrentCount, 1)
+                  return formatters.nFormatter(value + firstTorrentCount, 3)
                 }
               }
             }]
           }
         }
         this.tabData[1].options = {
+          responsive: true,
+          maintainAspectRatio: false,
           tooltips: {
             callbacks: {
               label(tooltipItem, data) {
@@ -93,6 +96,8 @@
           }
         }
         this.tabData[2].options = {
+          responsive: true,
+          maintainAspectRatio: false,
           tooltips: {
             callbacks: {
               label(tooltipItem, data) {

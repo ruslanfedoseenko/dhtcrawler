@@ -1,7 +1,13 @@
 .menu-content-bg-fix{
   background: #424242;
 }
-
+.torrent-link{
+  text-decoration: none !important;
+  color: #fff;
+}
+.torrent-list-link{
+  text-decoration: none !important;
+}
 .menu-content-bg-fix .list {
   padding-top: 0;
   padding-bottom: 0;

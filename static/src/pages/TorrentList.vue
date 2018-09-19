@@ -21,8 +21,8 @@
                   <v-list-tile-title v-html="item.Name"/>
                   <v-list-tile-sub-title>
                     <v-chip>
-                      <a v-bind:href="getUrl(item)">
-                        <v-icon>file_download</v-icon>
+                      <a v-bind:href="getUrl(item)" class="torrent-list-link">
+                        <v-icon>fas fa-cloud-download-alt</v-icon>
                       </a>
                     </v-chip>
                     <v-chip>{{ formatBytes(getFileSize(item),2) }}</v-chip>

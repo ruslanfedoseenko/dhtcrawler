@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="e6ad1f81-8006-4d8a-9239-d34a183402db" name="cutetorrent" url="http://cutetorrent.info">
-        <fileTransfer host="cutetorrent.info" port="22" privateKey="D:\id_rsa" accessType="SFTP" keyPair="true">
+        <fileTransfer host="cutetorrent.info" port="22" privateKey="$USER_HOME$/.ssh/id_rsa" accessType="SFTP" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
@@ -11,7 +11,7 @@
         </fileTransfer>
       </webServer>
       <webServer id="79b1e743-5a78-4a42-8715-f11b429962aa" name="slave.cutetorrent" url="http://slave1.cutetorrent.info">
-        <fileTransfer host="slave1.cutetorrent.info" port="22" privateKey="D:\id_rsa.ppk" accessType="SFTP" keyPair="true">
+        <fileTransfer host="slave1.cutetorrent.info" port="22" privateKey="$USER_HOME$/.ssh/id_rsa" accessType="SFTP" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

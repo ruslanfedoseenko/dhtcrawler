@@ -2,7 +2,6 @@ package Routers
 
 import (
 	"github.com/abbot/go-http-auth"
-	_ "github.com/go-sql-driver/mysql"
 	"github.com/julienschmidt/httprouter"
 	"github.com/ruslanfedoseenko/dhtcrawler/Config"
 	"log"
@@ -71,7 +70,7 @@ func Setup(app *Config.App) {
 
 		hs := make(HostSwitch)
 		hs["btoogle.com"] = router
-		hs["search.cutetorrent.info"] = router
+		hs["www.btoogle.com"] = router
 		hs["localhost:6060"] = router
 
 		http.ListenAndServe(":6060", hs)
