@@ -2,25 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7189115d-3d33-4b7a-bffe-2b144520efcd" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/Routers/AuthCurrentUserInfo.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/src/Interceptors.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Errors/AuthErrors.go" afterPath="$PROJECT_DIR$/Errors/AuthErrors.go" />
-      <change beforePath="$PROJECT_DIR$/Errors/ErrorsText.go" afterPath="$PROJECT_DIR$/Errors/ErrorsText.go" />
-      <change beforePath="$PROJECT_DIR$/Middleware/Auth.go" afterPath="$PROJECT_DIR$/Middleware/Auth.go" />
-      <change beforePath="$PROJECT_DIR$/Routers/AuthLoginHandler.go" afterPath="$PROJECT_DIR$/Routers/AuthLoginHandler.go" />
-      <change beforePath="$PROJECT_DIR$/Routers/Router.go" afterPath="$PROJECT_DIR$/Routers/Router.go" />
-      <change beforePath="$PROJECT_DIR$/Routers/SearchSuggestHandler.go" afterPath="$PROJECT_DIR$/Routers/SearchSuggestHandler.go" />
-      <change beforePath="$PROJECT_DIR$/Routers/TorrentCountHandler.go" afterPath="$PROJECT_DIR$/Routers/TorrentCountHandler.go" />
-      <change beforePath="$PROJECT_DIR$/Routers/TorrentInfoHandler.go" afterPath="$PROJECT_DIR$/Routers/TorrentInfoHandler.go" />
-      <change beforePath="$PROJECT_DIR$/Routers/TorrentSearchHandler.go" afterPath="$PROJECT_DIR$/Routers/TorrentSearchHandler.go" />
-      <change beforePath="$PROJECT_DIR$/Routers/TorrentsListHandler.go" afterPath="$PROJECT_DIR$/Routers/TorrentsListHandler.go" />
-      <change beforePath="$PROJECT_DIR$/Services/jwt/Init.go" afterPath="$PROJECT_DIR$/Services/jwt/Init.go" />
-      <change beforePath="$PROJECT_DIR$/Services/jwt/cookies.go" afterPath="$PROJECT_DIR$/Services/jwt/cookies.go" />
-      <change beforePath="$PROJECT_DIR$/Services/jwt/jwt.go" afterPath="$PROJECT_DIR$/Services/jwt/jwt.go" />
-      <change beforePath="$PROJECT_DIR$/static/src/App.vue" afterPath="$PROJECT_DIR$/static/src/App.vue" />
-      <change beforePath="$PROJECT_DIR$/static/src/store/auth.module.js" afterPath="$PROJECT_DIR$/static/src/store/auth.module.js" />
-      <change beforePath="$PROJECT_DIR$/static/src/torrents" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -665,7 +647,7 @@
       <workItem from="1537991218579" duration="10585000" />
       <workItem from="1538077668122" duration="108000" />
       <workItem from="1538077807886" duration="1386000" />
-      <workItem from="1538079760719" duration="12480000" />
+      <workItem from="1538079760719" duration="12557000" />
     </task>
     <task id="LOCAL-00001" summary="Some changes and fixes in backend&#10;Rewriten frontend to Vue.js">
       <created>1515079702648</created>
@@ -779,11 +761,18 @@
       <option name="project" value="LOCAL" />
       <updated>1538077750957</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Improved login&#10;Removed log.printLn">
+      <created>1538092297227</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1538092297227</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="252496000" />
+    <option name="totallyTimeSpent" value="252573000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-29" y="-12" width="1920" height="1032" extended-state="6" />
@@ -870,7 +859,8 @@
     <MESSAGE value="Fix memory leak of converter" />
     <MESSAGE value="Added profiler" />
     <MESSAGE value="Added auth and users db" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added auth and users db" />
+    <MESSAGE value="Improved login&#10;Removed log.printLn" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved login&#10;Removed log.printLn" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
