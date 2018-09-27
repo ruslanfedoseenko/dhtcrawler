@@ -2,12 +2,10 @@ package Routers
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/julienschmidt/httprouter"
 	"github.com/op/go-logging"
 	"github.com/ruslanfedoseenko/dhtcrawler/Models"
 	"github.com/ruslanfedoseenko/dhtcrawler/Utils"
-	"log"
 	"net/http"
 	"strconv"
 )
@@ -23,7 +21,7 @@ func TorrentSearchHandler(w http.ResponseWriter, r *http.Request, ps httprouter.
 	if len(pageNumberStr) > 0 {
 		page, err = strconv.ParseUint(pageNumberStr, 10, 64)
 		if err != nil {
-			log.Println("Parsing Error", err.Error())
+			httpLog.Errorf("Parsing Error %s", err.Error())
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
@@ -75,7 +73,7 @@ func TorrentSearchHandler(w http.ResponseWriter, r *http.Request, ps httprouter.
 	data, err := json.Marshal(paginatedResponse)
 
 	if err != nil {
-		fmt.Println(err.Error())
+		httpLog.Error(err.Error())
 	}
 
 	w.Header().Set("Content-Type", "application/json")

@@ -7,6 +7,7 @@ var errText = map[int]string{
 	InvalidPassword:       "Incorrect password",
 	FailedToMarshalStruct: "Struct Marshaling failed",
 	InvalidMail:           "Mail is invalid.",
+	InvalidToken:          "Specified token is invalid",
 }
 
 func ErrorText(code int) string {

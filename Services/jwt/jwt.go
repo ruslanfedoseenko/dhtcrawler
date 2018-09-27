@@ -3,12 +3,19 @@ package jwt
 import (
 	"time"
 	"errors"
-	"log"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/ruslanfedoseenko/dhtcrawler/Models"
 	"github.com/ruslanfedoseenko/dhtcrawler/Utils"
 )
 
+func GetClaims(token string) (claims *Models.TokenClaims,err error) {
+	authToken, err := jwt.ParseWithClaims(token, &Models.TokenClaims{}, func(token *jwt.Token) (interface{}, error) {
+		return verifyKey, nil
+	})
+	claims = authToken.Claims.(*Models.TokenClaims)
+
+	return
+}
 
 func CreateNewTokens(uuid string, role string) (authTokenString, refreshTokenString, csrfSecret string, err error) {
 	// generate the csrf secret
@@ -37,7 +44,7 @@ func CreateNewTokens(uuid string, role string) (authTokenString, refreshTokenStr
 func CheckAndRefreshTokens(oldAuthTokenString string, oldRefreshTokenString string, oldCsrfSecret string) (newAuthTokenString, newRefreshTokenString, newCsrfSecret string, err error) {
 	// first, check that a csrf token was provided
 	if oldCsrfSecret == "" {
-		log.Println("No CSRF token!")
+		jwtLog.Error("No CSRF token!")
 		err = errors.New("Unauthorized")
 		return
 	}
@@ -50,7 +57,7 @@ func CheckAndRefreshTokens(oldAuthTokenString string, oldRefreshTokenString stri
 		return
 	}
 	if oldCsrfSecret != authTokenClaims.Csrf {
-		log.Println("CSRF token doesn't match jwt!")
+		jwtLog.Error("CSRF token doesn't match jwt!")
 		err = errors.New("Unauthorized")
 		return
 	}
@@ -58,7 +65,7 @@ func CheckAndRefreshTokens(oldAuthTokenString string, oldRefreshTokenString stri
 
 	// next, check the auth token in a stateless manner
 	if authToken.Valid {
-		log.Println("Auth token is valid")
+		jwtLog.Error("Auth token is valid")
 		// auth token has not expired
 		// we need to return the csrf secret bc that's what the function calls for
 		newCsrfSecret = authTokenClaims.Csrf
@@ -70,9 +77,9 @@ func CheckAndRefreshTokens(oldAuthTokenString string, oldRefreshTokenString stri
 		newAuthTokenString = oldAuthTokenString
 		return
 	} else if ve, ok := err.(*jwt.ValidationError); ok {
-		log.Println("Auth token is not valid")
+		jwtLog.Error("Auth token is not valid")
 		if ve.Errors&(jwt.ValidationErrorExpired) != 0 {
-			log.Println("Auth token is expired")
+			jwtLog.Error("Auth token is expired")
 			// auth token is expired
 			newAuthTokenString, newCsrfSecret, err = updateAuthTokenString(oldRefreshTokenString, oldAuthTokenString)
 			if err != nil {
@@ -89,12 +96,12 @@ func CheckAndRefreshTokens(oldAuthTokenString string, oldRefreshTokenString stri
 			newRefreshTokenString, err = updateRefreshTokenCsrf(newRefreshTokenString, newCsrfSecret)
 			return
 		} else {
-			log.Println("Error in auth token")
+			jwtLog.Error("Error in auth token")
 			err = errors.New("Error in auth token")
 			return
 		}
 	} else {
-		log.Println("Error in auth token")
+		jwtLog.Error("Error in auth token")
 		err = errors.New("Error in auth token")
 		return
 	}
@@ -216,7 +223,7 @@ func updateAuthTokenString(refreshTokenString string, oldAuthTokenString string)
 
 			return
 		} else {
-			log.Println("Refresh token has expired!")
+			jwtLog.Error("Refresh token has expired!")
 			// the refresh token has expired!
 			// Revoke the token in our db and require the user to login again
 			DeleteRefreshToken(refreshTokenClaims.StandardClaims.Id)
@@ -225,7 +232,7 @@ func updateAuthTokenString(refreshTokenString string, oldAuthTokenString string)
 			return
 		}
 	} else {
-		log.Println("Refresh token has been revoked!")
+		jwtLog.Error("Refresh token has been revoked!")
 		// the refresh token has been revoked!
 		err = errors.New("Unauthorized")
 		return

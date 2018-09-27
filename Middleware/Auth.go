@@ -5,16 +5,19 @@ import (
 	"net/http"
 	"log"
 	"github.com/ruslanfedoseenko/dhtcrawler/Services/jwt"
+	"github.com/op/go-logging"
 )
+
+var AuthMiddlewareLog = logging.MustGetLogger("AuthMiddleware")
 
 func AuthRequest(handleFunc httprouter.Handle) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
-		log.Println("In auth restricted section")
+		AuthMiddlewareLog.Info("In auth restricted section")
 
 		// read cookies
 		AuthCookie, authErr := r.Cookie("AuthToken")
 		if authErr == http.ErrNoCookie {
-			log.Println("Unauthorized attempt! No auth cookie")
+			AuthMiddlewareLog.Error("Unauthorized attempt! No auth cookie")
 			jwt.NullifyTokenCookies(&w, r)
 			// http.Redirect(w, r, "/login", 302)
 			http.Error(w, http.StatusText(401), 401)
@@ -28,7 +31,7 @@ func AuthRequest(handleFunc httprouter.Handle) httprouter.Handle {
 
 		RefreshCookie, refreshErr := r.Cookie("RefreshToken")
 		if refreshErr == http.ErrNoCookie {
-			log.Println("Unauthorized attempt! No refresh cookie")
+			AuthMiddlewareLog.Error("Unauthorized attempt! No refresh cookie")
 			jwt.NullifyTokenCookies(&w, r)
 			http.Redirect(w, r, "/login", 302)
 			return
@@ -41,13 +44,14 @@ func AuthRequest(handleFunc httprouter.Handle) httprouter.Handle {
 
 		// grab the csrf token
 		requestCsrfToken := grabCsrfFromReq(r)
-		log.Println(requestCsrfToken)
+		AuthMiddlewareLog.Infof("Request Refresh Token: %s",requestCsrfToken)
+
 
 		// check the jwt's for validity
 		authTokenString, refreshTokenString, csrfSecret, err := jwt.CheckAndRefreshTokens(AuthCookie.Value, RefreshCookie.Value, requestCsrfToken)
 		if err != nil {
 			if err.Error() == "Unauthorized" {
-				log.Println("Unauthorized attempt! JWT's not valid!")
+				AuthMiddlewareLog.Error("Unauthorized attempt! JWT's not valid!")
 				// Utils.NullifyTokenCookies(&w, r)
 				// http.Redirect(w, r, "/login", 302)
 				http.Error(w, http.StatusText(401), 401)
@@ -56,14 +60,21 @@ func AuthRequest(handleFunc httprouter.Handle) httprouter.Handle {
 				// @adam-hanna: do we 401 or 500, here?
 				// it could be 401 bc the token they provided was messed up
 				// or it could be 500 bc there was some error on our end
-				log.Println("err not nil")
+				AuthMiddlewareLog.Error("err not nil")
 				log.Panic("panic: %+v", err)
 				// Utils.NullifyTokenCookies(&w, r)
 				http.Error(w, http.StatusText(500), 500)
 				return
 			}
 		}
-		log.Println("Successfully recreated jwts")
+		claims, err := jwt.GetClaims(AuthCookie.Value)
+
+		params = append(params, httprouter.Param{
+			Key: "AuthUserId",
+			Value: claims.Subject,
+		})
+
+		AuthMiddlewareLog.Error("Successfully recreated jwts")
 
 		// @adam-hanna: Change this. Only allow whitelisted origins! Also check referer header
 		w.Header().Set("Access-Control-Allow-Origin", "*")
@@ -79,9 +90,11 @@ func AuthRequest(handleFunc httprouter.Handle) httprouter.Handle {
 
 func grabCsrfFromReq(r *http.Request) string {
 	csrfFromFrom := r.FormValue("X-CSRF-Token")
-
+	csrfFromCookie, err := r.Cookie("csrf")
 	if csrfFromFrom != "" {
 		return csrfFromFrom
+	} else  if err == nil && csrfFromCookie.Value != "" {
+		return csrfFromCookie.Value
 	} else {
 		return r.Header.Get("X-CSRF-Token")
 	}

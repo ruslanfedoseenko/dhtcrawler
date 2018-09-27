@@ -2,10 +2,8 @@ package Routers
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/julienschmidt/httprouter"
 	"github.com/ruslanfedoseenko/dhtcrawler/Models"
-	"log"
 	"net/http"
 )
 
@@ -13,7 +11,7 @@ func TorrentInfoHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Pa
 
 	var infohash string = ps.ByName("infohash")
 	if len(infohash) != 40 {
-		log.Println("Invalid infohash specified:", infohash)
+		httpLog.Errorf("Invalid infohash specified: %s", infohash)
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
@@ -30,7 +28,7 @@ func TorrentInfoHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Pa
 	data, err := json.Marshal(torrent)
 
 	if err != nil {
-		fmt.Println(err.Error())
+		httpLog.Error(err.Error())
 	}
 
 	w.Header().Set("Content-Type", "application/json")

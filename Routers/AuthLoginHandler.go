@@ -31,7 +31,7 @@ func AuthLoginHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Param
 		w.Write([]byte(e.Error()))
 	}
 	json.Unmarshal(bytes, &credentials)
-	log.Println(credentials)
+
 
 	user, uuid, loginErr := LogUserIn(credentials.Username, credentials.Password)
 	log.Println(user, uuid, loginErr)

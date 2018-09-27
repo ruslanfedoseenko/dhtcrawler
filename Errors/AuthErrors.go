@@ -6,4 +6,5 @@ const (
 	InvalidUsername       = 3
 	InvalidPassword       = 4
 	InvalidMail           = 5
+	InvalidToken		  = 6
 )

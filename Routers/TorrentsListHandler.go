@@ -7,7 +7,10 @@ import (
 	"log"
 	"net/http"
 	"strconv"
+	"github.com/op/go-logging"
 )
+
+var httpLog = logging.MustGetLogger("httpLog")
 
 func TorrentsListHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	var page uint64 = 1
@@ -45,9 +48,9 @@ func TorrentsListHandler(w http.ResponseWriter, r *http.Request, ps httprouter.P
 	}
 
 	if err != nil {
-		log.Println("Error:", err.Error())
+		httpLog.Errorf("Error: %q", err.Error())
 	}
-	log.Println("Total items count:", itemsCount)
+	httpLog.Debug("Total items count: %i", itemsCount)
 
 	var pageCountFix uint64 = 0
 	if itemsCount%itemsPerPage != 0 {

@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/ruslanfedoseenko/dhtcrawler/Config"
+	"github.com/op/go-logging"
 )
 
 // location of the files used for signing and verification
@@ -22,6 +23,8 @@ var (
 	signKey   *rsa.PrivateKey
 )
 
+
+var jwtLog = logging.MustGetLogger("jwtLog")
 var App *Config.App
 
 // read the key files before starting http handlers

@@ -3,7 +3,6 @@ package Routers
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/julienschmidt/httprouter"
 	"github.com/ruslanfedoseenko/dhtcrawler/Models"
 	"net/http"
@@ -40,7 +39,7 @@ func SearchSuggestHandler(w http.ResponseWriter, r *http.Request, ps httprouter.
 	data, err := json.Marshal(response)
 
 	if err != nil {
-		fmt.Println(err.Error())
+		httpLog.Errorf(err.Error())
 	}
 
 	w.Header().Set("Content-Type", "application/json")

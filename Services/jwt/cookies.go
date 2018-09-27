@@ -7,11 +7,17 @@ import (
 )
 
 func NullifyTokenCookies(w *http.ResponseWriter, r *http.Request) {
+
+	var isHttps = r.Header.Get("X-Forwarded-Proto") == "https"
+
 	authCookie := http.Cookie{
 		Name: "AuthToken",
 		Value: "",
 		Expires: time.Now().Add(-1000 * time.Hour),
 		HttpOnly: true,
+		Domain: r.Host,
+		Path: "/api",
+		Secure: isHttps,
 	}
 
 	http.SetCookie(*w, &authCookie)
@@ -21,6 +27,9 @@ func NullifyTokenCookies(w *http.ResponseWriter, r *http.Request) {
 		Value: "",
 		Expires: time.Now().Add(-1000 * time.Hour),
 		HttpOnly: true,
+		Domain: r.Host,
+		Path: "/api",
+		Secure: isHttps,
 	}
 
 	http.SetCookie(*w, &refreshCookie)
@@ -40,11 +49,14 @@ func NullifyTokenCookies(w *http.ResponseWriter, r *http.Request) {
 
 func SetAuthAndRefreshCookies(w *http.ResponseWriter, r *http.Request, authTokenString string, refreshTokenString string) {
 
+	var isHttps = r.Header.Get("X-Forwarded-Proto") == "https"
 	authCookie := http.Cookie{
 		Name: "AuthToken",
 		Value: authTokenString,
 		HttpOnly: true,
 		Domain: r.Host,
+		Path: "/api",
+		Secure: isHttps,
 	}
 
 	http.SetCookie(*w, &authCookie)
@@ -54,6 +66,8 @@ func SetAuthAndRefreshCookies(w *http.ResponseWriter, r *http.Request, authToken
 		Value: refreshTokenString,
 		HttpOnly: true,
 		Domain: r.Host,
+		Path: "/api",
+		Secure: isHttps,
 	}
 
 	http.SetCookie(*w, &refreshCookie)

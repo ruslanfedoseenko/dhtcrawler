@@ -74,8 +74,8 @@
                 </v-list-tile-avatar>
 
                 <v-list-tile-content>
-                  <v-list-tile-title>John Leider</v-list-tile-title>
-                  <v-list-tile-sub-title>Founder of Vuetify.js</v-list-tile-sub-title>
+                  <v-list-tile-title>{{userInfo.username}}</v-list-tile-title>
+                  <v-list-tile-sub-title>{{userInfo.mail}}</v-list-tile-sub-title>
                 </v-list-tile-content>
 
                 <v-list-tile-action>
@@ -92,27 +92,13 @@
 
             <v-divider></v-divider>
 
-            <v-list>
-              <v-list-tile>
-                <v-list-tile-action>
-                  <v-switch v-model="message" color="purple"></v-switch>
-                </v-list-tile-action>
-                <v-list-tile-title>Enable messages</v-list-tile-title>
-              </v-list-tile>
 
-              <v-list-tile>
-                <v-list-tile-action>
-                  <v-switch v-model="hints" color="purple"></v-switch>
-                </v-list-tile-action>
-                <v-list-tile-title>Enable hints</v-list-tile-title>
-              </v-list-tile>
-            </v-list>
 
             <v-card-actions>
               <v-spacer></v-spacer>
 
               <v-btn flat @click="userMenu = false">Cancel</v-btn>
-              <v-btn color="primary" flat @click="userMenu = false">Save</v-btn>
+              <v-btn color="primary" flat @click="doLogOut">Log Out</v-btn>
             </v-card-actions>
           </v-card>
         </v-menu>
@@ -131,6 +117,7 @@
 </template>
 
 <script>
+  import {mapActions} from 'vuex'
   export default {
     data: () => ({
       drawer: false,
@@ -145,18 +132,27 @@
       },
       errors: []
     }),
-    methods: {
+    mounted() {
+      this.tryLoadUserInfo()
+    },
+    methods: Object.assign(mapActions(['performLogOut', 'tryLoadUserInfo']), {
       toggleDrawler() {
         this.drawer = !this.drawer
+      },
+      doLogOut() {
+        this.performLogOut()
       },
       performSearch() {
         this.$store.commit('ChangeSearch', this.searchText)
         this.$router.push({name: 'SearchTorrentList', params: {search: this.searchText}})
       }
-    },
+    }),
     computed: {
       isLoggedIn() {
         return this.$store.state.auth.isLoggedIn
+      },
+      userInfo() {
+        return this.$store.state.auth.user
       },
       enableSearch() {
         return (this.$route.name !== 'HomePage' && this.$route.name !== 'MaintenancePage')

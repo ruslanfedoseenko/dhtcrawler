@@ -4,16 +4,16 @@ import (
 	"github.com/abbot/go-http-auth"
 	"github.com/julienschmidt/httprouter"
 	"github.com/ruslanfedoseenko/dhtcrawler/Config"
-	"log"
 	"net/http"
 	"path"
 	"github.com/ruslanfedoseenko/dhtcrawler/Middleware"
+	"github.com/op/go-logging"
 )
 
 var App *Config.App
 
 type HostSwitch map[string]http.Handler
-
+var RouterLog = logging.MustGetLogger("Router")
 // Implement the ServerHTTP method on our new type
 func (hs HostSwitch) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	// Check if a http.Handler is registered for the given host.
@@ -64,7 +64,7 @@ func Setup(app *Config.App) {
 		router.GET("/torrents/page/:pageNumber", TorrentsListHandler)
 		router.GET("/torrents/search/:term", TorrentSearchHandler)
 		router.GET("/torrents/search/:term/page/:pageNumber", TorrentSearchHandler)
-		log.Println("Starting Http Backend")
+		RouterLog.Info("Starting Http Backend")
 		setupAdminHandlers(router)
 		setupAuthHandlers(router)
 		router.ServeFiles("/index/*filepath", http.Dir(App.Config.HttpConfig.StaticDataFolder))
@@ -82,4 +82,5 @@ func setupAuthHandlers(router *httprouter.Router) {
 	router.POST("/auth/login", AuthLoginHandler)
 	router.POST("/auth/register", AuthRegistrationHandler)
 	router.GET("/auth/logout", Middleware.AuthRequest(AuthLogoutHandler))
+	router.GET("/auth/currentUser", Middleware.AuthRequest(AuthCurrentUserInfo))
 }
