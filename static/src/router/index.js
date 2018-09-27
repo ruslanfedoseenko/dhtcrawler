@@ -55,6 +55,14 @@ if (isMaintenance) {
         path: '/stats',
         name: 'Stats',
         component: stats
+      },
+      {
+        path: '/login',
+        name: 'Login',
+        component: homePage,
+        props: {
+          showLogin: true
+        }
       }
     ]
   })

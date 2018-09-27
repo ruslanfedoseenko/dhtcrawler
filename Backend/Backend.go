@@ -4,6 +4,7 @@ import (
 	"github.com/ruslanfedoseenko/dhtcrawler/Config"
 	"github.com/ruslanfedoseenko/dhtcrawler/Routers"
 	"github.com/ruslanfedoseenko/dhtcrawler/Services"
+	"github.com/ruslanfedoseenko/dhtcrawler/Services/jwt"
 )
 
 // @APIVersion 1.0.0
@@ -19,7 +20,7 @@ import (
 func main() {
 
 	app := Config.NewApp()
-
+	jwt.InitJWT(app)
 	Routers.Setup(app)
 
 	Services.SetupTorrentCountStatsUpdater(app)

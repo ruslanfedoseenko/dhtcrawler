@@ -6,12 +6,15 @@ import router from './router'
 import vuetify from 'vuetify'
 import vueresource from 'vue-resource'
 import store from './store/index'
+import VeeValidate from 'vee-validate'
 import 'vuetify/dist/vuetify.css'
 import Raven from 'raven-js'
 import RavenVue from 'raven-js/plugins/vue'
 import commonFooter from './components/Footer'
 import chart from './components/Chart'
 import SearchField from './components/SearchField'
+import LoginDlg from './components/LoginDialog'
+import RegDlg from './components/RegisterDialog'
 import 'babel-polyfill'
 const reduce = Function.bind.call(Function.call, Array.prototype.reduce)
 const isEnumerable = Function.bind.call(Function.call, Object.prototype.propertyIsEnumerable)
@@ -33,7 +36,11 @@ Raven
   .install()
 Vue.use(vueresource)
 Vue.use(vuetify)
+Vue.use(VeeValidate)
+
 Vue.component('line-chart', chart)
+Vue.component('btoogle-login-dialog', LoginDlg)
+Vue.component('btoogle-register-dialog', RegDlg)
 Vue.component('btoogle-footer', commonFooter)
 Vue.component('btoogle-search-field', SearchField)
 /* eslint-disable no-new */

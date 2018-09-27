@@ -13,6 +13,7 @@ import (
 	"runtime/debug"
 	"syscall"
 	"github.com/op/go-logging"
+	"github.com/ruslanfedoseenko/dhtcrawler/Models"
 )
 
 var clog = logging.MustGetLogger("Config")
@@ -50,6 +51,7 @@ func NewApp() *App {
 			log.Println("Db open error:", err.Error())
 		}
 		applySentryPlugin(db)
+		db.AutoMigrate(&Models.JwtRefreshToken{}, &Models.User{})
 		app.Db = db
 	}
 

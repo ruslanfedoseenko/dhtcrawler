@@ -11,6 +11,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"reflect"
 )
 
 var videoExtractorLog = logging.MustGetLogger("VideoInfoExtractor")
@@ -80,7 +81,7 @@ func (ve *VideoInfoExtractor) GetAssociatedVideos(work VideoInfoExtractWork) (ti
 		return
 	}
 
-	//videoExtractorLog.Println("SearchMulti Result:", res)
+	videoExtractorLog.Debug("SearchMulti Result:", res)
 	titlesCount := minInt32(int32(res.TotalResults), 5)
 	var i int32
 
@@ -92,7 +93,12 @@ func (ve *VideoInfoExtractor) GetAssociatedVideos(work VideoInfoExtractWork) (ti
 		var titleType Models.TitleType
 		var genres []string
 		var year int64
-		if tvSeriesInfo, ok := res.Results[i].(tmdb.MultiSearchTvInfo); ok {
+		var ok = false
+		var tvSeriesInfo *tmdb.MultiSearchTvInfo
+		var movieInfo *tmdb.MultiSearchMovieInfo
+		var base = &res.Results[i]
+		videoExtractorLog.Debug("SearchMulti Result:", i, reflect.TypeOf(*base), *base)
+		if tvSeriesInfo, ok = (*base).(*tmdb.MultiSearchTvInfo); ok {
 			name = tvSeriesInfo.OriginalName
 			var yearStr string
 			if len(tvSeriesInfo.FirstAirDate) > 4 {
@@ -110,7 +116,8 @@ func (ve *VideoInfoExtractor) GetAssociatedVideos(work VideoInfoExtractWork) (ti
 
 			description = tvSeriesInfo.Overview
 			titleType = Models.TitleType(tvSeriesInfo.MediaType)
-		} else if movieInfo, ok := res.Results[i].(tmdb.MultiSearchMovieInfo); ok {
+		} else if movieInfo, ok = (*base).(*tmdb.MultiSearchMovieInfo); ok {
+			videoExtractorLog.Debug("Casted to tmdb.MultiSearchMovieInfo")
 			name = movieInfo.OriginalTitle
 			var yearStr string
 			if len(movieInfo.ReleaseDate) > 4 {
@@ -129,15 +136,18 @@ func (ve *VideoInfoExtractor) GetAssociatedVideos(work VideoInfoExtractWork) (ti
 			titleType = Models.TitleType(movieInfo.MediaType)
 
 		}
-		titles = append(titles, Models.Title{
-			Title:       name,
-			Year:        uint32(year),
-			Description: description,
-			Ganres:      genres,
-			TitleType:   titleType,
-			Id:          crc32.ChecksumIEEE([]byte(name)),
-			PosterUrl:   posterUrl,
-		})
+		if ok {
+			titles = append(titles, Models.Title{
+				Title:       name,
+				Year:        uint32(year),
+				Description: description,
+				Ganres:      genres,
+				TitleType:   titleType,
+				Id:          crc32.ChecksumIEEE([]byte(name)),
+				PosterUrl:   posterUrl,
+			})
+		}
+
 
 	}
 	return

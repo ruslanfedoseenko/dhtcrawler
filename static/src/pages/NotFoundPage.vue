@@ -13,6 +13,7 @@
         </v-layout>
 
       </v-container>
+      <btoogle-footer/>
     </v-layout>
   </v-container>
 </template>

@@ -13,7 +13,7 @@
               </v-container>
             </v-layout>
           </v-container>
-          <v-list v-if="loading === false" two-line>
+          <v-list v-if="loading === false" two-line class="footer-aware">
             <template v-for='item in items'>
 
               <v-list-tile @click.prevent="navigateDetails(item)">
@@ -151,14 +151,14 @@
     }),
     computed: {
       items() {
-        return this.$store.state.torrents
+        return this.$store.state.search.torrents
       },
       pageCount() {
-        return parseInt(this.$store.state.pageCount)
+        return parseInt(this.$store.state.search.pageCount)
       },
       currentPage: {
         get() {
-          return parseInt(this.$store.state.page)
+          return parseInt(this.$store.state.search.page)
         },
         set(value) {
           this.$store.commit('ChangePage', value)
@@ -166,7 +166,7 @@
       },
       searchText: {
         get() {
-          return this.$store.state.searchTerm
+          return this.$store.state.search.searchTerm
         },
         set(value) {
           this.$store.commit('ChangeSearch', value)

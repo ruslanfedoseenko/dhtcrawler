@@ -45,7 +45,7 @@
     computed: {
       suggestions: {
         get() {
-          return this.$store.state.suggestions
+          return this.$store.state.search.suggestions
         },
         set(value) {
           this.$store.commit('ChangeSuggestions', value)

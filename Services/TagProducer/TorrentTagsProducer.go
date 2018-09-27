@@ -93,7 +93,7 @@ func (t *TorrentTagsProducer) processQueue() {
 			}
 			err = t.db.Model(&torrents[i]).Association("Titles").Append(torrents[i].Titles).Error
 			if err != nil {
-				TagProducerLog.Error("Error while appending torrent tags:", err)
+				TagProducerLog.Error("Error while appending torrent Titles:", err)
 			}
 		}
 	}
@@ -101,7 +101,7 @@ func (t *TorrentTagsProducer) processQueue() {
 }
 
 func (t *TorrentTagsProducer) getTorrentTokens(torrent *Models.Torrent) []string {
-	tokens := set.NewNonTS()
+	tokens := set.New(set.NonThreadSafe)
 	for _, file := range torrent.Files {
 		tokens.Add(Utils.ToInterfaceSlice(strings.FieldsFunc(strings.ToLower(file.Path), tokenizer))...)
 	}
@@ -138,6 +138,7 @@ func (t *TorrentTagsProducer) FillTorrentTags(torrent *Models.Torrent) {
 
 		if tagProducer.SatisfyTag(torrentTokens) {
 			tags := tagProducer.GetTags(torrent)
+			videoLog.Debug("Titles after exit GetTags", torrent.Titles)
 			torrentTokens = append(torrentTokens, tags...)
 			for i := 0; i < len(tags); i++ {
 				tagModel := Models.Tag{

@@ -8,6 +8,7 @@
                     :width="800"
                     :height="250"/>
       </v-flex>
+      <btoogle-footer/>
     </v-layout>
 
 
@@ -155,7 +156,7 @@
     computed: {
       stats: {
         get() {
-          return this.$store.state.torrentStats
+          return this.$store.state.search.torrentStats
         },
         set(value) {
           throw new Error('Set for torrent stats is not allowed')

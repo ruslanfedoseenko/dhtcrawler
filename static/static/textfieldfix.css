@@ -8,6 +8,12 @@
 .torrent-list-link{
   text-decoration: none !important;
 }
+footer{
+  height: auto !important;
+}
+.footer-aware {
+  margin-bottom: 83px;
+}
 .menu-content-bg-fix .list {
   padding-top: 0;
   padding-bottom: 0;

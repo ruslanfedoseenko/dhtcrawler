@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"path"
+	"github.com/ruslanfedoseenko/dhtcrawler/Middleware"
 )
 
 var App *Config.App
@@ -65,7 +66,7 @@ func Setup(app *Config.App) {
 		router.GET("/torrents/search/:term/page/:pageNumber", TorrentSearchHandler)
 		log.Println("Starting Http Backend")
 		setupAdminHandlers(router)
-
+		setupAuthHandlers(router)
 		router.ServeFiles("/index/*filepath", http.Dir(App.Config.HttpConfig.StaticDataFolder))
 
 		hs := make(HostSwitch)
@@ -76,4 +77,9 @@ func Setup(app *Config.App) {
 		http.ListenAndServe(":6060", hs)
 
 	}()
+}
+func setupAuthHandlers(router *httprouter.Router) {
+	router.POST("/auth/login", AuthLoginHandler)
+	router.POST("/auth/register", AuthRegistrationHandler)
+	router.GET("/auth/logout", Middleware.AuthRequest(AuthLogoutHandler))
 }

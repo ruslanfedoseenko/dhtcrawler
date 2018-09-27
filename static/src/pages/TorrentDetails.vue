@@ -28,7 +28,7 @@
       <v-flex xs12 v-if="torrent.Titles !== undefined">
         <v-layout row wrap>
 
-          <v-flex xs6 v-for="title in torrent.Titles">
+          <v-flex xs6 v-for="title in torrent.Titles" :key="title.Id">
             <v-card>
               <v-layout>
                 <v-flex xs5>
@@ -169,7 +169,7 @@
     computed: {
       torrent: {
         get() {
-          return this.$store.state.torrentDetails
+          return this.$store.state.search.torrentDetails
         },
         set(value) {
           this.$store.commit('ChangeTorrentDetails', value)

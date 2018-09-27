@@ -125,9 +125,9 @@ func (s *ScrapeRpcService) resultsWriterThread() {
 
 		}
 		if len(infohases) > 0 {
-			var torrentsToHash map[string]Models.Torrent = make(map[string]Models.Torrent, len(infohases))
+			var torrentsToHash = make(map[string]Models.Torrent, len(infohases))
 			var torrents []Models.Torrent
-			s.db.Debug().Preload("ScraperResults").Where("infohash in (?)", infohases).Find(&torrents)
+			s.db.Preload("ScraperResults").Where("infohash in (?)", infohases).Find(&torrents)
 			for i := 0; i < len(torrents); i++ {
 				torrentsToHash[torrents[i].Infohash] = torrents[i]
 			}
@@ -137,7 +137,7 @@ func (s *ScrapeRpcService) resultsWriterThread() {
 				info := result.Response.ScrapeDatas[torrent.Infohash]
 
 				if info.Completed+info.Leechers+info.Seeders != 0 {
-					var found bool = false
+					var found = false
 					for j := 0; j < len(torrent.ScraperResults); j++ {
 						if torrent.ScraperResults[j].TrackerUrl == result.TrackerUrl {
 							found = true
@@ -147,11 +147,11 @@ func (s *ScrapeRpcService) resultsWriterThread() {
 							}
 							torrent.ScraperResults[j].Leaches = info.Leechers
 							torrent.ScraperResults[j].Seeds = info.Seeders
-							s.db.Debug().Model(&torrent.ScraperResults[j]).Update(torrent.ScraperResults[j])
+							s.db.Model(&torrent.ScraperResults[j]).Update(torrent.ScraperResults[j])
 						}
 					}
 					if !found {
-						s.db.Debug().Model(&torrent).
+						s.db.Model(&torrent).
 							Association("ScraperResults").
 							Append(&Models.ScrapeTorrentResult{
 								Leaches:    info.Leechers,

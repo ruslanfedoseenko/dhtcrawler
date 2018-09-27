@@ -5,12 +5,15 @@ import (
 	"github.com/ruslanfedoseenko/dhtcrawler/Models"
 	"github.com/ruslanfedoseenko/dhtcrawler/Utils"
 	"regexp"
+	"github.com/op/go-logging"
 )
 
 type videoTagProducer struct {
 	videoInfoExtractor *VideoInfoExtractor
 	qualityInfo        *regexp.Regexp
 }
+
+var videoLog = logging.MustGetLogger("DhtCrawler")
 
 func NewVideoTagProducer(app *Config.App) *videoTagProducer {
 	return &videoTagProducer{
@@ -29,13 +32,15 @@ func (vtp *videoTagProducer) SatisfyTag(torrentTokens []string) bool {
 func (vtp *videoTagProducer) GetTags(torrent *Models.Torrent) []string {
 	TagProducerLog.Info("GetTags", vtp, vtp.videoInfoExtractor)
 	titles := vtp.videoInfoExtractor.GetAssociatedVideos(VideoInfoExtractWork{Name: torrent.Name})
-	torrent.Titles = titles
+	torrent.Titles = append(torrent.Titles , titles...)
+
 	titlesLen := len(titles)
 	tags := make([]string, 0, titlesLen*5)
 	for i := 0; i < titlesLen; i++ {
 		tags = append(tags, titles[i].Ganres...)
 	}
 	tags = append(tags, vtp.lookForQuality(torrent.Name)...)
+	videoLog.Debug("Titles before exit GetTags", torrent.Titles)
 	return tags
 }
 func (vtp *videoTagProducer) lookForQuality(i string) []string {

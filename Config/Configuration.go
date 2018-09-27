@@ -23,7 +23,9 @@ type DhtConfig struct {
 	Workers   int
 }
 type HttpConfig struct {
-	StaticDataFolder string
+	StaticDataFolder      string
+	JwtAuthPrivateKeyPath string
+	JwtAuthPublicKeyPath  string
 }
 type TagProducersConfig struct {
 	TagProducers map[string][]string
@@ -87,7 +89,7 @@ func SetupConfiguration() *Configuration {
 	if err != nil {
 		log.Panicln("Error reading Config:", err)
 	}
-	log.Println("Level values",logging.CRITICAL,logging.ERROR,logging.WARNING,logging.NOTICE,logging.INFO,logging.DEBUG)
+	log.Println("Level values", logging.CRITICAL, logging.ERROR, logging.WARNING, logging.NOTICE, logging.INFO, logging.DEBUG)
 	log.Println("Configuration ", configuration)
 	return &configuration
 }

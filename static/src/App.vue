@@ -42,18 +42,90 @@
       <v-layout row align-center style="max-width: 150px">
         <v-flex class="text-xs-center" pa-2>
           <router-link :to="{name: 'HomePage'}">
-            <img src="/static/logo.png" width="100" style="margin-top: 10px" alt="avatar">
+            <img src="/static/logo.png" width="100" style="margin-top: 10px" alt="Logo">
           </router-link>
         </v-flex>
       </v-layout>
       <v-layout row align-center style="max-width: 650px">
         <btoogle-search-field v-if="enableSearch" :performSearch="performSearch" :searchText.sync="searchText"/>
       </v-layout>
+      <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-menu
+          v-if="isLoggedIn"
+          v-model="userMenu"
+          :close-on-content-click="false"
+          bottom
+          right
+        >
+          <v-layout slot="activator">
+            <v-btn color="success" fab dark small >
+              <v-icon>account_circle</v-icon>
+
+            </v-btn>
+            <v-icon>fas fa-sort-down</v-icon>
+          </v-layout>
+
+          <v-card>
+            <v-list>
+              <v-list-tile avatar>
+                <v-list-tile-avatar>
+                  <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
+                </v-list-tile-avatar>
+
+                <v-list-tile-content>
+                  <v-list-tile-title>John Leider</v-list-tile-title>
+                  <v-list-tile-sub-title>Founder of Vuetify.js</v-list-tile-sub-title>
+                </v-list-tile-content>
+
+                <v-list-tile-action>
+                  <v-btn
+                    :class="fav ? 'red--text' : ''"
+                    icon
+                    @click="fav = !fav"
+                  >
+                    <v-icon>favorite</v-icon>
+                  </v-btn>
+                </v-list-tile-action>
+              </v-list-tile>
+            </v-list>
+
+            <v-divider></v-divider>
+
+            <v-list>
+              <v-list-tile>
+                <v-list-tile-action>
+                  <v-switch v-model="message" color="purple"></v-switch>
+                </v-list-tile-action>
+                <v-list-tile-title>Enable messages</v-list-tile-title>
+              </v-list-tile>
+
+              <v-list-tile>
+                <v-list-tile-action>
+                  <v-switch v-model="hints" color="purple"></v-switch>
+                </v-list-tile-action>
+                <v-list-tile-title>Enable hints</v-list-tile-title>
+              </v-list-tile>
+            </v-list>
+
+            <v-card-actions>
+              <v-spacer></v-spacer>
+
+              <v-btn flat @click="userMenu = false">Cancel</v-btn>
+              <v-btn color="primary" flat @click="userMenu = false">Save</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-menu>
+        <btoogle-register-dialog v-if="!isLoggedIn" Style="margin-right: 15px"/>
+        <btoogle-login-dialog v-if="!isLoggedIn" />
+
+
+
+      </v-toolbar-items>
     </v-toolbar>
     <v-content>
 
       <router-view/>
-      <btoogle-footer/>
     </v-content>
   </v-app>
 </template>
@@ -62,7 +134,7 @@
   export default {
     data: () => ({
       drawer: false,
-
+      userMenu: false,
       menuItems: [
         {icon: 'trending_up', text: 'Most Popular'},
         {icon: 'insert_chart', text: 'Statistics', href: '#/stats'}
@@ -83,12 +155,15 @@
       }
     },
     computed: {
+      isLoggedIn() {
+        return this.$store.state.auth.isLoggedIn
+      },
       enableSearch() {
         return (this.$route.name !== 'HomePage' && this.$route.name !== 'MaintenancePage')
       },
       searchText: {
         get() {
-          return this.$store.state.searchTerm
+          return this.$store.state.search.searchTerm
         },
         set(value) {
           this.$store.commit('ChangeSearch', value)

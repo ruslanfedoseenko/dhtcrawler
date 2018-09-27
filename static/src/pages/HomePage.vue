@@ -11,6 +11,7 @@
           </v-flex>
         </v-layout>
       </v-container>
+      <btoogle-footer/>
     </v-layout>
   </v-container>
 </template>
@@ -18,6 +19,16 @@
 <script>
   export default {
     name: 'home-page',
+    props: {
+      showLogin: {
+        type: Boolean,
+        default: false
+      },
+      showRegistration: {
+        type: Boolean,
+        default: false
+      }
+    },
     created() {
       this.searchText = ''
     },
@@ -25,7 +36,7 @@
     computed: {
       searchText: {
         get() {
-          return this.$store.state.searchTerm
+          return this.$store.state.search.searchTerm
         },
         set(value) {
           this.$store.commit('ChangeSearch', value)
